@@ -1,8 +1,9 @@
 :root {
-/*    --body-font: "Work Sans", sans-serif;*/
-    --body-font: "Libertinus Serif", serif;
+    --body-font: "Work Sans", sans-serif;
+    --logo-font: "Libertinus Serif", serif;
     --border-radius: 20px;
     --body-color: #393a43;
+    --red-color: #a02023;
 }
 
 body {
@@ -113,7 +114,7 @@ header {
 }
 
 .nav_container .nav_menu .nav_list li a:hover {
-    background-color: #a02023;
+    background-color: var(--red-color);
     opacity: 1;
 }
 
@@ -125,7 +126,7 @@ header {
     position: fixed;
     top: 0;
     left: 5vw;
-    background-color: #a02023;
+    background-color: var(--red-color);
     height: 12vw;
     width: 11.1vw;
     margin: 0;
