@@ -142,7 +142,7 @@ MEDIA_URL = '/media/'
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
-STATICFILES_DIRS = ('/Users/romanzavarzin/PycharmProjects/ZavrSpecter/juridical_site/main/static', )
+# STATICFILES_DIRS = ('/Users/romanzavarzin/PycharmProjects/ZavrSpecter/juridical_site/main/static', )
 
 #E-mail
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
