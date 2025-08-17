@@ -46,6 +46,7 @@ header {
     font-family: "Libertinus Serif", serif;
     font-weight: 600;
     font-style: normal;
+    transition: 0.3s;
 /*    background-color: red;*/
 }
 
@@ -115,7 +116,6 @@ header {
 
 .nav_container .nav_menu .nav_list li a:hover {
     background-color: var(--red-color);
-    opacity: 1;
 }
 
 .nav_container .nav_menu .nav_list li a i {
@@ -136,6 +136,7 @@ header {
     justify-content: center;
     flex-direction: column;
     transition: 0.4s;
+    z-index: 1000;
 }
 
 .nav_container .logo a {
@@ -177,6 +178,223 @@ header {
 .nav_container .logo:hover a:first-child {
     margin: 9.5vw 0 0 0;
 }
+
+
+@media screen and (max-width: 990px) {
+
+    .header {
+/*        background-color: red;*/
+        height: 10vw;
+        border-color: transparent;
+    }
+
+    .nav_container .nav_menu {
+        position: fixed;
+        top: 10vw;
+        left: 0;
+/*        background-color: greenyellow;*/
+        margin: 0.5px 0 0 0;
+        padding: 0;
+        height: calc(100vh - 5vw);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Work Sans", sans-serif;
+    }
+
+    .nav_container .nav_menu .nav_list  {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: calc(100vh - 5vw);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: #ffffff;
+        transform: translateY(-90vw);
+        transition: 0.3s;
+        opacity: 0;
+    }
+
+   .nav_active .nav_container .nav_menu .nav_list  {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .nav_container .nav_menu .nav_list li {
+/*        background-color: rebeccapurple;*/
+        height: 12%;
+        width: 90%;
+        padding: 0;
+        margin: 1vh 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav_container .nav_menu .nav_list li a {
+/*        background-color: #32a441;*/
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(0, 0, 0, 1);
+        font-size:  1.5rem;
+        font-weight: 300;
+        transition: 0.3s;
+    }
+
+    .nav_container .nav_menu .nav_list li a:hover {
+        background-color: transparent;
+    }
+
+   .nav_container .nav_menu .nav_list li a span {
+/*        background-color: red;*/
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(129, 130, 147, 0.5);
+    }
+
+    .nav_container .nav_menu .nav_list li a i {
+        display: inline-block;
+        color: rgba(129, 130, 147, 0.5);
+    }
+
+    .nav_container .logo {
+        height: 17vw;
+        width: 17vw;
+        gap: 1px;
+    }
+
+    .nav_container .logo a {
+/*        background-color: rgba(255, 255, 255, 0.3);*/
+        font-size: clamp(1.1rem, -0.0471rem + 2.8235vw, 1.7rem);
+        line-height: 1vw;
+    }
+
+    .nav_container .logo a:first-child {
+    /*    background-color: red;*/
+        margin: 8.5vw 0 0 0;
+    }
+
+    .nav_container .logo a:last-child {
+    /*    background-color: red;*/
+        align-items: flex-end;
+        margin: 0 0 3.5vw 0;
+        padding: 0;
+    }
+
+    .nav_container .logo:hover {
+        height: 20vw;
+    }
+
+    .nav_container .logo:hover a:first-child {
+        margin: 11.5vw 0 0 0;
+    }
+
+    .nav_active header {
+        background-color: white;
+    }
+
+    .nav_icon {
+        position: absolute;
+        top: 3.2vw;
+        right: 5vw;
+        width: 42px;
+        height: 32px;
+        cursor: pointer;
+    }
+
+    .nav_icon span {
+        position: absolute;
+        width: 50%;
+        height: 3px;
+        background-color: white;
+        transition: all 0.2s ease-in-out;
+    }
+
+   .nav_active .nav_icon span {
+        background-color: var(--red-color);
+    }
+
+    .nav_icon span:nth-child(odd) {
+        left: 0;
+        border-radius: 9px 0 0 9px ;
+    }
+
+    .nav_icon span:nth-child(even) {
+        left: 50%;
+        border-radius: 0 9px 9px 0;
+    }
+
+    .nav_icon span:nth-child(1),
+    .nav_icon span:nth-child(2) {
+        top: 0;
+    }
+
+    .nav_icon span:nth-child(3),
+    .nav_icon span:nth-child(4) {
+        top: 13px;
+    }
+
+    .nav_icon span:nth-child(5),
+    .nav_icon span:nth-child(6) {
+        top: 26px;
+    }
+
+    .nav_active .nav_icon span:nth-child(1),
+    .nav_active .nav_icon span:nth-child(6) {
+        transform: rotate(45deg);
+    }
+
+    .nav_active .nav_icon span:nth-child(2),
+    .nav_active .nav_icon span:nth-child(5) {
+        transform: rotate(-45deg);
+    }
+
+    .nav_active .nav_icon span:nth-child(1) {
+        top: 8px;
+        left: 5px
+    }
+
+    .nav_active .nav_icon span:nth-child(2) {
+        top: 8px;
+        left: calc(50% - 5px);
+    }
+
+    .nav_active .nav_icon span:nth-child(3) {
+        left: -100%;
+        opacity: 0;
+    }
+
+    .nav_active .nav_icon span:nth-child(4) {
+        left: 150%;
+        opacity: 0;
+    }
+
+    .nav_active .nav_icon span:nth-child(5) {
+        top: 19px;
+        left: 5px;
+    }
+
+    .nav_active .nav_icon span:nth-child(6) {
+        top: 19px;
+        left: calc(50% - 5px);
+    }
+
+}
+
+
+
+
 
 
 
