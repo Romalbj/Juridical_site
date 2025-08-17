@@ -308,17 +308,17 @@ header {
         position: absolute;
         top: 3.2vw;
         right: 5vw;
-        width: 42px;
-        height: 32px;
+        width: 4.2vw;
+        height: 3.2vw;
         cursor: pointer;
     }
 
     .nav_icon span {
         position: absolute;
         width: 50%;
-        height: 3px;
+        height: 0.3vw;
         background-color: white;
-        transition: all 0.2s ease-in-out;
+        transition: all 0.25s ease-in-out;
     }
 
    .nav_active .nav_icon span {
@@ -342,12 +342,12 @@ header {
 
     .nav_icon span:nth-child(3),
     .nav_icon span:nth-child(4) {
-        top: 13px;
+        top: 1.4vw;
     }
 
     .nav_icon span:nth-child(5),
     .nav_icon span:nth-child(6) {
-        top: 26px;
+        top: 2.8vw;
     }
 
     .nav_active .nav_icon span:nth-child(1),
@@ -361,13 +361,13 @@ header {
     }
 
     .nav_active .nav_icon span:nth-child(1) {
-        top: 8px;
-        left: 5px
+        top: 0.8vw;
+        left: 0.15vw;
     }
 
     .nav_active .nav_icon span:nth-child(2) {
-        top: 8px;
-        left: calc(50% - 5px);
+        top: 0.8vw;
+        left: calc(50% - 0.65vw);
     }
 
     .nav_active .nav_icon span:nth-child(3) {
@@ -381,13 +381,13 @@ header {
     }
 
     .nav_active .nav_icon span:nth-child(5) {
-        top: 19px;
-        left: 5px;
+        top: 2.2vw;
+        left: 0.15vw;
     }
 
     .nav_active .nav_icon span:nth-child(6) {
-        top: 19px;
-        left: calc(50% - 5px);
+        top: 2.2vw;
+        left: calc(50% - 0.65vw);
     }
 
 }
