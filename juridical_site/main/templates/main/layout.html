@@ -32,37 +32,37 @@
 
 </head>
 <body>
-
-    <header class="header" id="header">
-        <nav class="nav_container">
-<!--            <a href="{% url 'home' %}" class="nav_logo">Zavr<p>Specter</p></a>-->
             <div class="logo">
                 <a href="{% url 'home' %}">&nbsp;&nbsp;Zavr/</a>
                 <a href="{% url 'home' %}" class="specter">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/Specter</a>
             </div>
+    <header class="header" id="header">
+        <nav class="nav_container">
+<!--            <a href="{% url 'home' %}" class="nav_logo">Zavr<p>Specter</p></a>-->
+
 
             <div class="nav_menu" id="nav-menu">
                 <ul class="nav_list">
                     <li class="nav_item">
-                        <a href="" class="nav_link">
+                        <a href="{% url 'practice' %}" class="nav_link">
                             <span class="nav_name">Практика <i class="fa-solid fa-angle-right"></i></span>
 
                         </a>
                     </li>
 
                     <li class="nav_item">
-                        <a href="" class="nav_link">
+                        <a href="{% url 'team' %}" class="nav_link">
                             <span class="nav_name">Команда<i class="fa-solid fa-angle-right"></i></span>
                         </a>
                     </li>
 
                     <li class="nav_item">
-                        <a href="" class="nav_link">
+                        <a href="{% url 'work' %}" class="nav_link">
                             <span class="nav_name">Трудоустройство<i class="fa-solid fa-angle-right"></i></span>
                         </a>
                     </li>
                      <li class="nav_item">
-                        <a href="" class="nav_link">
+                        <a href="{% url 'about' %}" class="nav_link">
                             <span class="nav_name">О нас<i class="fa-solid fa-angle-right"></i></span>
                         </a>
                     </li>
@@ -87,4 +87,7 @@
     </main>
 
 </body>
+
+<script src="{% static 'main/js/script.js' %}"></script>
+
 </html>

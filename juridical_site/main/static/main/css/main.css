@@ -4,6 +4,9 @@
     --border-radius: 20px;
     --body-color: #393a43;
     --red-color: #a02023;
+    --red-color-v2: #a02023ae;
+    --black-color: #0f121c;
+    --background-grey: #535665;
 }
 
 body {
@@ -16,8 +19,8 @@ body {
 
 main {
     min-height: 100vh;
-    background: #393A43;
-    background: linear-gradient(45deg, rgba(42, 43, 52, 1) 0%, rgba(129, 130, 147, 1) 100%);
+    background: var(--background-grey);
+/*    background: linear-gradient(45deg, rgba(42, 43, 52, 1) 0%, rgba(129, 130, 147, 1) 100%);*/
     width: 100vw;
     margin: 0;
     padding: 0;
@@ -42,16 +45,18 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius:  0 0 var(--border-radius) var(--border-radius);
-    font-family: "Libertinus Serif", serif;
+    border-radius:  0;
     font-weight: 600;
     font-style: normal;
     transition: 0.3s;
 /*    background-color: red;*/
+    color: white;
+/*    mix-blend-mode: difference;*/
+/*    backdrop-filter: blur(15px);*/
 }
 
 .nav_container {
-/*    background-color: #1f62109e;*/
+    background-color: var(--background-grey);
     margin: 0;
     padding: 0;
     width: 100%;
@@ -60,7 +65,8 @@ header {
     align-items: center;
     justify-content: center;
     border-bottom: 0.5px solid rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(30px);
+    transition: 0.3s;
+/*    backdrop-filter: blur(10px);*/
 }
 
 .nav_container .nav_menu {
@@ -96,7 +102,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 .nav_container .nav_menu .nav_list li a {
@@ -114,6 +119,10 @@ header {
     transition: 0.3s;
 }
 
+.nav_container .nav_menu .nav_list li .active {
+    background-color: var(--red-color);
+}
+
 .nav_container .nav_menu .nav_list li a:hover {
     background-color: var(--red-color);
 }
@@ -122,10 +131,11 @@ header {
     display: none;
 }
 
-.nav_container .logo {
+.logo {
     position: fixed;
     top: 0;
     left: 5vw;
+    font-family: "Libertinus Serif", serif;
     background-color: var(--red-color);
     height: 12vw;
     width: 11.1vw;
@@ -139,7 +149,7 @@ header {
     z-index: 1000;
 }
 
-.nav_container .logo a {
+.logo a {
     text-decoration: none;
 /*    background-color: rgba(255, 255, 255, 0.3);*/
     max-width: 100%;
@@ -156,28 +166,137 @@ header {
     transition: 0.4s;
 }
 
-.nav_container .logo a:first-child {
+.logo a:first-child {
 /*    background-color: red;*/
     align-items: flex-end;
-    margin: 6.5vw 0 0 0;
+    margin: 6.5vw 0 0 0.1vw;
     padding: 0;
 }
 
-.nav_container .logo a:last-child {
+.logo a:last-child {
 /*    background-color: red;*/
     align-items: flex-end;
     margin: 0 0 2.5vw 0;
     padding: 0;
 }
 
-.nav_container .logo:hover {
+.logo:hover {
     height: 15vw;
     box-shadow:  0px 15px 15px 0.7px rgba(63, 46, 46, 0.5);
 }
 
-.nav_container .logo:hover a:first-child {
+.logo:hover a:first-child {
     margin: 9.5vw 0 0 0;
 }
+
+
+/*expetiments*/
+/*.smth {*/
+/*    position: fixed;*/
+/*    top: 15vh;*/
+/*    background-color: red;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    font-size: 40px;*/
+/*    color: white;*/
+/*    mix-blend-mode: difference;*/
+/*}*/
+
+
+.inverted {
+    margin: 0 0 0 0;
+    background-color: greenyellow;
+/*    display: none;*/
+}
+
+
+
+.place_holder:nth-child(even) {
+    background-color: black;
+    color: white;
+}
+
+.place_holder:nth-child(odd) {
+    background-color: white;
+    color: black;
+}
+
+/*end of experiments*/
+
+
+.place_holder {
+    width: 100vw;
+    font-size: 1.7rem;
+    line-height: 3rem;
+    margin: 0;
+    padding: 5vh 5vw;
+    transition: 0.3s;
+}
+
+
+.booking {
+    margin: 0 0 0 0;
+    padding: 35vh 0 0 5vw;
+    height: 100vh;
+    width: 100vw;
+    background-image: url(../img/background_s2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+/*    font-family: "Libertinus Serif", serif;*/
+
+}
+
+.booking .wrapper {
+/*    background-color: greenyellow;*/
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 34vw;
+    color: white;
+
+}
+
+.booking .booking_text {
+    margin: 0 0 1vh 0;
+/*    background-color: red;*/
+    font-size: clamp(1.7rem, -0.0471rem + 2.8235vw, 2.7rem);
+    line-height: 130%;
+
+}
+
+.booking .booking_text span {
+    background-color: var(--red-color-v2);
+/*    border: 2px solid var(--red-color);*/
+/*    color: var(--red-color-v2);*/
+}
+
+.booking .booking_submit {
+    background-color: var(--red-color);
+    margin: 0;
+    padding: 1vh 2vh;
+    width: 33.3vw;
+    height: minmax(3vw, 10vw);
+    border-color: transparent;
+    box-shadow:  10px 10px 15px 0.7px rgba(63, 46, 46, 0.5);
+    transition: 0.3s;
+    color: rgba(255, 255, 255, 1);
+
+}
+
+.booking .booking_submit:hover {
+    box-shadow:  0px 0px 0px 0px transparent;
+    width: calc(33.3vw - 5px);
+}
+
+
 
 
 @media screen and (max-width: 990px) {
@@ -186,6 +305,16 @@ header {
 /*        background-color: red;*/
         height: 10vw;
         border-color: transparent;
+        border-radius: 0;
+        border-bottom: 0.5px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .nav_active .header {
+        border-bottom: 0.5px solid black;
+    }
+
+    .nav_container {
+        border-bottom: 0px;
     }
 
     .nav_container .nav_menu {
@@ -193,7 +322,7 @@ header {
         top: 10vw;
         left: 0;
 /*        background-color: greenyellow;*/
-        margin: 0.5px 0 0 0;
+        margin: 0 0 0 0;
         padding: 0;
         height: calc(100vh - 5vw);
         width: 100%;
@@ -266,41 +395,42 @@ header {
     .nav_container .nav_menu .nav_list li a i {
         display: inline-block;
         color: rgba(129, 130, 147, 0.5);
+        font-size: 1.1rem;
     }
 
-    .nav_container .logo {
+    .logo {
         height: 17vw;
         width: 17vw;
         gap: 1px;
     }
 
-    .nav_container .logo a {
+    .logo a {
 /*        background-color: rgba(255, 255, 255, 0.3);*/
         font-size: clamp(1.1rem, -0.0471rem + 2.8235vw, 1.7rem);
         line-height: 1vw;
     }
 
-    .nav_container .logo a:first-child {
+    .logo a:first-child {
     /*    background-color: red;*/
-        margin: 8.5vw 0 0 0;
+        margin: 8.5vw 0 0 0.2vw;
     }
 
-    .nav_container .logo a:last-child {
+    .logo a:last-child {
     /*    background-color: red;*/
         align-items: flex-end;
         margin: 0 0 3.5vw 0;
         padding: 0;
     }
 
-    .nav_container .logo:hover {
+    .logo:hover {
         height: 20vw;
     }
 
-    .nav_container .logo:hover a:first-child {
+    .logo:hover a:first-child {
         margin: 11.5vw 0 0 0;
     }
 
-    .nav_active header {
+    .nav_active .nav_container {
         background-color: white;
     }
 
@@ -388,6 +518,19 @@ header {
     .nav_active .nav_icon span:nth-child(6) {
         top: 2.2vw;
         left: calc(50% - 0.65vw);
+    }
+
+    .nav_container .nav_menu .nav_list li .active {
+        background-color: transparent;
+        color: var(--red-color);
+    }
+
+   .nav_container .nav_menu .nav_list li .active span {
+        border-bottom: 1px solid rgba(160, 32, 35, 0.7);
+    }
+
+    .nav_container .nav_menu .nav_list li .active span i {
+        color: rgba(160, 32, 35, 0.7);
     }
 
 }
