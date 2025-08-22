@@ -142,41 +142,40 @@ header {
     margin: 0;
     padding: 0;
     display: flex;
-    align-items: center:
+    align-items: flex-start:
     justify-content: center;
-    flex-direction: column;
     transition: 0.4s;
     z-index: 1000;
 }
 
-.logo a {
+.logo .small_logo {
     text-decoration: none;
-/*    background-color: rgba(255, 255, 255, 0.3);*/
-    max-width: 100%;
-    height: 50%;
-    padding: 0;
+    padding: 0 0 2vh 0;
     margin: 0;
+    height: 100%;
+    width: 100%;
+/*    background-color: rgba(255, 255, 255, 0.3);*/
     display: flex;
-    align-items: center:
-    justify-content: center;
+    justify-content: flex-end;
+    flex-direction: column;
     font-size: clamp(0.5rem, -0.075rem + 1.84vw, 1.65rem);
     color: white;
     line-height: 1.5vw;
     cursor: pointer;
     transition: 0.4s;
+    gap: 1px;
 }
 
-.logo a:first-child {
+.logo .small_logo :first-child {
 /*    background-color: red;*/
-    align-items: flex-end;
-    margin: 6.5vw 0 0 0.1vw;
+    margin: 6.5vw 0 0 0.2vw;
     padding: 0;
 }
 
-.logo a:last-child {
-/*    background-color: red;*/
+.logo .small_logo :last-child {
+/*    background-color: #00d0ff;*/
     align-items: flex-end;
-    margin: 0 0 2.5vw 0;
+    margin: 0 0 0 0;
     padding: 0;
 }
 
@@ -185,9 +184,9 @@ header {
     box-shadow:  0px 15px 15px 0.7px rgba(63, 46, 46, 0.5);
 }
 
-.logo:hover a:first-child {
-    margin: 9.5vw 0 0 0;
-}
+/*.logo:hover a:first-child {*/
+/*    margin: 9.5vw 0 0 0;*/
+/*}*/
 
 
 /*expetiments*/
@@ -288,6 +287,8 @@ header {
     box-shadow:  10px 10px 15px 0.7px rgba(63, 46, 46, 0.5);
     transition: 0.3s;
     color: rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    corner-shape: squircle;
 
 }
 
@@ -401,33 +402,39 @@ header {
     .logo {
         height: 17vw;
         width: 17vw;
-        gap: 1px;
+/*        gap: 1px;*/
     }
 
-    .logo a {
-/*        background-color: rgba(255, 255, 255, 0.3);*/
-        font-size: clamp(1.1rem, -0.0471rem + 2.8235vw, 1.7rem);
-        line-height: 1vw;
-    }
 
-    .logo a:first-child {
-    /*    background-color: red;*/
-        margin: 8.5vw 0 0 0.2vw;
-    }
+/*    .logo .small_logo {*/
+/*        text-decoration: none;*/
+/*        padding: 0 0 2vh 0;*/
+/*        margin: 0;*/
+/*        height: 100%;*/
+/*        width: 100%;*/
+/*    *//*    background-color: rgba(255, 255, 255, 0.3);*/
+/*        display: flex;*/
+/*        justify-content: flex-end;*/
+/*        flex-direction: column;*/
+/*        font-size: clamp(0.5rem, -0.075rem + 1.84vw, 1.65rem);*/
+/*        color: white;*/
+/*        line-height: 1.5vw;*/
+/*        cursor: pointer;*/
+/*        transition: 0.4s;*/
+/*        gap: 1px;*/
+/*    }*/
 
-    .logo a:last-child {
-    /*    background-color: red;*/
-        align-items: flex-end;
-        margin: 0 0 3.5vw 0;
-        padding: 0;
-    }
+
 
     .logo:hover {
         height: 20vw;
+        box-shadow:  0px 15px 15px 0.7px rgba(63, 46, 46, 0.5);
     }
 
-    .logo:hover a:first-child {
-        margin: 11.5vw 0 0 0;
+    .logo a span {
+/*        background-color: rgba(255, 255, 255, 0.3);*/
+        font-size: clamp(1.1rem, -0.0471rem + 2.8235vw, 1.7rem);
+        line-height: 2.5vw;
     }
 
     .nav_active .nav_container {
@@ -536,14 +543,74 @@ header {
 }
 
 
+@media screen and (max-width: 640px) {
+
+    .header {
+        height: 17vw;
+    }
+
+    .nav_container .nav_menu {
+        top: 17vw;
+    }
+    .logo {
+        height: 17vw;
+        width: 23vw;
+        background-color: transparent;
+        background-image: url(../img/LogoW_V1_2_2.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .logo:hover {
+        height: 17vw;
+        box-shadow:  0px 0px 0px 0px rgba(63, 46, 46, 0);
+    }
+
+    .logo a span{
+        display: none;
+    }
+
+    .nav_icon {
+        top: 6.5vw;
+        right: 5vw;
+        width: 6.2vw;
+        height: 4.2vw;
+    }
+
+    .nav_icon span {
+        height: 0.3vw;
+    }
+
+    .nav_active .nav_icon span:nth-child(1) {
+        top: 0.8vw;
+        left: 0.15vw;
+    }
+
+    .nav_active .nav_icon span:nth-child(2) {
+        top: 0.8vw;
+        left: calc(50% - 0.85vw);
+    }
+
+    .nav_active .nav_icon span:nth-child(3) {
+        left: -100%;
+        opacity: 0;
+    }
+
+    .nav_active .nav_icon span:nth-child(4) {
+        left: 150%;
+        opacity: 0;
+    }
+
+    .nav_active .nav_icon span:nth-child(5) {
+        top: 2.9vw;
+        left: 0.15vw;
+    }
+
+    .nav_active .nav_icon span:nth-child(6) {
+        top: 2.9vw;
+        left: calc(50% - 0.85vw);
+    }
 
 
-
-
-
-
-
-
-
-
-
+}
