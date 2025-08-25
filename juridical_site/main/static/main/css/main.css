@@ -5,6 +5,7 @@
     --body-color: #393a43;
     --red-color: #a02023;
     --red-color-v2: #a02023ae;
+    --red-color-v3: #dc3b3f;
     --glow-color: red;
     --black-color: #0f121c;
     --background-grey: #535665;
@@ -184,7 +185,7 @@ header {
 .logo .small_logo :last-child {
 /*    background-color: #00d0ff;*/
     align-items: flex-end;
-    margin: 0 0 0 0;
+    margin: 0 0 0.8vw 0;
     padding: 0;
 }
 
@@ -408,6 +409,309 @@ header {
     align-items: flex-start;
     justify-content: flex-start;
 }
+
+
+.directions {
+/*    background-color: #ec9595;*/
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 5vh 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.directions .directions_wrapper {
+/*    background-color: #8fe5d5;*/
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.directions .directions_wrapper .heading {
+/*    background-color: #0051ff;*/
+    width: 100%;
+    margin: 5% 0 0 0;
+    padding: 0;
+    font-size: clamp(2rem, 1.6667rem + 1.3333vw, 2.5rem);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.directions .directions_wrapper .heading p {
+/*    background-color: red;*/
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.directions .directions_wrapper ul {
+/*    background-color: hotpink;*/
+    height: 90%;
+    width: 100%;
+    margin: 3% 0 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2vh;
+    list-style-type: none;
+}
+
+.directions .directions_wrapper ul li {
+/*    background-color: red;*/
+    margin: 0;
+    padding: 0;
+}
+
+.directions .directions_wrapper ul li .card {
+    background-color: var(--black-color);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-direction: column;
+/*    border-bottom-right-radius: 30px;*/
+/*    border-top-left-radius: 30px;*/
+    border-radius: 20px;
+    corner-shape: squircle;
+    width: 100%;
+    height: 100%;
+    color: white;
+    transition: 1s;
+}
+
+.directions .directions_wrapper ul li .card i {
+    font-size: 3rem;
+    transform: scale(0.8);
+    margin: 0 0 0 5%;
+    transition: 0.2s;
+    color: var(--red-color-v3);
+}
+
+.directions .directions_wrapper ul li :hover  i {
+    color: white;
+    text-shadow:
+    0 0 5px var(--glow-color),
+    0 0 10px var(--glow-color),
+    0 0 20px var(--glow-color),
+    0 0 50px var(--glow-color),
+    0 0 100px var(--glow-color);
+}
+
+.directions .directions_wrapper ul #icon_1 {
+    transition: 0.3s ease-in-out;
+}
+
+.directions .directions_wrapper ul #icon_handshake {
+    position: absolute;
+    top: 2vh;
+    left: -0.5vw;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+    transform: rotateX(270deg) scale(0.8);
+}
+
+.directions .directions_wrapper ul #card_1:hover  #icon_1 {
+    opacity: 0;
+    text-shadow: 0 0 0 transparent;
+    transform: rotateX(270deg) scale(0.8);
+    color: var(--red-color-v3);
+}
+
+.directions .directions_wrapper ul #card_1:hover  #icon_handshake {
+    opacity: 1;
+    transform: rotateX(360deg) scale(0.8);
+}
+
+
+.directions .directions_wrapper ul #card_2 i {
+    transition: 0.1s ease-in-out;
+}
+
+.directions .directions_wrapper ul #card_2:hover  i {
+    transform: rotate(40deg) translateX(10px);
+}
+
+.directions .directions_wrapper ul #icon_dollar {
+    position: absolute;
+    top: 2vh;
+    left: 1vw;
+    opacity: 0;
+    transition: 0.4s ease-in-out;
+    transform: rotateY(180deg) scale(0.8);
+}
+
+.directions .directions_wrapper ul #icon_3 {
+    transition: 0.2s ease-in-out;
+}
+
+.directions .directions_wrapper ul #card_3:hover  #icon_3 {
+    opacity: 0;
+    text-shadow: 0 0 0 transparent;
+    transform: rotateY(180deg) scale(0.8);
+    color: var(--red-color-v3);
+}
+
+.directions .directions_wrapper ul #card_3:hover  #icon_dollar {
+    opacity: 1;
+    transform: rotateY(360deg) scale(0.8);
+}
+
+
+.directions .directions_wrapper ul #icon_4 {
+    transition: 0.3s ease-in-out;
+}
+
+.directions .directions_wrapper ul #icon_check {
+    position: absolute;
+    top: 2vh;
+    left: 1vw;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+    transform: rotateX(270deg) scale(1.2);
+}
+
+.directions .directions_wrapper ul #card_4:hover  #icon_4 {
+    opacity: 0;
+    text-shadow: 0 0 0 transparent;
+    transform: rotateX(270deg) scale(0.8);
+    color: var(--red-color-v3);
+}
+
+.directions .directions_wrapper ul #card_4:hover  #icon_check {
+    opacity: 1;
+    transform: rotateX(360deg);
+}
+
+.directions .directions_wrapper ul #icon_5_R {
+    position: absolute;
+    top: 2vh;
+    left: 0vw;
+    opacity: 0;
+    transition: 0.2s ease-in-out;
+    transform: scale(0.8);
+}
+
+.directions .directions_wrapper ul #icon_5_TM {
+    position: absolute;
+    top: 2vh;
+    left: 0vw;
+    opacity: 0;
+    transition: 0.4s ease-in-out;
+    transform: translateX(4vw) scale(0.8);
+}
+
+.directions .directions_wrapper ul #card_5:hover  #icon_5_R {
+    opacity: 1;
+    transform: translateX(4.5vw) scale(0.8);
+}
+
+.directions .directions_wrapper ul #card_5:hover  #icon_5_TM {
+    opacity: 1;
+    transform: translateX(9vw) scale(0.8);
+}
+
+.directions .directions_wrapper ul #lightbulb {
+    position: absolute;
+    top: 2vh;
+    left: 0.5vw;
+    opacity: 0;
+    transition: 0.2s ease-in-out;
+}
+
+.directions .directions_wrapper ul #icon_6 {
+    transition: 0.2s ease-in-out;
+}
+
+.directions .directions_wrapper ul #card_6:hover  #icon_6 {
+    opacity: 0;
+    text-shadow: 0 0 0 transparent;
+    transform: rotateY(180deg) scale(0.8);
+    color: var(--red-color-v3);
+}
+
+.directions .directions_wrapper ul #card_6:hover  #lightbulb {
+    opacity: 1;
+    transform: rotateY(180deg) scale(0.8);
+}
+
+.directions .directions_wrapper ul #icon_7 {
+    transition: 0.2s ease-in-out;
+}
+
+.directions .directions_wrapper ul #card_7:hover  #icon_7 {
+    transform: rotateY(180deg) scale(0.8);
+}
+
+
+
+
+.directions .directions_wrapper ul #icon_8 {
+    transition: 0.3s ease-in-out;
+}
+
+.directions .directions_wrapper ul #icon_sign {
+    position: absolute;
+    top: 4.5vh;
+    left: -0.5vw;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+    transform: rotateY(270deg) scale(0.5);
+}
+
+.directions .directions_wrapper ul #icon_pen {
+    position: absolute;
+    top: 2.5vh;
+    left: 3.5vw;
+    opacity: 0;
+    transition: 0.2s ease-in-out;
+    transform: translateX(-3vw) scale(0.8);
+}
+
+.directions .directions_wrapper ul #card_8:hover  #icon_8 {
+    opacity: 0;
+    text-shadow: 0 0 0 transparent;
+    transform: rotateX(270deg) scale(0.8);
+    color: var(--red-color-v3);
+}
+
+.directions .directions_wrapper ul #card_8:hover  #icon_pen {
+    opacity: 1;
+    transform: translateY(0) rotateX(360deg) scale(0.8);
+}
+
+.directions .directions_wrapper ul #card_8:hover  #icon_sign {
+    opacity: 1;
+    transform: rotateY(360deg) scale(0.5);
+}
+
+
+
+
+.directions .directions_wrapper ul #card_9 i {
+    transition: 0.3s ease-in-out;
+}
+
+.directions .directions_wrapper ul #card_9:hover  i {
+    transform: rotateZ(180deg);
+}
+
+
+.directions .directions_wrapper ul li .card p {
+    text-align: left;
+    width: 100%;
+/*    background-color: red;*/
+    padding: 0 5%;
+}
+
 
 
 
@@ -680,7 +984,7 @@ header {
         height: 17vw;
         width: 23vw;
         background-color: transparent;
-        background-image: url(../img/LogoW_V1_2_2.png);
+        background-image: url(../img/x);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
