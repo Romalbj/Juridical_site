@@ -48,6 +48,12 @@ const cardEight = document.getElementById('card_8')
 const cardNine = document.getElementById('card_9')
 //const header = document.querySelector('.nav_name')
 
+const cons = document.querySelector('.cons')
+const iconsCards = document.querySelector('.icons_cards')
+const consCardsHeader = document.querySelector('.cons .wrapper .heading')
+const consCardsMoreInfo = document.querySelector('.cons .wrapper .more_info')
+
+
 window.addEventListener('scroll', () => {
     if (pageYOffset > window.innerHeight) {
         statisticsBlock.style.backgroundAttachment = 'local';
@@ -56,7 +62,6 @@ window.addEventListener('scroll', () => {
     else if (pageYOffset < window.innerHeight) {
         statisticsBlock.style.backgroundAttachment = 'fixed';
     }
-
 
     if (pageYOffset > window.innerHeight*0.5) {
         const timerIdZero = setTimeout(() => {
@@ -209,6 +214,54 @@ window.addEventListener('scroll', () => {
     }
 
 
+    if (pageYOffset > window.innerHeight*2.5) {
+        const timerIconCardsHeaderID = setTimeout(() => {
+          consCardsHeader.style.opacity = '1';
+        }, 300);
+
+        const timerIconCardsID = setTimeout(() => {
+          iconsCards.style.opacity = '1';
+        }, 675);
+
+        const timerIconCardsMoreInfoID = setTimeout(() => {
+          consCardsMoreInfo.style.opacity = '1';
+        }, 1000);
+
+
+
+        iconsCards.style.transition = '2s';
+        consCardsHeader.style.transition = '2s';
+        consCardsMoreInfo.style.transition = '2s';
+
+        logo.addEventListener('mouseover', function(e) {
+            if (logo) logo.style.boxShadow = '0px 5px 25px 0.7px rgba(171, 63, 44, 0.6)';
+        });
+//        glow 0 0 5px red, 0 0 10px red, 0 0 20px red, 0 0 50px red, 0 0 100px red
+          logo.addEventListener('mouseout', function(e) {
+            if (logo) {
+                logo.style.boxShadow = '0px 0px 0px 0px transparent';
+            }
+        });
+    }
+
+    else if (pageYOffset < window.innerHeight*2.5) {
+        iconsCards.style.opacity = '0';
+        iconsCards.style.transition = '0.1s';
+
+        consCardsHeader.style.opacity = '0';
+        consCardsHeader.style.transition = '0.1s';
+
+        consCardsMoreInfo.style.opacity = '0';
+        consCardsMoreInfo.style.transition = '0.1s';
+    }
+
+    if (pageYOffset > window.innerHeight*3.5) {
+        cons.style.backgroundAttachment = 'local';
+    }
+
+    else if (pageYOffset < window.innerHeight*3.5) {
+        cons.style.backgroundAttachment = 'fixed';
+    }
 
 
 });
