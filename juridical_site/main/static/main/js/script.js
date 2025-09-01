@@ -36,6 +36,7 @@ const statisticsTwo = document.getElementById('2')
 const statisticsThree = document.getElementById('3')
 const statisticsFour = document.getElementById('4')
 
+const directions = document.querySelector('.directions')
 const cardHeader = document.getElementById('card_header')
 const cardOne = document.getElementById('card_1')
 const cardTwo = document.getElementById('card_2')
@@ -53,215 +54,268 @@ const iconsCards = document.querySelector('.icons_cards')
 const consCardsHeader = document.querySelector('.cons .wrapper .heading')
 const consCardsMoreInfo = document.querySelector('.cons .wrapper .more_info')
 
-
-window.addEventListener('scroll', () => {
-    if (pageYOffset > window.innerHeight) {
-        statisticsBlock.style.backgroundAttachment = 'local';
-    }
-
-    else if (pageYOffset < window.innerHeight) {
-        statisticsBlock.style.backgroundAttachment = 'fixed';
-    }
-
-    if (pageYOffset > window.innerHeight*0.5) {
-        const timerIdZero = setTimeout(() => {
-          aboutUs.style.opacity = '1';
-        }, 300);
-
-        const timerIdOne = setTimeout(() => {
-          statisticsOne.style.opacity = '1';
-        }, 675);
-
-        const timerIdTwo = setTimeout(() => {
-          statisticsTwo.style.opacity = '1';
-        }, 800);
-
-        const timerIdThree = setTimeout(() => {
-          statisticsThree.style.opacity = '1';
-        }, 925);
-
-        const timerIdFour = setTimeout(() => {
-          statisticsFour.style.opacity = '1';
-        }, 1050);
-
-
-        aboutUs.style.transition = '3s ';
-        statisticsOne.style.transition = '2s';
-        statisticsTwo.style.transition = '2s';
-        statisticsThree.style.transition = '2s';
-        statisticsFour.style.transition = '2s';
-
-
-        logo.addEventListener('mouseover', function(e) {
-            if (logo) logo.style.boxShadow = '0px 5px 25px 0.7px rgba(171, 63, 44, 0.6)';
-        });
-//        glow 0 0 5px red, 0 0 10px red, 0 0 20px red, 0 0 50px red, 0 0 100px red
-          logo.addEventListener('mouseout', function(e) {
-            if (logo) {
-                logo.style.boxShadow = '0px 0px 0px 0px transparent';
-            }
-        });
+if (Path_category === 'home') {
+    window.addEventListener('scroll', () => {
+        if (pageYOffset > window.innerHeight) {
+            statisticsBlock.style.backgroundAttachment = 'local';
         }
 
-    else if (pageYOffset < window.innerHeight*0.5) {
-        aboutUs.style.opacity = '0';
-        statisticsOne.style.opacity = '0';
-        statisticsTwo.style.opacity = '0';
-        statisticsThree.style.opacity = '0';
-        statisticsFour.style.opacity = '0';
+        else if (pageYOffset < window.innerHeight) {
+            statisticsBlock.style.backgroundAttachment = 'fixed';
+        }
 
-        aboutUs.style.transition = '.1s';
-        statisticsOne.style.transition = '.1s';
-        statisticsTwo.style.transition = '.1s';
-        statisticsThree.style.transition = '.1s';
-        statisticsFour.style.transition = '.1s';
+        if (pageYOffset > window.innerHeight*0.5) {
+            const timerIdZero = setTimeout(() => {
+                aboutUs.style.opacity = '1';
+            }, 300);
+
+            const timerIdOne = setTimeout(() => {
+                statisticsOne.style.opacity = '1';
+            }, 675);
+
+            const timerIdTwo = setTimeout(() => {
+                statisticsTwo.style.opacity = '1';
+            }, 800);
+
+            const timerIdThree = setTimeout(() => {
+                statisticsThree.style.opacity = '1';
+            }, 925);
+
+            const timerIdFour = setTimeout(() => {
+                statisticsFour.style.opacity = '1';
+            }, 1050);
 
 
-        logo.addEventListener('mouseover', function(e) {
-            if (logo) logo.style.boxShadow = '0px 5px 25px 0.7px rgba(96, 33, 33, 0.5)';
-        });
-          logo.addEventListener('mouseout', function(e) {
-            if (logo) {
-                logo.style.boxShadow = '0px 0px 0px 0px transparent';
-            }
-        });
+            aboutUs.style.transition = '3s ';
+            statisticsOne.style.transition = '2s';
+            statisticsTwo.style.transition = '2s';
+            statisticsThree.style.transition = '2s';
+            statisticsFour.style.transition = '2s';
+
+
+            logo.addEventListener('mouseover', function(e) {
+                if (logo) logo.style.boxShadow = '0px 5px 25px 0.7px rgba(171, 63, 44, 0.6)';
+            });
+            //        glow 0 0 5px red, 0 0 10px red, 0 0 20px red, 0 0 50px red, 0 0 100px red
+            logo.addEventListener('mouseout', function(e) {
+                if (logo) {
+                    logo.style.boxShadow = '0px 0px 0px 0px transparent';
+                }
+            });
+        }
+
+        else if (pageYOffset < window.innerHeight*0.5) {
+            aboutUs.style.opacity = '0';
+            statisticsOne.style.opacity = '0';
+            statisticsTwo.style.opacity = '0';
+            statisticsThree.style.opacity = '0';
+            statisticsFour.style.opacity = '0';
+
+            aboutUs.style.transition = '.1s';
+            statisticsOne.style.transition = '.1s';
+            statisticsTwo.style.transition = '.1s';
+            statisticsThree.style.transition = '.1s';
+            statisticsFour.style.transition = '.1s';
+
+
+            logo.addEventListener('mouseover', function(e) {
+                if (logo) logo.style.boxShadow = '0px 5px 25px 0.7px rgba(96, 33, 33, 0.5)';
+            });
+            logo.addEventListener('mouseout', function(e) {
+                if (logo) {
+                    logo.style.boxShadow = '0px 0px 0px 0px transparent';
+                }
+            });
         }
 
         if (pageYOffset > window.innerHeight*1.5) {
-        const timerCardIDZero = setTimeout(() => {
-          cardHeader.style.opacity = '1';
-        }, 300);
+            if (innerWidth < 990) {
+                //            console.log(`The inner width of the page is: ${window.innerWidth} pixels`)
+                const timerCardIOne1 = setTimeout(() => {
+                    cardOne.style.opacity = '1';
+                }, 675);
 
-        const timerCardIOne = setTimeout(() => {
-          cardOne.style.opacity = '1';
-        }, 675);
+                const timerCardITwo2 = setTimeout(() => {
+                    cardTwo.style.opacity = '1';
+                }, 725);
 
-        const timerCardITwo = setTimeout(() => {
-          cardFour.style.opacity = '1';
-        }, 675);
+                const timerCardIThree3 = setTimeout(() => {
+                    cardThree.style.opacity = '1';
+                }, 875);
 
-        const timerCardIThree = setTimeout(() => {
-          cardSeven.style.opacity = '1';
-        }, 675);
+                const timerCardIFour4 = setTimeout(() => {
+                    cardFour.style.opacity = '1';
+                }, 925);
 
-        const timerCardIFour = setTimeout(() => {
-          cardTwo.style.opacity = '1';
-        }, 800);
+                const timerCardIFive5 = setTimeout(() => {
+                    cardFive.style.opacity = '1';
+                }, 1075);
 
-        const timerCardIFive = setTimeout(() => {
-          cardFive.style.opacity = '1';
-        }, 800);
+                const timerCardISix6 = setTimeout(() => {
+                    cardSix.style.opacity = '1';
+                }, 1225);
 
-        const timerCardISix = setTimeout(() => {
-          cardEight.style.opacity = '1';
-        }, 800);
+                const timerCardISeven7 = setTimeout(() => {
+                    cardSeven.style.opacity = '1';
+                }, 1475);
 
-        const timerCardISeven = setTimeout(() => {
-          cardThree.style.opacity = '1';
-        }, 925);
+                const timerCardIdEight8 = setTimeout(() => {
+                    cardEight.style.opacity = '1';
+                }, 1625);
 
-        const timerCardIdEight = setTimeout(() => {
-          cardSix.style.opacity = '1';
-        }, 925);
+                const timerCardINine9 = setTimeout(() => {
+                    cardNine.style.opacity = '1';
+                }, 1875);
 
-        const timerCardINine = setTimeout(() => {
-          cardNine.style.opacity = '1';
-        }, 925);
-
-        logo.addEventListener('mouseover', function(e) {
-            if (logo) logo.style.boxShadow = '0px 5px 25px 0.7px rgba(96, 33, 33, 0.5)';
-        });
-          logo.addEventListener('mouseout', function(e) {
-            if (logo) {
-                logo.style.boxShadow = '0px 0px 0px 0px transparent';
             }
-        });
 
-        cardHeader.style.transition = '2s';
-        cardOne.style.transition = '2s';
-        cardTwo.style.transition = '2s';
-        cardThree.style.transition = '2s';
-        cardFour.style.transition = '2s';
-        cardFive.style.transition = '2s';
-        cardSix.style.transition = '2s';
-        cardSeven.style.transition = '2s';
-        cardEight.style.transition = '2s';
-        cardNine.style.transition = '2s';
-    }
+            else {
 
-    else if (pageYOffset < window.innerHeight*1.5) {
-        cardHeader.style.transition = '0.1s';
-        cardOne.style.transition = '0.1s';
-        cardTwo.style.transition = '0.1s';
-        cardThree.style.transition = '0.1s';
-        cardFour.style.transition = '0.1s';
-        cardFive.style.transition = '0.1s';
-        cardSix.style.transition = '0.1s';
-        cardSeven.style.transition = '0.1s';
-        cardEight.style.transition = '0.1s';
-        cardNine.style.transition = '0.1s';
+                const timerCardIOne = setTimeout(() => {
+                    cardOne.style.opacity = '1';
+                }, 675);
 
-        cardHeader.style.opacity = '0';
-        cardOne.style.opacity = '0';
-        cardTwo.style.opacity = '0';
-        cardThree.style.opacity = '0';
-        cardFour.style.opacity = '0';
-        cardFive.style.opacity = '0';
-        cardSix.style.opacity = '0';
-        cardSeven.style.opacity = '0';
-        cardEight.style.opacity = '0';
-        cardNine.style.opacity = '0';
-    }
+                const timerCardITwo = setTimeout(() => {
+                    cardFour.style.opacity = '1';
+                }, 675);
 
+                const timerCardIThree = setTimeout(() => {
+                    cardSeven.style.opacity = '1';
+                }, 675);
 
-    if (pageYOffset > window.innerHeight*2.5) {
-        const timerIconCardsHeaderID = setTimeout(() => {
-          consCardsHeader.style.opacity = '1';
-        }, 300);
+                const timerCardIFour = setTimeout(() => {
+                    cardTwo.style.opacity = '1';
+                }, 800);
 
-        const timerIconCardsID = setTimeout(() => {
-          iconsCards.style.opacity = '1';
-        }, 675);
+                const timerCardIFive = setTimeout(() => {
+                    cardFive.style.opacity = '1';
+                }, 800);
 
-        const timerIconCardsMoreInfoID = setTimeout(() => {
-          consCardsMoreInfo.style.opacity = '1';
-        }, 1000);
+                const timerCardISix = setTimeout(() => {
+                    cardEight.style.opacity = '1';
+                }, 800);
 
+                const timerCardISeven = setTimeout(() => {
+                    cardThree.style.opacity = '1';
+                }, 925);
 
+                const timerCardIdEight = setTimeout(() => {
+                    cardSix.style.opacity = '1';
+                }, 925);
 
-        iconsCards.style.transition = '2s';
-        consCardsHeader.style.transition = '2s';
-        consCardsMoreInfo.style.transition = '2s';
-
-        logo.addEventListener('mouseover', function(e) {
-            if (logo) logo.style.boxShadow = '0px 5px 25px 0.7px rgba(171, 63, 44, 0.6)';
-        });
-//        glow 0 0 5px red, 0 0 10px red, 0 0 20px red, 0 0 50px red, 0 0 100px red
-          logo.addEventListener('mouseout', function(e) {
-            if (logo) {
-                logo.style.boxShadow = '0px 0px 0px 0px transparent';
+                const timerCardINine = setTimeout(() => {
+                    cardNine.style.opacity = '1';
+                }, 925);
             }
-        });
-    }
 
-    else if (pageYOffset < window.innerHeight*2.5) {
-        iconsCards.style.opacity = '0';
-        iconsCards.style.transition = '0.1s';
+            const timerCardIDZero = setTimeout(() => {
+                cardHeader.style.opacity = '1';
+            }, 300);
 
-        consCardsHeader.style.opacity = '0';
-        consCardsHeader.style.transition = '0.1s';
+            logo.addEventListener('mouseover', function(e) {
+                if (logo) logo.style.boxShadow = '0px 5px 25px 0.7px rgba(96, 33, 33, 0.5)';
+            });
+            logo.addEventListener('mouseout', function(e) {
+                if (logo) {
+                    logo.style.boxShadow = '0px 0px 0px 0px transparent';
+                }
+            });
 
-        consCardsMoreInfo.style.opacity = '0';
-        consCardsMoreInfo.style.transition = '0.1s';
-    }
+            cardHeader.style.transition = '2s';
+            cardOne.style.transition = '2s';
+            cardTwo.style.transition = '2s';
+            cardThree.style.transition = '2s';
+            cardFour.style.transition = '2s';
+            cardFive.style.transition = '2s';
+            cardSix.style.transition = '2s';
+            cardSeven.style.transition = '2s';
+            cardEight.style.transition = '2s';
+            cardNine.style.transition = '2s';
+        }
 
-    if (pageYOffset > window.innerHeight*3.5) {
-        cons.style.backgroundAttachment = 'local';
-    }
+        else if (pageYOffset < window.innerHeight*1.5) {
+            cardHeader.style.transition = '0.1s';
+            cardOne.style.transition = '0.1s';
+            cardTwo.style.transition = '0.1s';
+            cardThree.style.transition = '0.1s';
+            cardFour.style.transition = '0.1s';
+            cardFive.style.transition = '0.1s';
+            cardSix.style.transition = '0.1s';
+            cardSeven.style.transition = '0.1s';
+            cardEight.style.transition = '0.1s';
+            cardNine.style.transition = '0.1s';
 
-    else if (pageYOffset < window.innerHeight*3.5) {
-        cons.style.backgroundAttachment = 'fixed';
-    }
+            cardHeader.style.opacity = '0';
+            cardOne.style.opacity = '0';
+            cardTwo.style.opacity = '0';
+            cardThree.style.opacity = '0';
+            cardFour.style.opacity = '0';
+            cardFive.style.opacity = '0';
+            cardSix.style.opacity = '0';
+            cardSeven.style.opacity = '0';
+            cardEight.style.opacity = '0';
+            cardNine.style.opacity = '0';
+        }
 
 
-});
+        if (pageYOffset > window.innerHeight*1.5 + directions.offsetHeight) {
+            const timerIconCardsHeaderID = setTimeout(() => {
+                consCardsHeader.style.opacity = '1';
+            }, 300);
+
+            const timerIconCardsID = setTimeout(() => {
+                iconsCards.style.opacity = '1';
+            }, 675);
+
+            const timerIconCardsMoreInfoID = setTimeout(() => {
+                consCardsMoreInfo.style.opacity = '1';
+            }, 1000);
+
+
+
+            iconsCards.style.transition = '2s';
+            consCardsHeader.style.transition = '2s';
+            consCardsMoreInfo.style.transition = '2s';
+
+            logo.addEventListener('mouseover', function(e) {
+                if (logo) logo.style.boxShadow = '0px 5px 25px 0.7px rgba(171, 63, 44, 0.6)';
+            });
+            //        glow 0 0 5px red, 0 0 10px red, 0 0 20px red, 0 0 50px red, 0 0 100px red
+            logo.addEventListener('mouseout', function(e) {
+                if (logo) {
+                    logo.style.boxShadow = '0px 0px 0px 0px transparent';
+                }
+            });
+        }
+
+        else if (pageYOffset < window.innerHeight*1.5 + directions.offsetHeight) {
+            iconsCards.style.opacity = '0';
+            iconsCards.style.transition = '0.1s';
+
+            consCardsHeader.style.opacity = '0';
+            consCardsHeader.style.transition = '0.1s';
+
+            consCardsMoreInfo.style.opacity = '0';
+            consCardsMoreInfo.style.transition = '0.1s';
+        }
+
+        // Проверяем, достигли ли нижней границы блока
+        if (cons.getBoundingClientRect().bottom <= window.innerHeight) {
+            // Когда нижняя граница блока достигает нижней части окна
+            cons.style.backgroundAttachment = 'local';
+            cons.style.backgroundPosition = '92% 103%';
+            cons.style.backgroundSize = '100% 70%';
+            //            cons.style.backgroundImage = 'radial-gradient(circle at 101% 110%, #a02023 5%, var(--black-color) 30%)'
+
+        } else {
+            // Иначе — фиксированное положение
+            cons.style.backgroundAttachment = 'fixed';
+            //            cons.style.backgroundPosition = '92% 103%';
+            cons.style.backgroundSize = '100% 100%';
+
+            //            cons.style.backgroundPosition = '920px 1030px';
+            //              cons.style.backgroundImage = 'radial-gradient(circle at 92% 103%, var(--red-color) 1%, var(--black-color) 30%)'
+        }
+
+    });
+}
