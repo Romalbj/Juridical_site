@@ -344,6 +344,7 @@ if (Path_category === 'home') {
 
 if (Path_category === 'about') {
     let carouselList = document.querySelector('.carousel_list');
+    let carouselListItem = document.querySelector('.carousel_list .carousel_item');
     let arrow_backward = document.getElementById('arrow_backward');
     let arrow_forward = document.getElementById('arrow_forward');
 
@@ -353,14 +354,28 @@ if (Path_category === 'about') {
         carouselList.style.scrollBehavior = 'auto';
     });
 
-    arrow_forward.addEventListener('click', () => {
+    if (innerWidth < 600) {
+        arrow_forward.addEventListener('click', () => {
         carouselList.style.scrollBehavior = 'smooth';
-        carouselList.scrollLeft += 800;
+        carouselList.scrollLeft += carouselListItem.offsetWidth + 30;
     });
 
     arrow_backward.addEventListener('click', () => {
         carouselList.style.scrollBehavior = 'smooth';
-        carouselList.scrollLeft -= 800;
+        carouselList.scrollLeft -= carouselListItem.offsetWidth + 30;
     });
+    } else {
+        arrow_forward.addEventListener('click', () => {
+        carouselList.style.scrollBehavior = 'smooth';
+        carouselList.scrollLeft += 600;
+    });
+
+        arrow_backward.addEventListener('click', () => {
+        carouselList.style.scrollBehavior = 'smooth';
+        carouselList.scrollLeft -= 600;
+    });
+    }
+
+
 
 }

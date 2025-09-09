@@ -952,6 +952,9 @@ footer .footer_container {
 /*    background-color: #eaabab;*/
     margin: 0;
     padding: 5vh 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 footer .footer_container .heading {
@@ -1532,7 +1535,7 @@ footer .company_info .mail .text {
     background-position: center center;
     border-radius: 70px;
     corner-shape: squircle;
-    margin: 5vw 0 10vw 0;
+    margin: 5vw 0 5vw 0;
     padding: 2vw 5vw;
     width: 100vw;
     display: flex;
@@ -2084,7 +2087,7 @@ footer .company_info .mail .text {
     }
 
     footer .footer_container {
-        margin: 15vh 0 0 0;
+        margin: 5vw 0 0 0;
         padding: 0vh 5vw;
     }
 
@@ -2160,7 +2163,7 @@ footer .company_info .mail .text {
     }
 
     footer .company_info .address {
-        margin: 2% 0 0 0;
+        margin: 5% 0 0 0;
         padding: 0;
         display: flex;
         flex-direction: row;
