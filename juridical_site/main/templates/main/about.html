@@ -1,8 +1,149 @@
 {% extends 'main/layout.html' %}
+{% load static %}
 
 {% block title %}Home{% endblock %}
 
 
 {% block content %}
+<div class="about_container">
+    <div class="about_section">
+        <div class="head_top">
+            <div class="head_top_left">
+                <h1>О нас <i class="fa-solid fa-circle-info" id="info_icon"></i></h1>
+                <p>
+                    <span>
+                        Zavr Specter — инновационные юридические продукты
+                    для граждан и бизнеса. Мы оказываем полный спектр
+                    юридических услуг для лидеров бизнеса. Решаем самые
+                    сложные задачи, полагаясь на свой международный опыт и
+                    глубокое понимание российского права.
+                    </span>
+<!--                    <span>-->
+<!--                        Наши юристы консультировали крупнейшие международные-->
+<!--                        корпорации, когда они выходили на рынки в России и СНГ,-->
+<!--                        помогали структурировать не имеющие аналогов сделки в-->
+<!--                        ключевых отраслях промышленности для ведущих российских-->
+<!--                        компаний, выигрывали сложнейшие споры в российских и-->
+<!--                        иностранных судах.-->
+<!--                    </span>-->
+                </p>
+            </div>
+            <div class="head_top_right">
+                <div class="mission">
+                    <div class="mission_wrapper">
+                        <h3>Наша миссия</h3>
+                        <ul class="mission_list">
+                            <li class="mission_item">
+                                <p>Обеспечение доступности профессиональных
+                                    юридических услуг для всех граждан и организаций</p>
+                            </li>
+                            <li class="mission_item">
+                                <p>Создание условий для максимально полной
+                                    реализации квалифицированными юристами профессиональных
+                                    знаний и опыта
+                                </p>
+                            </li>
+                            <li class="mission_item">
+                                <p>Развитие ответственного гражданского общества и
+                                    формирование правовой культуры
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+<!--                <img class="logo_image" src="{% static 'main/img/LogoW_V1_2_2.png' %}" alt="">-->
+            </div>
+        </div>
+        <div class="head_carousel">
+            <div class="carousel_wrapper">
+                <ul class="carousel_list">
+                    <li>
+                        <div class="carousel_item" id="quality">
+                            <h3>Премия Правительства РФ в области качества</h3>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="carousel_item" id="distant">
+                            <h3>Премия за развитие дистанционных юридических услуг</h3>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="carousel_item" id="IT">
+                            <h3>Премия за IT-технологии в клиентском сервисе</h3>
+<!--                            <div class="image_container">-->
+<!--                                <img src="{% static 'main/img/IT.jpg' %}" alt="">-->
+<!--                                <div class="shadow"></div>-->
+<!--                            </div>-->
+                        </div>
+                    </li>
+                    <li>
+                        <div class="carousel_item" id="service">
+                            <h3>Премия качества обслуживания и права потребителей</h3>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="carousel_item" id="social">
+                            <h3>Премия лучшие социальные проекты России</h3>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="carousel_item" id="innovation">
+                            <h3>Премия инноваций</h3>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="arrows">
+                <i class="fa-solid fa-angle-left" id="arrow_backward"></i>
+                <i class="fa-solid fa-angle-right" id="arrow_forward"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="big_blocks_container">
+    <div class="wrapper">
+        <h1>Лидер на рынке юридических технологий</h1>
+        <div class="big_blocks">
+            <ul class="big_blocks_list">
+                <li class="big_blocks_item" id="first_big_block">
+                    <div class="big_block_div">
+                        <h3>Робот-юрист</h3>
+                        <p>Робот опирается на «Базу знаний» ЕЮС с
+                            4,5 миллионами решенных правовых кейсов
+                        </p>
+                    </div>
+                </li>
+                <li class="big_blocks_item" id="first_small_block">
+                    <div class="big_block_div">
+                        <i class="fa-solid fa-question"></i>
+                        <h3>Правовой Тезаурус</h3>
+                        <p>Возможность получить ответ на возникающий
+                            правовой запрос и сделать релевантную выгрузку
+                        </p>
+                    </div>
+                </li>
+                <li class="big_blocks_item" id="second_small_block">
+                    <div class="big_block_div">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <h3>Нострадамус</h3>
+                        <p>Сервис позволяет любому пользователю провести
+                            аудит собственного правового поля
+                        </p>
+                    </div>
+                </li>
+                <li class="big_blocks_item" id="second_big_block">
+                    <div class="big_block_div">
+                        <h3>Legal Cloud</h3>
+                        <p>Облако юридических знаний Legal Cloud, состоящее
+                            из миллионов уникальных клиентских юридических кейсов
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

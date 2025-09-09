@@ -26,7 +26,8 @@ navLinks.forEach (link => {
 //        console.log(link);
 })
 
-//доделать
+const html = document.documentElement
+
 const statisticsBlock = document.querySelector('.statistics')
 const logo = document.querySelector('.logo')
 const aboutUs = document.querySelector('.statistics .statistics_wrapper .heading p')
@@ -55,6 +56,7 @@ const consCardsHeader = document.querySelector('.cons .wrapper .heading')
 const consCardsMoreInfo = document.querySelector('.cons .wrapper .more_info')
 
 if (Path_category === 'home') {
+    html.style.scrollSnapType = 'y mandatory'
     window.addEventListener('scroll', () => {
         if (pageYOffset > window.innerHeight) {
             statisticsBlock.style.backgroundAttachment = 'local';
@@ -129,47 +131,47 @@ if (Path_category === 'home') {
         }
 
         if (pageYOffset > window.innerHeight*1.5) {
-            if (innerWidth < 990) {
-                //            console.log(`The inner width of the page is: ${window.innerWidth} pixels`)
-                const timerCardIOne1 = setTimeout(() => {
-                    cardOne.style.opacity = '1';
-                }, 675);
+//            if (innerWidth < 990) {
+//                //            console.log(`The inner width of the page is: ${window.innerWidth} pixels`)
+//                const timerCardIOne1 = setTimeout(() => {
+//                    cardOne.style.opacity = '1';
+//                }, 675);
+//
+//                const timerCardITwo2 = setTimeout(() => {
+//                    cardTwo.style.opacity = '1';
+//                }, 725);
+//
+//                const timerCardIThree3 = setTimeout(() => {
+//                    cardThree.style.opacity = '1';
+//                }, 875);
+//
+//                const timerCardIFour4 = setTimeout(() => {
+//                    cardFour.style.opacity = '1';
+//                }, 925);
+//
+//                const timerCardIFive5 = setTimeout(() => {
+//                    cardFive.style.opacity = '1';
+//                }, 1075);
+//
+//                const timerCardISix6 = setTimeout(() => {
+//                    cardSix.style.opacity = '1';
+//                }, 1225);
+//
+//                const timerCardISeven7 = setTimeout(() => {
+//                    cardSeven.style.opacity = '1';
+//                }, 1475);
+//
+//                const timerCardIdEight8 = setTimeout(() => {
+//                    cardEight.style.opacity = '1';
+//                }, 1625);
+//
+//                const timerCardINine9 = setTimeout(() => {
+//                    cardNine.style.opacity = '1';
+//                }, 1875);
+//
+//            }
 
-                const timerCardITwo2 = setTimeout(() => {
-                    cardTwo.style.opacity = '1';
-                }, 725);
-
-                const timerCardIThree3 = setTimeout(() => {
-                    cardThree.style.opacity = '1';
-                }, 875);
-
-                const timerCardIFour4 = setTimeout(() => {
-                    cardFour.style.opacity = '1';
-                }, 925);
-
-                const timerCardIFive5 = setTimeout(() => {
-                    cardFive.style.opacity = '1';
-                }, 1075);
-
-                const timerCardISix6 = setTimeout(() => {
-                    cardSix.style.opacity = '1';
-                }, 1225);
-
-                const timerCardISeven7 = setTimeout(() => {
-                    cardSeven.style.opacity = '1';
-                }, 1475);
-
-                const timerCardIdEight8 = setTimeout(() => {
-                    cardEight.style.opacity = '1';
-                }, 1625);
-
-                const timerCardINine9 = setTimeout(() => {
-                    cardNine.style.opacity = '1';
-                }, 1875);
-
-            }
-
-            else {
+            if (innerWidth > 990) {
 
                 const timerCardIOne = setTimeout(() => {
                     cardOne.style.opacity = '1';
@@ -234,29 +236,30 @@ if (Path_category === 'home') {
         }
 
         else if (pageYOffset < window.innerHeight*1.5) {
-            cardHeader.style.transition = '0.1s';
-            cardOne.style.transition = '0.1s';
-            cardTwo.style.transition = '0.1s';
-            cardThree.style.transition = '0.1s';
-            cardFour.style.transition = '0.1s';
-            cardFive.style.transition = '0.1s';
-            cardSix.style.transition = '0.1s';
-            cardSeven.style.transition = '0.1s';
-            cardEight.style.transition = '0.1s';
-            cardNine.style.transition = '0.1s';
+            if (innerWidth > 990) {
+                cardHeader.style.transition = '0.1s';
+                cardOne.style.transition = '0.1s';
+                cardTwo.style.transition = '0.1s';
+                cardThree.style.transition = '0.1s';
+                cardFour.style.transition = '0.1s';
+                cardFive.style.transition = '0.1s';
+                cardSix.style.transition = '0.1s';
+                cardSeven.style.transition = '0.1s';
+                cardEight.style.transition = '0.1s';
+                cardNine.style.transition = '0.1s';
 
-            cardHeader.style.opacity = '0';
-            cardOne.style.opacity = '0';
-            cardTwo.style.opacity = '0';
-            cardThree.style.opacity = '0';
-            cardFour.style.opacity = '0';
-            cardFive.style.opacity = '0';
-            cardSix.style.opacity = '0';
-            cardSeven.style.opacity = '0';
-            cardEight.style.opacity = '0';
-            cardNine.style.opacity = '0';
+                cardHeader.style.opacity = '0';
+                cardOne.style.opacity = '0';
+                cardTwo.style.opacity = '0';
+                cardThree.style.opacity = '0';
+                cardFour.style.opacity = '0';
+                cardFive.style.opacity = '0';
+                cardSix.style.opacity = '0';
+                cardSeven.style.opacity = '0';
+                cardEight.style.opacity = '0';
+                cardNine.style.opacity = '0';
+            }
         }
-
 
         if (pageYOffset > window.innerHeight*1.5 + directions.offsetHeight) {
             const timerIconCardsHeaderID = setTimeout(() => {
@@ -300,22 +303,64 @@ if (Path_category === 'home') {
         }
 
         // Проверяем, достигли ли нижней границы блока
-        if (cons.getBoundingClientRect().bottom <= window.innerHeight) {
-            // Когда нижняя граница блока достигает нижней части окна
-            cons.style.backgroundAttachment = 'local';
-            cons.style.backgroundPosition = '92% 103%';
-            cons.style.backgroundSize = '100% 70%';
-            //            cons.style.backgroundImage = 'radial-gradient(circle at 101% 110%, #a02023 5%, var(--black-color) 30%)'
-
-        } else {
-            // Иначе — фиксированное положение
-            cons.style.backgroundAttachment = 'fixed';
-            //            cons.style.backgroundPosition = '92% 103%';
-            cons.style.backgroundSize = '100% 100%';
-
-            //            cons.style.backgroundPosition = '920px 1030px';
-            //              cons.style.backgroundImage = 'radial-gradient(circle at 92% 103%, var(--red-color) 1%, var(--black-color) 30%)'
-        }
+        // Когда нижняя граница блока достигает нижней части окна
+//        if (cons.getBoundingClientRect().bottom <= window.innerHeight) {
+//            if (innerWidth < 600) {
+//                cons.style.backgroundAttachment = 'local';
+//                cons.style.backgroundPosition = '115% 105%';
+//                cons.style.backgroundSize = '60% 45%';
+//                console.log('<600 local')
+//                console.log(pageXOffset)
+//            }
+//            else if (innerWidth < 990) {
+//                cons.style.backgroundAttachment = 'local';
+//                cons.style.backgroundPosition = '105% 105%';
+//                cons.style.backgroundSize = '80% 52%';
+//                console.log('<990 local')
+//            }
+//            else {
+//                cons.style.backgroundAttachment = 'local';
+//                cons.style.backgroundPosition = '92% 103%';
+//                cons.style.backgroundSize = '100% 70%';
+//                console.log('>990 local')
+//            }
+//
+//        } else {
+//            if (innerWidth < 990)  {
+//                cons.style.backgroundAttachment = 'fixed';
+//                cons.style.backgroundSize = '100% 70%';
+//            }
+//            else {
+//                cons.style.backgroundAttachment = 'fixed';
+//                cons.style.backgroundSize = '100% 100%';
+//                console.log('>990 fixed')
+//            }
+//
+//        }
 
     });
+}
+
+
+if (Path_category === 'about') {
+    let carouselList = document.querySelector('.carousel_list');
+    let arrow_backward = document.getElementById('arrow_backward');
+    let arrow_forward = document.getElementById('arrow_forward');
+
+    carouselList.addEventListener('wheel', (evt) => {
+        evt.preventDefault();
+        carouselList.scrollLeft += evt.deltaY;
+        carouselList.style.scrollBehavior = 'auto';
+    });
+
+    arrow_forward.addEventListener('click', () => {
+        carouselList.style.scrollBehavior = 'smooth';
+        carouselList.scrollLeft += 800;
+    });
+
+    arrow_backward.addEventListener('click', () => {
+        carouselList.style.scrollBehavior = 'smooth';
+        carouselList.scrollLeft -= 800;
+    });
+
 }
