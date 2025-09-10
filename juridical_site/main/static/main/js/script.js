@@ -28,6 +28,45 @@ navLinks.forEach (link => {
 
 const html = document.documentElement
 
+const header = document.querySelector('.nav_container')
+const burgerIcon = document.querySelector('.nav_icon')
+let prevBackgroundColor = null;
+
+burgerIcon.addEventListener('click', () => {
+    // Текущий цвет хедера перед изменением
+    const computedStyle = window.getComputedStyle(header);
+    const currentBackgroundColor = computedStyle.getPropertyValue("background-color");
+
+    if (burgerIcon.classList.contains('nav_active')) {
+        // nav_active есть — нужно убрать и вернуть сохранённый фон
+        burgerIcon.classList.remove("nav_active");
+
+        // Восстанавливаем предыдущий цвет, сохранённый до включения nav_active
+        if (prevBackgroundColor !== null) {
+            header.style.backgroundColor = prevBackgroundColor;
+        }
+
+        // Сбрасываем prevBackgroundColor, чтобы при следующем клике снова сохранить
+        prevBackgroundColor = null;
+
+        console.log('nav_active убран, фон восстановлен:', header.style.backgroundColor);
+
+    } else {
+        // nav_active отсутствует — добавляем и сохраняем цвет до изменения в prevBackgroundColor
+        prevBackgroundColor = currentBackgroundColor;
+
+        burgerIcon.classList.add("nav_active");
+
+        // Меняем цвет фона header на белый
+        header.style.backgroundColor = 'white';
+
+        console.log('nav_active добавлен, исходный фон сохранён:', prevBackgroundColor);
+    }
+});
+
+
+
+
 const statisticsBlock = document.querySelector('.statistics')
 const logo = document.querySelector('.logo')
 const aboutUs = document.querySelector('.statistics .statistics_wrapper .heading p')
@@ -64,9 +103,12 @@ if (Path_category === 'home') {
 
         else if (pageYOffset < window.innerHeight) {
             statisticsBlock.style.backgroundAttachment = 'fixed';
+            header.style.backgroundColor = 'var(--background-grey)';
         }
 
         if (pageYOffset > window.innerHeight*0.5) {
+            header.style.backgroundColor = 'var(--black-color)';
+
             const timerIdZero = setTimeout(() => {
                 aboutUs.style.opacity = '1';
             }, 300);
@@ -131,6 +173,8 @@ if (Path_category === 'home') {
         }
 
         if (pageYOffset > window.innerHeight*1.5) {
+            header.style.backgroundColor = 'var(--background-grey)';
+
 //            if (innerWidth < 990) {
 //                //            console.log(`The inner width of the page is: ${window.innerWidth} pixels`)
 //                const timerCardIOne1 = setTimeout(() => {
@@ -262,6 +306,8 @@ if (Path_category === 'home') {
         }
 
         if (pageYOffset > window.innerHeight*1.5 + directions.offsetHeight) {
+            header.style.backgroundColor = 'var(--black-color)';
+
             const timerIconCardsHeaderID = setTimeout(() => {
                 consCardsHeader.style.opacity = '1';
             }, 300);
@@ -343,10 +389,20 @@ if (Path_category === 'home') {
 
 
 if (Path_category === 'about') {
+    let aboutContainer = document.querySelector('.about_container');
     let carouselList = document.querySelector('.carousel_list');
     let carouselListItem = document.querySelector('.carousel_list .carousel_item');
     let arrow_backward = document.getElementById('arrow_backward');
     let arrow_forward = document.getElementById('arrow_forward');
+    header.style.backgroundColor = 'var(--black-color)';
+
+    window.addEventListener('scroll', () => {
+            if (pageYOffset > aboutContainer.offsetHeight - 60) {
+                header.style.backgroundColor = 'var(--background-grey)';
+            } else {
+                header.style.backgroundColor = 'var(--black-color)';
+            }
+        })
 
     carouselList.addEventListener('wheel', (evt) => {
         evt.preventDefault();
