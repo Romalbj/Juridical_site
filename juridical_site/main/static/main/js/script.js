@@ -432,6 +432,121 @@ if (Path_category === 'about') {
     });
     }
 
-
-
 }
+
+
+
+
+
+
+//
+//if (Path_category === 'about') {
+//    let aboutContainer = document.querySelector('.about_container');
+//    let carouselList = document.querySelector('.carousel_list');
+//    let carouselListItem = document.querySelector('.carousel_list .carousel_item');
+//    let arrow_backward = document.getElementById('arrow_backward');
+//    let arrow_forward = document.getElementById('arrow_forward');
+//    header.style.backgroundColor = 'var(--black-color)';
+//
+//    window.addEventListener('scroll', () => {
+//        if (pageYOffset > aboutContainer.offsetHeight - 60) {
+//            header.style.backgroundColor = 'var(--background-grey)';
+//        } else {
+//            header.style.backgroundColor = 'var(--black-color)';
+//        }
+//    });
+//
+//    // Добавляем обработчик wheel только если ширина >= 600, чтобы на мобильных не блокировать прокрутку пальцем
+//    if (innerWidth >= 600) {
+//        carouselList.addEventListener('wheel', (evt) => {
+//            evt.preventDefault();
+//            carouselList.scrollLeft += evt.deltaY;
+//            carouselList.style.scrollBehavior = 'auto';
+//        });
+//    }
+//
+//    if (innerWidth < 600) {
+//        arrow_forward.addEventListener('click', () => {
+//            carouselList.style.scrollBehavior = 'smooth';
+//            carouselList.scrollLeft += carouselListItem.offsetWidth + 30;
+//        });
+//
+//        arrow_backward.addEventListener('click', () => {
+//            carouselList.style.scrollBehavior = 'smooth';
+//            carouselList.scrollLeft -= carouselListItem.offsetWidth + 30;
+//        });
+//    } else {
+//        arrow_forward.addEventListener('click', () => {
+//            carouselList.style.scrollBehavior = 'smooth';
+//            carouselList.scrollLeft += 600;
+//        });
+//
+//        arrow_backward.addEventListener('click', () => {
+//            carouselList.style.scrollBehavior = 'smooth';
+//            carouselList.scrollLeft -= 600;
+//        });
+//    }
+//}
+
+
+
+
+//
+//if (Path_category === 'about') {
+//    const aboutContainer = document.querySelector('.about_container');
+//    const carouselList = document.querySelector('.carousel_list');
+//    const carouselListItem = document.querySelector('.carousel_list .carousel_item');
+//    const arrow_backward = document.getElementById('arrow_backward');
+//    const arrow_forward = document.getElementById('arrow_forward');
+//    const header = document.querySelector('header'); // предположим
+//
+//    window.addEventListener('scroll', () => {
+//        if (pageYOffset > aboutContainer.offsetHeight - 60) {
+//            header.style.backgroundColor = 'var(--background-grey)';
+//        } else {
+//            header.style.backgroundColor = 'var(--black-color)';
+//        }
+//    });
+//
+//    let wheelHandler = (evt) => {
+//        evt.preventDefault();
+//        carouselList.style.scrollBehavior = 'auto';
+//        carouselList.scrollLeft += evt.deltaY;
+//    };
+//
+//    function setupCarousel() {
+//        carouselList.removeEventListener('wheel', wheelHandler);
+//        if (innerWidth >= 600) {
+//            carouselList.addEventListener('wheel', wheelHandler);
+//        }
+//    }
+//    // и сразу
+//    setupCarousel();
+//
+//    // обновление при ресайзе
+//    window.addEventListener('resize', setupCarousel);
+//
+//    // Обработка кнопок
+//    if (innerWidth < 600) {
+//        // мобильный
+//        arrow_forward.onclick = () => {
+//            carouselList.style.scrollBehavior = 'smooth';
+//            carouselList.scrollLeft += carouselListItem.offsetWidth + 30;
+//        };
+//        arrow_backward.onclick = () => {
+//            carouselList.style.scrollBehavior = 'smooth';
+//            carouselList.scrollLeft -= carouselListItem.offsetWidth + 30;
+//        };
+//    } else {
+//        // десктоп
+//        arrow_forward.onclick = () => {
+//            carouselList.style.scrollBehavior = 'smooth';
+//            carouselList.scrollLeft += 600;
+//        };
+//        arrow_backward.onclick = () => {
+//            carouselList.style.scrollBehavior = 'smooth';
+//            carouselList.scrollLeft -= 600;
+//        };
+//    }
+//}
+

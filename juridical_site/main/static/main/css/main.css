@@ -1380,7 +1380,7 @@ footer .company_info .mail .text {
 /*    background-color: red;*/
     width: 100vw;
     height: 24vw;
-    margin: 5vw 0 0vw 0;
+    margin: 5vw 0 0 0;
     padding: 0;
     display: flex;
     align-items: center;
@@ -1536,7 +1536,7 @@ footer .company_info .mail .text {
     background-position: center center;
 /*    border-radius: 70px;*/
 /*    corner-shape: squircle;*/
-    margin: 5vw 0 5vw 0;
+    margin: 4vw 0 5vw 0;
     padding: 2vw 5vw;
     width: 100vw;
     display: flex;
@@ -2238,6 +2238,11 @@ footer .company_info .mail .text {
 
     .about_container .about_section .head_carousel .carousel_wrapper .carousel_list {
         gap: 6vw;
+        overflow-x: auto;
+    }
+
+    .about_container .about_section .head_carousel .carousel_wrapper .carousel_list::-webkit-scrollbar {
+        display: none;
     }
 
     .about_container .about_section .head_carousel .carousel_wrapper .carousel_list li {
@@ -2246,13 +2251,14 @@ footer .company_info .mail .text {
 
     .about_container .about_section .head_carousel .carousel_wrapper .carousel_list li .carousel_item h3 {
         font-size: clamp(1.3rem, 0.9939rem + 0.9796vw, 1.6rem);
-        padding: 2vw 2vw 0 2vw;
+        padding: 4vw 4vw 0 4vw;
     }
 
     .about_container .about_section .head_carousel .arrows {
 /*        background-color: red;*/
         margin: 5vw 0 0 0;
         justify-content: space-between;
+        display: none;
     }
 
     .about_container .about_section .head_carousel .arrows i:nth-child(1) {
@@ -2266,11 +2272,10 @@ footer .company_info .mail .text {
     .about_container .about_section .head_carousel .arrows i {
         padding: 1.4vw 2.7vw;
         font-size: 3rem;
-/*        display: none;*/
     }
 
     .big_blocks_container .wrapper .big_blocks {
-        margin: 2vw 0 0 0;
+        margin: 5vw 0 0 0;
     }
 
     .big_blocks_container .wrapper h1 {
