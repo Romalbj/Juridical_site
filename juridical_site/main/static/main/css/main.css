@@ -356,7 +356,8 @@ header {
     right: 50;
     font-size: clamp(2rem, 1.2308rem + 2.0513vw, 2.5rem);
     color: white;
-    transition: 0.3s;
+    opacity: 0;
+    scale: 0.95;
 }
 
 .statistics .statistics_wrapper ul {
@@ -374,6 +375,7 @@ header {
 .statistics .statistics_wrapper ul li {
 /*    background-color: blue;*/
     height: 40vh;
+    opacity: 0;
 }
 
 .statistics .statistics_wrapper ul li .text_number {
@@ -468,6 +470,8 @@ header {
     margin: 0;
     padding: 0;
     color: white;
+    opacity: 0;
+    scale: 0.9;
 }
 
 .directions .directions_wrapper ul {
@@ -487,6 +491,9 @@ header {
     margin: 0;
     padding: 0;
     height: 21vh;
+
+    opacity: 0;
+    scale: 0.9;
 }
 
 .directions .directions_wrapper ul li .card {
@@ -787,6 +794,12 @@ header {
     color: white;
 }
 
+.cons .wrapper .heading p {
+    opacity: 0;
+    scale: 0.95;
+    transition: 2s;
+}
+
 .cons .wrapper .icons_cards {
 /*    background-color: #2fffd9;*/
 /*    width: 100%;*/
@@ -796,6 +809,7 @@ header {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 9vw;
+    opacity: 0;
 }
 
 .cons .wrapper .icons_cards .icons {
@@ -900,6 +914,7 @@ header {
     grid-template-columns: repeat(2, 2fr);
     column-gap: 7vw;
     row-gap: 4vh;
+    opacity: 0;
 }
 
 .cons .wrapper .more_info .block {
@@ -910,11 +925,15 @@ header {
     align-items: center;
     justify-content: flex-start;
     width: 43vw;
+/*    opacity: 0;*/
+    transition: 0.3s;
     animation: fade-in-2 linear;
     animation-timeline: view();
 /*    animation-range-start: cover;*/
 /*    animation-range-end: 120px;*/
     animation-range: entry;
+/*    opacity: 0;*/
+/*    scale: 0.95;*/
 }
 
 @keyframes fade-in-2 {
@@ -1568,6 +1587,10 @@ footer .company_info .mail .text {
     animation-timeline: view();
     animation-range-start: cover;
     animation-range-end: exit -200px;
+
+    opacity: 0;
+    scale: 0.8;
+    transition: 1s;
 }
 
 @keyframes appear {
@@ -1619,6 +1642,9 @@ footer .company_info .mail .text {
     justify-content: center;
     border-radius: 30px;
     corner-shape: squircle;
+    opacity: 0;
+    scale: 0.8;
+    transition: 1s;
 }
 
 .big_blocks_container .wrapper .big_blocks .big_blocks_list .big_blocks_item .big_block_div {
@@ -2000,7 +2026,7 @@ footer .company_info .mail .text {
     }
 
     .statistics .statistics_wrapper .heading {
-        top: 8%;
+        top: 3vw;
     }
 
     .directions .directions_wrapper .heading {
@@ -2015,11 +2041,16 @@ footer .company_info .mail .text {
 
     .directions .directions_wrapper ul li {
         height: 10vh;
-        animation: fade-in linear;
-        animation-timeline: view();
+/*        animation: fade-in linear;*/
+/*        animation-timeline: view();*/
 /*        animation-range-start: cover;*/
 /*        animation-range-end: 120px;*/
-        animation-range: entry;
+/*        animation-range: entry;*/
+
+        opacity: 0;
+        scale: 0.95;
+        transition: 0.3s;
+        pointer-events: none
     }
 
     @keyframes fade-in {
@@ -2085,6 +2116,8 @@ footer .company_info .mail .text {
 
     .cons .wrapper .more_info .block {
         width: 100%;
+        opacity: 0;
+        scale: 0.95;
     }
 
     footer .footer_container {
@@ -2294,10 +2327,10 @@ footer .company_info .mail .text {
         grid-column-start: 1;
         grid-column-end: 5;
 
-        animation: fade-in-2 linear;
-        animation-timeline: view();
-        animation-range-start: cover;
-        animation-range-end: entry +200px;
+/*        animation: fade-in-2 linear;*/
+/*        animation-timeline: view();*/
+/*        animation-range-start: cover;*/
+/*        animation-range-end: entry +200px;*/
     }
 
     .big_blocks_container .wrapper .big_blocks .big_blocks_list #second_big_block {
@@ -2305,10 +2338,10 @@ footer .company_info .mail .text {
         grid-column-start: 1;
         grid-column-end: 5;
 
-        animation: fade-in-2 linear;
-        animation-timeline: view();
-        animation-range-start: cover;
-        animation-range-end: entry +200px;
+/*        animation: fade-in-2 linear;*/
+/*        animation-timeline: view();*/
+/*        animation-range-start: cover;*/
+/*        animation-range-end: entry +200px;*/
     }
 
     .big_blocks_container .wrapper .big_blocks .big_blocks_list  #first_small_block {
@@ -2316,10 +2349,10 @@ footer .company_info .mail .text {
         grid-column-start: 1;
         grid-column-end: 3;
 
-        animation: fade-in-2 linear;
-        animation-timeline: view();
-        animation-range-start: cover;
-        animation-range-end: entry +200px;
+/*        animation: fade-in-2 linear;*/
+/*        animation-timeline: view();*/
+/*        animation-range-start: cover;*/
+/*        animation-range-end: entry +200px;*/
     }
 
     .big_blocks_container .wrapper .big_blocks .big_blocks_list #second_small_block {
@@ -2327,10 +2360,10 @@ footer .company_info .mail .text {
         grid-column-start: 3;
         grid-column-end: 5;
 
-        animation: fade-in-2 linear;
-        animation-timeline: view();
-        animation-range-start: cover;
-        animation-range-end: entry +200px;
+/*        animation: fade-in-2 linear;*/
+/*        animation-timeline: view();*/
+/*        animation-range-start: cover;*/
+/*        animation-range-end: entry +200px;*/
     }
 
     .big_blocks_container .wrapper .big_blocks .big_blocks_list .big_blocks_item .big_block_div {
