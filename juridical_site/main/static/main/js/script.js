@@ -484,7 +484,7 @@ if (Path_category === 'team') {
 
     window.addEventListener('load', () => {
         const items = document.querySelectorAll('.team_list .team_item');
-        const itemsPerRow = 4;
+        const itemsPerRow = window.innerWidth > 990 ? 4 : 2;
 
         for (let i = 0; i < items.length; i += itemsPerRow) {
             const rowItems = Array.from(items).slice(i, i + itemsPerRow);
