@@ -352,12 +352,20 @@ header {
 
 .statistics .statistics_wrapper .heading {
     position: absolute;
-    top: 8%;
+    top: 4%;
     right: 50;
     font-size: clamp(2rem, 1.2308rem + 2.0513vw, 2.5rem);
     color: white;
     opacity: 0;
     scale: 0.95;
+/*    background-color: red;*/
+    margin: 0;
+    padding: 0;
+}
+
+.statistics .statistics_wrapper .heading p {
+    margin: 0;
+    padding: 0;
 }
 
 .statistics .statistics_wrapper ul {
@@ -430,7 +438,7 @@ header {
     min-height: 100vh;
     width: 100vw;
     margin: 0;
-    padding: 6vh 5vw;
+    padding: 8vw 5vw 5vw 5vw;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -457,7 +465,7 @@ header {
 .directions .directions_wrapper .heading {
 /*    background-color: #0051ff;*/
     width: 100%;
-    margin: 5% 0 0 0;
+    margin: 0% 0 0 0;
     padding: 0;
     font-size: clamp(2rem, 1.6667rem + 1.3333vw, 2.5rem);
     display: flex;
@@ -792,12 +800,17 @@ header {
     right: 50;
     font-size: clamp(2rem, 1.2308rem + 2.0513vw, 2.5rem);
     color: white;
+/*    background-color: red;*/
+    margin: 0;
+    padding: 0;
 }
 
 .cons .wrapper .heading p {
     opacity: 0;
     scale: 0.95;
     transition: 2s;
+    margin: 0;
+    padding: 0;
 }
 
 .cons .wrapper .icons_cards {
@@ -1056,11 +1069,35 @@ footer .footer_container .contacts .contact .number_mail .number {
     padding: 0;
 }
 
+footer .footer_container .contacts .contact .number_mail .number a {
+    margin: 0;
+    padding: 0;
+    text-decoration: 0;
+    color: white;
+    transition: 0.2s;
+}
+
+footer .footer_container .contacts .contact .number_mail .number a:hover {
+    color: var(--red-color-v3);
+}
+
 footer .footer_container .contacts .contact .number_mail .mail {
 /*    background-color: #1d2d04;*/
     color: rgba(255, 255, 255, 0.6);
     margin: 5% 0 0 0;
     padding: 0;
+}
+
+footer .footer_container .contacts .contact .number_mail .mail a {
+    margin: 0;
+    padding: 0;
+    text-decoration: 0;
+    color: rgba(255, 255, 255, 0.6);
+    transition: 0.2s;
+}
+
+footer .footer_container .contacts .contact .number_mail .mail a:hover {
+    color: var(--red-color-v3);
 }
 
 footer .footer_container .contacts .contact .city {
@@ -1392,7 +1429,18 @@ footer .company_info .mail .text {
 /*    background-color: red;*/
     height: 100%;
     margin: 0;
+    padding: 0;
     font-size: clamp(1rem, 0.8rem + 0.5333vw, 1.2rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mission .mission_wrapper .mission_list .mission_item p i {
+    font-size: clamp(1.6rem, 0.4516rem + 2.0645vw, 2rem);
+    margin: 0 2vw 0 0;
+    padding: 0;
+    color: var(--red-color);
 }
 
 .about_container .about_section .head_carousel {
@@ -1548,7 +1596,7 @@ footer .company_info .mail .text {
 
 
 .big_blocks_container {
-    background-color: var(--background-grey);
+/*    background-color: var(--background-grey);*/
     background-image: url(../img/background_s2_b.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -1556,11 +1604,12 @@ footer .company_info .mail .text {
 /*    border-radius: 70px;*/
 /*    corner-shape: squircle;*/
     margin: 4vw 0 5vw 0;
-    padding: 2vw 5vw;
+    padding: 2vw 5vw 10vw 5vw;
     width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
+    mask-image: linear-gradient(#fff 70%, transparent 100%);
 }
 
 .big_blocks_container .wrapper {
@@ -1767,6 +1816,158 @@ footer .company_info .mail .text {
     animation-range-start: cover;
     animation-range-end: exit -70vh;
 }
+
+.team_container {
+/*    background-color: red;*/
+    width: 100vw;
+    min-height: 100vh;
+    margin: 0;
+    padding: 8vw 0vw 0 0vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-image:  radial-gradient(
+        circle at 115% 120%,
+        var(--red-color) 1%,
+        var(--black-color) 40%
+      );
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.team_container .team_list_container {
+/*    background-color: green;*/
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.team_container .team_list_container .team_header {
+/*    background-color: blueviolet;*/
+    text-align: center;
+    font-size: clamp(2rem, 1.2308rem + 2.0513vw, 2.5rem);
+    padding: 0;
+    margin: 0;
+    color: white;
+    font-weight: 300;
+/*    line-height: 2rem;*/
+}
+
+.team_container .team_list_container .team_list {
+/*    background-color: blanchedalmond;*/
+    margin: 5vw 0 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+/*    column-gap: 1px;*/
+}
+
+.team_container .team_list_container .team_list .team_item {
+    list-style: none;
+/*    background-color: hotpink;*/
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.team_container .team_list_container .team_list .team_item .item {
+    margin: 0;
+    padding: 5vw 0 0 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+/*    background-color: honeydew;*/
+    width: 100%;
+    height: 100%;
+}
+
+.team_container .team_list_container .team_list .team_item .item .photo {
+    height: 25vw;
+    min-width: 100%;
+/*    background-color: goldenrod;*/
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    position: relative;
+}
+
+.team_container .team_list_container .team_list .team_item .worker_info {
+    background-color: white;
+    width: 100%;
+/*    height: 50%;*/
+/*    height: fit-content;*/
+    margin: 0;
+    padding: 2vw;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.team_container .team_list_container .team_list .team_item .worker_info .name {
+    width: 100%;
+    font-size: clamp(1rem, -0.4143rem + 2.2857vw, 1.3rem);
+    margin: 0;
+    padding: 0;
+}
+
+.team_container .team_list_container .team_list .team_item .worker_info .post {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: clamp(0.6rem, -0.8143rem + 2.2857vw, 0.9rem);
+    width: 100%;
+}
+
+.team_container .team_list_container .team_list .team_item .worker_info .number {
+    margin: 2vw 0 0 0;
+    padding: 0;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.team_container .team_list_container .team_list .team_item .worker_info .mail {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.team_container .team_list_container .team_list .team_item .worker_info .mail a {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.5);
+    transition: 0.2s;
+}
+
+.team_container .team_list_container .team_list .team_item .worker_info .mail a:hover {
+    color: var(--red-color-v3);
+}
+
+.team_container .team_list_container .team_list .team_item .worker_info .practice {
+    margin: 0;
+    padding: 0;
+    font-size: clamp(0.4rem, -1.3226rem + 3.0968vw, 1rem);
+    width: 70%;
+    color: rgba(0, 0, 0, 0.5);
+/*    background-color: red;*/
+}
+
+.team_container .team_list_container .team_list .team_item .worker_info :nth-child(5) {
+    margin: 2vw 0 0 0;
+}
+
+
+
+
+
+
 
 
 
@@ -2022,16 +2223,26 @@ footer .company_info .mail .text {
     }
 
     .statistics .statistics_wrapper {
-        padding: 15vh 0 0 0;
+        padding: 13vw 0 0 0;
+/*        background-color: red;*/
     }
 
     .statistics .statistics_wrapper .heading {
-        top: 3vw;
+        top: 4vw;
+        width: 100%;
+        text-align: center;
+/*        background-color: #a98383;*/
     }
+
+    .directions .directions_wrapper {
+/*    background-color: green;*/
+    padding: 0;
+}
 
     .directions .directions_wrapper .heading {
         margin: 10% 0 0 0;
         font-size: clamp(1.7rem, 0.9308rem + 2.0513vw, 2.2rem);
+/*        background-color: red;*/
     }
 
     .directions .directions_wrapper ul {
@@ -2090,7 +2301,7 @@ footer .company_info .mail .text {
     }
 
     .cons .wrapper .icons_cards {
-        padding: 23vh 5vw 0 5vw;
+        padding: 20vh 5vw 0 5vw;
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         gap: 6vw;
@@ -2265,6 +2476,10 @@ footer .company_info .mail .text {
         min-height: auto;
     }
 
+    .mission .mission_wrapper .mission_list .mission_item p i {
+        margin: 0 5vw 0 0;
+    }
+
     .about_container .about_section .head_carousel {
         height: 400px;
     }
@@ -2373,12 +2588,65 @@ footer .company_info .mail .text {
 
     .big_blocks_container .wrapper .big_blocks .big_blocks_list .big_blocks_item:nth-child(2) i {
         padding: 10px 15px;
+        border-radius: 10px;
     }
 
     .big_blocks_container .wrapper .big_blocks .big_blocks_list .big_blocks_item:nth-child(3) i {
         padding: 10px;
+        border-radius: 10px;
     }
 
+    .team_container {
+        padding: 7vw 0vw 0 0vw;
+        background-image:  radial-gradient(
+            circle at 115% 120%,
+            var(--red-color) 1%,
+            var(--black-color) 60%
+        );
+    }
+
+    .team_container .team_list_container .team_list {
+    /*    background-color: blanchedalmond;*/
+        margin: 5vw 0 0 0;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .team_container .team_list_container .team_header {
+        margin: 10% 0 0 0;
+    }
+
+    .team_container .team_list_container .team_list .team_item .worker_info {
+        padding: 5vw;
+    }
+
+    .team_container .team_list_container .team_list .team_item .item .photo {
+        height: 50vw;
+    }
+
+    .team_container .team_list_container .team_list .team_item .worker_info .name {
+        font-size: clamp(1.2rem, 0.8939rem + 0.9796vw, 1.5rem);
+    }
+
+    .team_container .team_list_container .team_list .team_item .worker_info .post {
+        font-size: clamp(0.9rem, 0.5939rem + 0.9796vw, 1.2rem);
+    }
+
+    .team_container .team_list_container .team_list .team_item .worker_info .number {
+    font-size: clamp(0.8rem, 0.3918rem + 1.3061vw, 1.2rem);
+    }
+
+    .team_container .team_list_container .team_list .team_item .worker_info .mail {
+        font-size: clamp(0.8rem, 0.3918rem + 1.3061vw, 1.2rem);
+    }
+
+
+    .team_container .team_list_container .team_list .team_item .worker_info .mail a:hover {
+        color: var(--red-color-v3);
+    }
+
+    .team_container .team_list_container .team_list .team_item .worker_info .practice {
+        font-size: clamp(0.8rem, 0.3918rem + 1.3061vw, 1.2rem);
+    }
 
 }
 
@@ -2469,6 +2737,16 @@ footer .company_info .mail .text {
         margin: 0 10% 0 0;
     }
 
+
+    .directions .directions_wrapper .heading {
+        margin: 15% 0 0 0;
+    }
+
+
+    .cons .wrapper .heading {
+        top: 15vw;
+    }
+
         .about_container .about_section .head_carousel {
         height: 60vw;
     }
@@ -2479,5 +2757,17 @@ footer .company_info .mail .text {
 
     .about_container .about_section .head_carousel .carousel_wrapper .carousel_list li {
         min-width: 70vw;
+    }
+
+    .team_container {
+        background-image:  radial-gradient(
+            circle at 115% 20%,
+            var(--red-color) 1%,
+            var(--black-color) 40%
+        );
+    }
+
+    .team_container .team_list_container .team_header {
+        margin: 15% 0 0 0;
     }
 }

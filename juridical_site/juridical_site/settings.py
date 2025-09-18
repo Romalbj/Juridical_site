@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'juridical_site.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'test',
+        'NAME': 'juridical',
         'USER': 'root',
         'PASSWORD': 'romalbj2306',
         'HOST': 'localhost',

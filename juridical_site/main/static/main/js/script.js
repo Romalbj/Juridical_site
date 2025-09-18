@@ -96,6 +96,8 @@ const consCardsHeader = document.querySelector('.cons .wrapper .heading p')
 const consCardsMoreInfo = document.querySelector('.cons .wrapper .more_info')
 const consMoreInfoBlocks = document.querySelectorAll('.cons .wrapper .more_info .block')
 
+const footer = document.querySelector('footer')
+
 if (Path_category === 'home') {
     html.style.scrollSnapType = 'y mandatory'
     window.addEventListener('scroll', () => {
@@ -362,12 +364,7 @@ if (Path_category === 'home') {
             const timerMoreInfo = setTimeout(() => {
                 consCardsMoreInfo.style.opacity = '1';
             }, 675);
-            if (innerWidth > 990){
-
-//                const timerIconCardsMoreInfoID = setTimeout(() => {
-//                    consCardsMoreInfo.style.opacity = '1';
-//                }, 1000);
-            } else {
+            if (innerWidth < 990){
                 consCardsMoreInfo.style.opacity = '1';
                 consMoreInfoBlocks.forEach(block => {
 //                    block.style.opacity = '0';
@@ -417,6 +414,7 @@ if (Path_category === 'about') {
     let arrow_backward = document.getElementById('arrow_backward');
     let arrow_forward = document.getElementById('arrow_forward');
     header.style.backgroundColor = 'var(--black-color)';
+    footer.style.border =  '0px';
 
     window.addEventListener('scroll', () => {
         if (pageYOffset > aboutContainer.offsetHeight - 60) {
@@ -480,118 +478,46 @@ if (Path_category === 'about') {
 }
 
 
+if (Path_category === 'team') {
+    header.style.backgroundColor = 'var(--black-color)';
+    footer.style.border =  '0px';
 
+    window.addEventListener('load', () => {
+        const items = document.querySelectorAll('.team_list .team_item');
+        const itemsPerRow = 4;
 
+        for (let i = 0; i < items.length; i += itemsPerRow) {
+            const rowItems = Array.from(items).slice(i, i + itemsPerRow);
+            let maxHeight = 0;
 
+        // Сбросить height у .worker_info для пересчёта
+            rowItems.forEach(item => {
+                const workerInfo = item.querySelector('.worker_info');
+                if (workerInfo) {
+                    workerInfo.style.height = 'auto';
+                }
+            });
 
-//
-//if (Path_category === 'about') {
-//    let aboutContainer = document.querySelector('.about_container');
-//    let carouselList = document.querySelector('.carousel_list');
-//    let carouselListItem = document.querySelector('.carousel_list .carousel_item');
-//    let arrow_backward = document.getElementById('arrow_backward');
-//    let arrow_forward = document.getElementById('arrow_forward');
-//    header.style.backgroundColor = 'var(--black-color)';
-//
-//    window.addEventListener('scroll', () => {
-//        if (pageYOffset > aboutContainer.offsetHeight - 60) {
-//            header.style.backgroundColor = 'var(--background-grey)';
-//        } else {
-//            header.style.backgroundColor = 'var(--black-color)';
-//        }
-//    });
-//
-//    // Добавляем обработчик wheel только если ширина >= 600, чтобы на мобильных не блокировать прокрутку пальцем
-//    if (innerWidth >= 600) {
-//        carouselList.addEventListener('wheel', (evt) => {
-//            evt.preventDefault();
-//            carouselList.scrollLeft += evt.deltaY;
-//            carouselList.style.scrollBehavior = 'auto';
-//        });
-//    }
-//
-//    if (innerWidth < 600) {
-//        arrow_forward.addEventListener('click', () => {
-//            carouselList.style.scrollBehavior = 'smooth';
-//            carouselList.scrollLeft += carouselListItem.offsetWidth + 30;
-//        });
-//
-//        arrow_backward.addEventListener('click', () => {
-//            carouselList.style.scrollBehavior = 'smooth';
-//            carouselList.scrollLeft -= carouselListItem.offsetWidth + 30;
-//        });
-//    } else {
-//        arrow_forward.addEventListener('click', () => {
-//            carouselList.style.scrollBehavior = 'smooth';
-//            carouselList.scrollLeft += 600;
-//        });
-//
-//        arrow_backward.addEventListener('click', () => {
-//            carouselList.style.scrollBehavior = 'smooth';
-//            carouselList.scrollLeft -= 600;
-//        });
-//    }
-//}
+        // Найти максимальную высоту среди .worker_info в строке
+            rowItems.forEach(item => {
+                const workerInfo = item.querySelector('.worker_info');
+                if (workerInfo) {
+                    const h = workerInfo.offsetHeight;
+                    if (h > maxHeight) maxHeight = h;
+                }
+            });
 
+        // Добавить снизу запас 2vw (переведём в пиксели)
+            const vw = window.innerWidth / 100;
+            maxHeight += 2 * vw;
 
-
-
-//
-//if (Path_category === 'about') {
-//    const aboutContainer = document.querySelector('.about_container');
-//    const carouselList = document.querySelector('.carousel_list');
-//    const carouselListItem = document.querySelector('.carousel_list .carousel_item');
-//    const arrow_backward = document.getElementById('arrow_backward');
-//    const arrow_forward = document.getElementById('arrow_forward');
-//    const header = document.querySelector('header'); // предположим
-//
-//    window.addEventListener('scroll', () => {
-//        if (pageYOffset > aboutContainer.offsetHeight - 60) {
-//            header.style.backgroundColor = 'var(--background-grey)';
-//        } else {
-//            header.style.backgroundColor = 'var(--black-color)';
-//        }
-//    });
-//
-//    let wheelHandler = (evt) => {
-//        evt.preventDefault();
-//        carouselList.style.scrollBehavior = 'auto';
-//        carouselList.scrollLeft += evt.deltaY;
-//    };
-//
-//    function setupCarousel() {
-//        carouselList.removeEventListener('wheel', wheelHandler);
-//        if (innerWidth >= 600) {
-//            carouselList.addEventListener('wheel', wheelHandler);
-//        }
-//    }
-//    // и сразу
-//    setupCarousel();
-//
-//    // обновление при ресайзе
-//    window.addEventListener('resize', setupCarousel);
-//
-//    // Обработка кнопок
-//    if (innerWidth < 600) {
-//        // мобильный
-//        arrow_forward.onclick = () => {
-//            carouselList.style.scrollBehavior = 'smooth';
-//            carouselList.scrollLeft += carouselListItem.offsetWidth + 30;
-//        };
-//        arrow_backward.onclick = () => {
-//            carouselList.style.scrollBehavior = 'smooth';
-//            carouselList.scrollLeft -= carouselListItem.offsetWidth + 30;
-//        };
-//    } else {
-//        // десктоп
-//        arrow_forward.onclick = () => {
-//            carouselList.style.scrollBehavior = 'smooth';
-//            carouselList.scrollLeft += 600;
-//        };
-//        arrow_backward.onclick = () => {
-//            carouselList.style.scrollBehavior = 'smooth';
-//            carouselList.scrollLeft -= 600;
-//        };
-//    }
-//}
-
+        // Установить одинаковую высоту всем .worker_info в текущей строке
+            rowItems.forEach(item => {
+                const workerInfo = item.querySelector('.worker_info');
+                if (workerInfo) {
+                    workerInfo.style.height = maxHeight + 'px';
+                }
+            });
+        }
+    });
+};
