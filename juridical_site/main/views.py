@@ -16,6 +16,12 @@ def team(request):
 
     return render(request, 'main/team.html', {'stuff_info': stuff_info})
 
+def worker(request, name):
+
+    worker = Stuff.objects.get(name=name)
+    practices_sorted = sorted(worker.practice.all(), key=lambda p: len(p.name))
+
+    return render(request, 'main/worker.html', {'worker': worker, 'practices': practices_sorted})
 def about(request):
 
     return render(request, 'main/about.html',)
@@ -25,3 +31,4 @@ def practice(request):
 def work(request):
 
     return render(request, 'main/work.html',)
+

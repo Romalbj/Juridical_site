@@ -11,21 +11,28 @@
             {% for worker in stuff_info %}
             <li class="team_item">
                 <div class="item">
-                    <div class="photo" style="background-image: url('{{worker.photo.url}}')"></div>
+                    <a class="worker_link" href="{% url 'worker' name=worker.name %}"><div class="photo" style="background-image: url('{{worker.photo.url}}')"></div></a>
                     <div class="worker_info">
-                        <h3 class="name">{{worker.name}}</h3>
+                            <h3 class="name">
+                                <a href="{% url 'worker' name=worker.name %}">{{worker.name}}</a>
+                            </h3>
                         <p class="post">{{worker.post}}</p>
-                        <p class="number">{{worker.number}}</p>
+                        <p class="number">
+                            <a href="tel:{{worker.number}}">{{worker.number}}</a>
+                        </p>
                         <p class="mail">
                             <a href="mailto:{{worker.mail}}">
                                 {{worker.mail}}
                             </a>
                         </p>
-                        {% for p in worker.practice.all %}
-                        <p class="practice">
-                            {{p}}
-                        </p>
-                        {% endfor %}
+                        <div class="worker_practice">
+                            {% for p in worker.practice.all %}
+                            <p class="practice">
+                                {{p}}
+                            </p>
+                            {% endfor %}
+                        </div>
+
                     </div>
                 </div>
             </li>

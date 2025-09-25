@@ -16,6 +16,9 @@ if(Path_list.includes("practice"))
 if(Path_list.includes("work"))
     {Path_category = "work"};
 
+if(Path_list.includes("worker"))
+    {Path_category = "worker"};
+
 console.log(Path_category);
 console.log(activePage);
 const navLinks = document.querySelectorAll('.nav_link');
@@ -30,6 +33,7 @@ const html = document.documentElement
 
 const header = document.querySelector('.nav_container')
 const burgerIcon = document.querySelector('.nav_icon')
+const burgerIconLines = document.querySelectorAll('.nav_icon span')
 let prevBackgroundColor = null;
 
 burgerIcon.addEventListener('click', () => {
@@ -58,7 +62,7 @@ burgerIcon.addEventListener('click', () => {
         burgerIcon.classList.add("nav_active");
 
         // Меняем цвет фона header на белый
-        header.style.backgroundColor = 'white';
+        header.style.backgroundColor = 'var(--whiteish)';
 
 //        console.log('nav_active добавлен, исходный фон сохранён:', prevBackgroundColor);
     }
@@ -406,7 +410,9 @@ if (Path_category === 'home') {
 
 
 if (Path_category === 'about') {
-    const bigBlocksItem = document.querySelectorAll('.big_blocks_list li')
+    const bigBlocksItem = document.querySelectorAll('.big_blocks_list li');
+    const vw = window.innerWidth / 100;
+    const vh = window.innerHeight / 100;
     const bigBlocksHeader = document.querySelector('.big_blocks_container h1')
     let aboutContainer = document.querySelector('.about_container');
     let carouselList = document.querySelector('.carousel_list');
@@ -417,7 +423,7 @@ if (Path_category === 'about') {
     footer.style.border =  '0px';
 
     window.addEventListener('scroll', () => {
-        if (pageYOffset > aboutContainer.offsetHeight - 60) {
+        if (pageYOffset > aboutContainer.offsetHeight - vw * 1) {
             header.style.backgroundColor = 'var(--background-grey)';
         } else {
             header.style.backgroundColor = 'var(--black-color)';
@@ -521,3 +527,218 @@ if (Path_category === 'team') {
         }
     });
 };
+
+
+//if (Path_category === 'worker') {
+//    const bioHeader = document.querySelector('.bio_header')
+//    const vw = window.innerWidth / 100;
+//    const vh = window.innerHeight / 100;
+//
+////        navLinks.forEach(link => {
+////            link.addEventListener('mouseover', function(e) {
+////            if (link) {
+////                link.style.color = 'white';
+////            }
+////        });
+////        link.addEventListener('mouseout', function(e) {
+////            if (link) {
+////                link.style.color = 'var(--black-color)';
+////            }
+////        });
+////    })
+//
+//    window.addEventListener('scroll', () => {
+//        if (pageYOffset > window.innerHeight - vw * 5) {
+//            header.style.backgroundColor = 'var(--whiteish)';
+//            header.style.borderBottom = '0.5px solid var(--black-color)';
+//            navLinks.forEach(link => {
+//                link.style.color = 'var(--black-color)'
+//                link.addEventListener('mouseover', function(e) {
+//                    if (link) {
+//                        link.style.color = 'white';
+//                    }
+//                });
+//            })
+//        } else {
+//            header.style.backgroundColor = 'var(--black-color)';
+//            header.style.borderBottom = '0.5px solid rgba(255, 255, 255, 0.4)';
+//            navLinks.forEach(link => {
+//                link.style.color = 'rgba(255, 255, 255, 1)';
+//            })
+//        }
+//     })
+//}
+
+
+
+
+if (Path_category === 'worker') {
+    const bioHeader = document.querySelector('.bio_header');
+    const vw = window.innerWidth / 100;
+    const vh = window.innerHeight / 100;
+    const workerContainer = document.querySelector('.worker_container')
+    const mobilePractice = document.querySelector('.worker_practice_mobile')
+    const mobilePracticeItems = document.querySelectorAll('.worker_practice_mobile p')
+
+    header.style.backgroundColor = 'var(--black-color)';
+
+    if (innerWidth > 990) {
+        // Функция, которая проверяет, находятся ли мы после скролла
+        function isScrolled() {
+            return pageYOffset > window.innerHeight - vw * 5;
+        }
+
+        // Устаналиваем базовые цвета в зависимости от scroll
+        function updateLinkColors() {
+            if (isScrolled()) {
+                header.style.backgroundColor = 'var(--whiteish)';
+                header.style.borderBottom = '0.5px solid var(--black-color)';
+                navLinks.forEach(link => {
+                    link.style.color = 'var(--black-color)';
+                });
+            } else {
+                header.style.backgroundColor = 'var(--black-color)';
+                header.style.borderBottom = '0.5px solid rgba(255, 255, 255, 0.4)';
+                navLinks.forEach(link => {
+                    link.style.color = 'rgba(255, 255, 255, 1)';
+                });
+            }
+        }
+
+        // Изначальная установка цветов
+        updateLinkColors();
+
+        // Навешиваем обработчики один раз
+        navLinks.forEach(link => {
+            link.addEventListener('mouseover', () => {
+                link.style.color = 'white';
+            });
+            link.addEventListener('mouseout', () => {
+                // Восстанавливаем цвет в зависимости от того, прокручен ли сайт
+                if (isScrolled()) {
+                    link.style.color = 'var(--black-color)';
+                } else {
+                    link.style.color = 'white';
+                }
+            });
+        });
+
+        // Обработчик scroll
+        window.addEventListener('scroll', () => {
+            updateLinkColors();
+        });
+    }
+
+    if (mobilePracticeItems.length === 1) {
+        mobilePractice.style.gridTemplateColumns = 'repeat(1, 1fr)';
+        mobilePracticeItems.forEach(item => {
+            item.style.border = '0px';
+            item.style.justifyContent = 'center';
+            item.style.alignItems = 'center';
+            item.style.fontSize = '1.1rem'
+        })
+    }
+
+    if (mobilePracticeItems.length === 2) {
+        let counter = 0
+        mobilePractice.style.gridTemplateColumns = 'repeat(2, 1fr)';
+        mobilePracticeItems.forEach(item => {
+            item.style.justifyContent = 'center';
+            item.style.textAlign = 'center';
+            item.style.alignItems = 'center';
+            if (counter === 0) {
+                counter += 1;
+            } else {item.style.border = '0px';}
+        })
+    }
+
+
+    header.style.borderBottom = '0.5px solid rgba(255, 255, 255, 0.4)';
+
+    window.addEventListener('scroll', () => {
+      if (window.innerWidth < 640) {
+          if (pageYOffset >= workerContainer.offsetHeight - 17 * vw) {
+              header.style.backgroundColor = 'var(--whiteish)';
+              header.style.borderBottom = '0.5px solid var(--black-color)';
+              burgerIconLines.forEach(line => {
+                  line.style.backgroundColor = 'var(--black-color)';
+              });
+
+              burgerIcon.addEventListener('click', () => {
+                  if (burgerIcon.classList.contains('nav_active')) {
+                      burgerIconLines.forEach(line => {
+                          line.style.backgroundColor = 'var(--red-color)';
+                          header.style.borderBottom = '0.5px solid rgba(255, 255, 255, 0.4)';
+                      });
+                  } else {
+                      burgerIconLines.forEach(line => {
+                          line.style.backgroundColor = 'var(--black-color)';
+                      });
+                      header.style.borderBottom = '0.5px solid var(--black-color)';
+                  }
+              });
+
+          } else {
+              // этот else относится к условию pageYOffset >= ...
+              header.style.backgroundColor = 'var(--black-color)';
+              header.style.borderBottom = '0.5px solid rgba(255, 255, 255, 0.4)';
+              burgerIconLines.forEach(line => {
+                  line.style.backgroundColor = 'var(--whiteish)';
+              });
+              burgerIcon.addEventListener('click', () => {
+                  if (burgerIcon.classList.contains('nav_active')) {
+                      burgerIconLines.forEach(line => {
+                          line.style.backgroundColor = 'var(--red-color)';
+                      });
+                  } else {
+                      burgerIconLines.forEach(line => {
+                          line.style.backgroundColor = 'var(--whiteish)';
+                      });
+                  }
+              });
+          }
+      }
+      else if (window.innerWidth < 990) {
+            if (pageYOffset >= workerContainer.offsetHeight - 10 * vw) {
+                header.style.backgroundColor = 'var(--whiteish)';
+                header.style.borderBottom = '0.5px solid var(--black-color)';
+                burgerIconLines.forEach(line => {
+                  line.style.backgroundColor = 'var(--black-color)';
+                })
+
+                burgerIcon.addEventListener('click', () => {
+                    if (burgerIcon.classList.contains('nav_active')) {
+                        burgerIconLines.forEach(line => {
+                            line.style.backgroundColor = 'var(--red-color)';
+                            header.style.borderBottom = '0.5px solid var(--black-color)';
+                        });
+                    } else {
+                        burgerIconLines.forEach(line => {
+                            line.style.backgroundColor = 'var(--black-color)';
+                        });
+                        header.style.borderBottom = '0.5px solid var(--black-color)';
+                    }
+                });
+            } else {
+                header.style.backgroundColor = 'var(--black-color)';
+                burgerIconLines.forEach(line => {
+                  line.style.backgroundColor = 'var(--whiteish)';
+                })
+
+                burgerIcon.addEventListener('click', () => {
+                    if (burgerIcon.classList.contains('nav_active')) {
+                        burgerIconLines.forEach(line => {
+                            line.style.backgroundColor = 'var(--red-color)';
+                        });
+                        header.style.border = '0px';
+                    } else {
+                        burgerIconLines.forEach(line => {
+                            line.style.backgroundColor = 'var(--whiteish)';
+                        });
+                    }
+                });
+            }
+      }
+    })
+
+}

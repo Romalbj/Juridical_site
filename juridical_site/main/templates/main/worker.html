@@ -1,0 +1,60 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block content %}
+
+<div class="worker_container">
+    <div class="photo">
+        <img src="{{worker.photo.url}}" alt="">
+    </div>
+    <div class="person_info">
+        <div class="person_title">
+            <h1>{{worker.name}}</h1>
+            <p class="person_post">{{worker.post}}</p>
+        </div>
+        <div class="person_contacts_practice">
+            <p class="person_city">{{worker.city}}</p>
+            <p class="person_number">
+                <a href="tel:{{worker.number}}">{{worker.number}}</a>
+            </p>
+            <p class="person_mail">
+                <a href="mailto:{{worker.mail}}">{{worker.mail}}</a>
+            </p>
+            <div class="worker_practice">
+<!--                <h3 class="practice_header">Практики</h3>-->
+                {% for practice in practices %}
+                <p>{{practice}}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="worker_practice_mobile">
+        {% for practice in worker.practice.all %}
+        <p>{{practice}}</p>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+<div class="worker_bio_projects">
+    <h3 class="bio_header">Биография</h3>
+    <div class="worker_bio">
+        <div class="bio">
+            <p>{{worker.biography | safe}}</p>
+        </div>
+        <div class="bio_image">
+<!--            <img src="../../../static/main/img/bio_icon.png" alt="">-->
+        </div>
+    </div>
+    <div class="worker_projects">
+        <h3 class="projects_header">Проекты</h3>
+        {{worker.projects | safe}}
+    </div>
+</div>
+
+
+{% endblock %}
