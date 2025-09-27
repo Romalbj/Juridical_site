@@ -5,4 +5,36 @@
 
 {% block content %}
 
+
+<div class="practice_container">
+    <div class="practice_heading">
+        <h1>Практики</h1>
+        <p>В компании созданы и активно развиваются
+        более 15 практик, что позволяет клиентам
+        находить все необходимые ресурсы для полного
+        и комплексного решения своих вопросов в рамках
+        единого партнерства.</p>
+    </div>
+</div>
+
+<div class="practice_list_container">
+    <ul class="practice_list">
+        {% for pract in practice %}
+        <li class="practice_item">
+            <a href="">
+                <div>
+                    <h1>{{pract}}</h1>
+                    <p>{{pract.contents | truncatechars:300 | safe}}</p>
+                    <div class="link_icon">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </div>
+                </div>
+            </a>
+
+        </li>
+        {% endfor %}
+
+    </ul>
+</div>
+
 {% endblock %}

@@ -11,6 +11,7 @@
     --black-color-v2: #0f121c8c;
     --black-color: #0f121c;
     --black-transparent: #0f121c76;
+    --black-color-transparent-2: #0f121ca9;
     --background-grey: #535665;
     --grey-blueish: #1c2346;
     --whiteish: #fffaf5;
@@ -83,8 +84,8 @@ header {
     justify-content: center;
     border-bottom: 0.5px solid rgba(255, 255, 255, 0.4);
     transition: 0.3s;
-    -webkit-backdrop-filter: blur(40px);
-    backdrop-filter: blur(40px);
+/*    -webkit-backdrop-filter: blur(40px);*/
+/*    backdrop-filter: blur(40px);*/
 
 }
 
@@ -110,6 +111,7 @@ header {
     align-items: center;
     justify-content: center;
     flex-direction: row;
+/*    transition: 0.4s;*/
 }
 
 .nav_container .nav_menu .nav_list li {
@@ -138,13 +140,38 @@ header {
     transition: 0.3s;
 }
 
-.nav_container .nav_menu .nav_list li .active {
+/*new hover nav_link*/
+.nav_container .nav_menu .nav_list li .nav_name {
+    position: relative;
+}
+
+.nav_container .nav_menu .nav_list li .nav_name::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    height: 2px;
+    width: 0;
+    transition: 0.3s;
     background-color: var(--red-color);
 }
 
-.nav_container .nav_menu .nav_list li a:hover {
-    background-color: var(--red-color);
+.nav_container .nav_menu .nav_list li .active .nav_name::before {
+    width: 100%;
 }
+
+.nav_container .nav_menu .nav_list li a:hover .nav_name::before {
+    width: 100%;
+}
+
+/*old red nav_link hover*/
+/*.nav_container .nav_menu .nav_list li .active {*/
+/*    background-color: var(--red-color);*/
+/*}*/
+
+/*.nav_container .nav_menu .nav_list li a:hover {*/
+/*    background-color: var(--red-color);*/
+/*}*/
 
 .nav_container .nav_menu .nav_list li a i {
     display: none;
@@ -204,57 +231,6 @@ header {
     height: 15vw;
     box-shadow:  0px 15px 15px 0.7px rgba(96, 33, 33, 0.5);
 }
-
-/*.logo:hover a:first-child {*/
-/*    margin: 9.5vw 0 0 0;*/
-/*}*/
-
-
-/*expetiments*/
-/*.smth {*/
-/*    position: fixed;*/
-/*    top: 15vh;*/
-/*    background-color: red;*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*    font-size: 40px;*/
-/*    color: white;*/
-/*    mix-blend-mode: difference;*/
-/*}*/
-
-
-.inverted {
-    margin: 0 0 0 0;
-/*    background-color: greenyellow;*/
-    display: none;
-/*    scroll-snap-align: start;*/
-/*    scroll-snap-stop: always;*/
-}
-
-
-
-.place_holder:nth-child(even) {
-    background-color: black;
-    color: white;
-}
-
-.place_holder:nth-child(odd) {
-    background-color: var(--background-grey);
-    color: white;
-}
-
-/*end of experiments*/
-
-
-.place_holder {
-    width: 100vw;
-    font-size: 1.7rem;
-    line-height: 3rem;
-    margin: 0;
-    padding: 5vh 5vw;
-    transition: 0.3s;
-}
-
 
 .booking {
     margin: 0 0 0 0;
@@ -1220,14 +1196,17 @@ footer .company_info .company_info_container .office .number {
 /*    background-color: green;*/
     margin: 1vw 0 0 0;
     padding: 0;
-/*    position: absolute;*/
-/*    bottom: 0;*/
 }
 
 footer .company_info .company_info_container .office .number a {
     text-decoration: none;
     color: var(--whiteish);
     font-size: clamp(0.7rem, 0.4857rem + 0.6857vw, 1rem);
+    transition: 0.3s;
+}
+
+footer .company_info .company_info_container .office .number a:hover {
+    color: var(--red-color-v3);
 }
 
 footer .company_info .company_info_container .comp_media, footer .company_info .company_info_container .mail  {
@@ -1484,8 +1463,13 @@ footer .company_info .company_info_container .mail p:hover a {
 
 .about_container .about_section .head_carousel {
 /*    background-color: red;*/
+/*    background-image:  radial-gradient(*/
+/*        circle at 92% 103%,*/
+/*        var(--grey-blueish) 1%,*/
+/*        var(--black-color) 30%*/
+/*      );*/
     width: 100vw;
-    height: 24vw;
+    height: 30vw;
     margin: 5vw 0 0 0;
     padding: 0;
     display: flex;
@@ -1546,6 +1530,7 @@ footer .company_info .company_info_container .mail p:hover a {
     gap: 3vw;
 /*    overflow-x: scroll;*/
     overflow-x: hidden;
+    transition: 0.3s;
 
 }
 
@@ -1555,23 +1540,30 @@ footer .company_info .company_info_container .mail p:hover a {
 /*}*/
 
 .about_container .about_section .head_carousel .carousel_wrapper .carousel_list li {
-    background-color: var(--black-color);
+    background-color: var(--grey-blueish);
     height: 100%;
     min-width: 25vw;
     border-radius: 30px;
     corner-shape: squircle;
     margin: 0;
     padding: 0;
+    transition: 0.3s;
 
 /*    animation: horizontal-scroll linear;*/
 /*    animation-timeline: scroll(root);*/
 }
 
-.about_container .about_section .head_carousel .carousel_wrapper .carousel_list #quality {
-    background-image: url(../img/quality.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+.about_container .about_section .head_carousel .carousel_wrapper .carousel_list:hover li {
+    opacity: 0.5;
+}
+
+.about_container .about_section .head_carousel .carousel_wrapper .carousel_list li:hover {
+    opacity: 1;
+}
+
+.about_container .about_section .head_carousel .carousel_wrapper .carousel_list li:nth-child(odd) {
+    min-width: 45vw;
+    background-color: var(--red-color-v2);
 }
 
 .about_container .about_section .head_carousel .carousel_wrapper .carousel_list #distant {
@@ -1579,32 +1571,17 @@ footer .company_info .company_info_container .mail p:hover a {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-
 }
 
 .about_container .about_section .head_carousel .carousel_wrapper .carousel_list #IT {
-    background-image: url(../img/IT_2_2.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-}
-
-.about_container .about_section .head_carousel .carousel_wrapper .carousel_list #service {
-    background-image: url(../img/service.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-}
-
-.about_container .about_section .head_carousel .carousel_wrapper .carousel_list #social {
-    background-image: url(../img/social.jpg);
+    background-image: url(../img/cloud.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
 }
 
 .about_container .about_section .head_carousel .carousel_wrapper .carousel_list #innovation {
-    background-image: url(../img/innovation.jpg);
+    background-image: url(../img/innovation.png);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -1622,15 +1599,26 @@ footer .company_info .company_info_container .mail p:hover a {
     justify-content: space-between;
     border-radius: 30px;
     corner-shape: squircle;
-    border: 2px solid var(--red-color-v2);
+/*    border: 2px solid var(--red-color-v2);*/
 }
 
-.about_container .about_section .head_carousel .carousel_wrapper .carousel_list li .carousel_item h3 {
+.about_container .about_section .head_carousel .carousel_wrapper .carousel_list li:nth-child(odd) .carousel_item h3 {
     color: var(--whiteish);
-    font-size: clamp(1rem, -1.3571rem + 3.8095vw, 1.5rem);
+    font-size: clamp(1.5rem, 1.1429rem + 1.1429vw, 2rem);
     font-weight: 400;
     margin: 0;
-    padding: 2vw 2vw 0 2vw;
+    padding: 4vw 2vw;
+    width: 60%;
+    line-height: 2.2rem;
+}
+
+.about_container .about_section .head_carousel .carousel_wrapper .carousel_list li:nth-child(even) .carousel_item h3 {
+    color: var(--whiteish);
+    font-size: clamp(1.5rem, 1.1429rem + 1.1429vw, 2rem);
+    font-weight: 400;
+    margin: 0;
+    padding: 5vw 2vw 0 2vw;
+    line-height: 2.2rem;
 }
 
 
@@ -2156,14 +2144,30 @@ footer .company_info .company_info_container .mail p:hover a {
     line-height: 1rem;
 }
 
+.worker_container .person_info .person_contacts_practice .person_mail a::before {
+    content: '';
+    height: 3px;
+    background-color: var(--red-color);
+    width: 0;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    transition: 0.2s;
+}
+
 .worker_container .person_info .person_contacts_practice .person_mail a {
     text-decoration: none;
     color: var(--whiteish);
     transition: 0.3s;
+    position: relative;
 }
 
 .worker_container .person_info .person_contacts_practice .person_mail a:hover {
     color: var(--red-color-v3);
+}
+
+.worker_container .person_info .person_contacts_practice .person_mail a:hover::before {
+    width: 100%;
 }
 
 .worker_container .person_info .person_contacts_practice  .worker_practice {
@@ -2289,6 +2293,147 @@ footer .company_info .company_info_container .mail p:hover a {
     color: var(--red-color);
 }
 
+.practice_container {
+    margin: 5vw 0 0 0;
+    padding: 0;
+    width: 100vw;
+    height: 60vh;
+    background-image: url(../img/BackG_ZavrSpectr2_narrow.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.practice_container .practice_heading {
+/*    background-color: red;*/
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 10vw 0 0 5vw;
+    background-image: linear-gradient(90deg,var(--black-color) 11%, transparent 85%),
+        linear-gradient(0deg,rgba(15, 18, 28, 1) 8%, rgba(61, 61, 61, 0) 82%);
+
+}
+
+.practice_container .practice_heading h1 {
+    font-size: clamp(2.7rem, 1.2857rem + 2.2857vw, 3rem);
+/*    background-color: springgreen;*/
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    color: var(--whiteish);
+}
+
+.practice_container .practice_heading p {
+/*    background-color: hotpink;*/
+    margin: 3vw 0 0 0;
+    padding: 0 2vw 0 0;
+    width: 50%;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: clamp(0.8rem, -0.1429rem + 1.5238vw, 1rem);
+}
+
+.practice_list_container {
+    background-color: var(--black-color);
+/*    box-shadow: 0px -20px 40px 60px var(--black-color);*/
+
+    margin: 2.5vw 0 5vw 0;
+    padding: 0.7vw 5vw 0 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.practice_list_container .practice_list {
+/*    background-color: green;*/
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2vw;
+}
+
+.practice_list_container .practice_list li {
+    background-color: var(--background-grey);
+    border-radius: 30px;
+    corner-shape: squircle;
+/*    border: 2px solid var(--red-color-v2);*/
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 5vw 5vw 5vw 4vw;
+    color: var(--whiteish);
+    position: relative;
+}
+
+.practice_list_container .practice_list li a {
+    text-decoration: none;
+}
+
+.practice_list_container .practice_list li div {
+/*    background-color: red;*/
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.practice_list_container .practice_list li div h1 {
+/*    background-color: #374b19;*/
+    margin: 0;
+    padding: 0;
+    font-size: clamp(1.5rem, -2.2714rem + 6.0952vw, 2.3rem);
+    font-weight: 300;
+    color: var(--whiteish);
+}
+
+.practice_list_container .practice_list li div p {
+/*    background-color: #305154;*/
+    margin: 1vw 0 0 0;
+    padding: 0;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.practice_list_container .practice_list li .link_icon {
+/*    background-color: greenyellow;*/
+/*    width: 100%;*/
+    position: absolute;
+    bottom: 2vw;
+    right: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+    margin: 2vw 0 0 0;
+}
+
+.practice_list_container i {
+    font-size: 0.8rem;
+    background-color: var(--whiteish);
+    opacity: 0.35;
+    color: var(--black-color);
+    padding: 12px;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.practice_list_container .practice_list li:hover i {
+    opacity: 1;
+}
+
+
+
+
+
+
 
 
 
@@ -2380,6 +2525,14 @@ footer .company_info .company_info_container .mail p:hover a {
 
     .nav_container .nav_menu .nav_list li a:hover {
         background-color: transparent;
+    }
+
+    .nav_container .nav_menu .nav_list li .active .nav_name::before {
+        width: 0;
+    }
+
+    .nav_container .nav_menu .nav_list li a:hover .nav_name::before {
+        width: 0;
     }
 
    .nav_container .nav_menu .nav_list li a span {

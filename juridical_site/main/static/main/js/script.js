@@ -608,20 +608,21 @@ if (Path_category === 'worker') {
         // Изначальная установка цветов
         updateLinkColors();
 
+//        old hover nav_link
         // Навешиваем обработчики один раз
-        navLinks.forEach(link => {
-            link.addEventListener('mouseover', () => {
-                link.style.color = 'white';
-            });
-            link.addEventListener('mouseout', () => {
-                // Восстанавливаем цвет в зависимости от того, прокручен ли сайт
-                if (isScrolled()) {
-                    link.style.color = 'var(--black-color)';
-                } else {
-                    link.style.color = 'white';
-                }
-            });
-        });
+//        navLinks.forEach(link => {
+//            link.addEventListener('mouseover', () => {
+//                link.style.color = 'white';
+//            });
+//            link.addEventListener('mouseout', () => {
+//                // Восстанавливаем цвет в зависимости от того, прокручен ли сайт
+//                if (isScrolled()) {
+//                    link.style.color = 'var(--black-color)';
+//                } else {
+//                    link.style.color = 'white';
+//                }
+//            });
+//        });
 
         // Обработчик scroll
         window.addEventListener('scroll', () => {
@@ -741,4 +742,9 @@ if (Path_category === 'worker') {
       }
     })
 
+}
+
+
+if (Path_category === 'practice') {
+    header.style.backgroundColor = 'var(--black-color)';
 }

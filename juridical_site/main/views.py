@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Stuff
+from .models import Stuff, Practice
 
 def home(request):
     return render(request, 'main/home.html',)
@@ -27,7 +27,9 @@ def about(request):
     return render(request, 'main/about.html',)
 def practice(request):
 
-    return render(request, 'main/practice.html',)
+    practice = Practice.objects.all()
+
+    return render(request, 'main/practice.html', {'practice': practice})
 def work(request):
 
     return render(request, 'main/work.html',)
