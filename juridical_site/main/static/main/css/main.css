@@ -48,6 +48,7 @@ main {
 /*    overflow-y: scroll;*/
 /*    overflow-x: hidden;*/
     z-index: 1;
+/*    font-family: "Mulish", sans-serif;*/
 }
 
 header {
@@ -74,7 +75,7 @@ header {
 
 .nav_container {
 /*    background-color: var(--background-grey);*/
-/*    background-color: transparent;*/
+    background-color: transparent;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -84,8 +85,8 @@ header {
     justify-content: center;
     border-bottom: 0.5px solid rgba(255, 255, 255, 0.4);
     transition: 0.3s;
-/*    -webkit-backdrop-filter: blur(40px);*/
-/*    backdrop-filter: blur(40px);*/
+    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px);
 
 }
 
@@ -233,8 +234,8 @@ header {
 }
 
 .booking {
-    margin: 0 0 0 0;
-    padding: 35vh 0 0 5vw;
+    margin: 0;
+    padding: 0;
     height: 100vh;
     width: 100vw;
     background-image: url(../img/background_s2.jpg);
@@ -250,6 +251,15 @@ header {
     scroll-snap-align: start;
     scroll-snap-stop: always;
 
+}
+
+.booking .gradient {
+/*    background-color: red;*/
+    padding: 35vh 0 0 5vw;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(90deg,var(--black-color) 11%, transparent 85%);
 }
 
 .booking .wrapper {
@@ -475,10 +485,10 @@ header {
 /*    background-color: red;*/
     margin: 0;
     padding: 0;
-    height: 21vh;
+    height: 22vh;
 
     opacity: 0;
-    scale: 0.9;
+    scale: 1;
 }
 
 .directions .directions_wrapper ul li .card {
@@ -593,7 +603,6 @@ header {
     opacity: 1;
     transform: rotateY(360deg) scale(0.8);
 }
-
 
 .directions .directions_wrapper ul #icon_4 {
     transition: 0.3s ease-in-out;
@@ -932,14 +941,15 @@ header {
 }
 
 .cons .wrapper .more_info .block i {
-    font-size: clamp(2rem, 1.3333rem + 2.6667vw, 3rem);
+    font-size: clamp(1.6rem, -2.6429rem + 6.8571vw, 2.5rem);
     color: var(--red-color);
     margin: 0 2vw 0 0;
 }
 
 .cons .wrapper .more_info .block p {
-    font-size: clamp(1rem, 0.6667rem + 1.3333vw, 1.5rem);
+    font-size: clamp(0.9rem, -0.9857rem + 3.0476vw, 1.3rem);
     color: var(--whiteish);
+/*    background-color: red;*/
 /*    color: transparent;*/
 }
 
@@ -1123,7 +1133,7 @@ footer .company_info {
     justify-content: flex-start;
     align-items: center;
     margin: 2vw 0 0 0;
-    padding: 2vw 5vw 10% 5vw;
+    padding: 2vw 5vw 2vw 5vw;
     border-top: 2px solid;
     border-image: linear-gradient(to left, var(--red-color) 0%, var(--black-color) 85%) 1;
     position: relative;
@@ -1279,13 +1289,6 @@ footer .company_info .company_info_container .mail p a {
 footer .company_info .company_info_container .mail p:hover a {
     color: var(--red-color-v3);
 }
-
-
-
-
-
-
-
 
 .about_container {
     width: 100vw;
@@ -2294,10 +2297,10 @@ footer .company_info .company_info_container .mail p:hover a {
 }
 
 .practice_container {
-    margin: 5vw 0 0 0;
+    margin: 0;
     padding: 0;
     width: 100vw;
-    height: 60vh;
+    height: 70vh;
     background-image: url(../img/BackG_ZavrSpectr2_narrow.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -2315,7 +2318,8 @@ footer .company_info .company_info_container .mail p:hover a {
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 10vw 0 0 5vw;
+    padding: 15vw 0 0 5vw;
+    margin: 0;
     background-image: linear-gradient(90deg,var(--black-color) 11%, transparent 85%),
         linear-gradient(0deg,rgba(15, 18, 28, 1) 8%, rgba(61, 61, 61, 0) 82%);
 
@@ -2328,6 +2332,7 @@ footer .company_info .company_info_container .mail p:hover a {
     padding: 0;
     width: 50%;
     color: var(--whiteish);
+    font-weight: 300;
 }
 
 .practice_container .practice_heading p {
@@ -2370,6 +2375,8 @@ footer .company_info .company_info_container .mail p:hover a {
     padding: 5vw 5vw 5vw 4vw;
     color: var(--whiteish);
     position: relative;
+    opacity: 0;
+    transform: scale(0.9);
 }
 
 .practice_list_container .practice_list li a {
@@ -2416,11 +2423,11 @@ footer .company_info .company_info_container .mail p:hover a {
 }
 
 .practice_list_container i {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     background-color: var(--whiteish);
     opacity: 0.35;
     color: var(--black-color);
-    padding: 12px;
+    padding: 10px;
     border-radius: 30px;
     transition: 0.3s;
 }
@@ -2429,8 +2436,224 @@ footer .company_info .company_info_container .mail p:hover a {
     opacity: 1;
 }
 
+.practice_detail_container {
+/*    background-color: red;*/
+    margin: 0 0 5vw 0;
+    padding: 0;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: "Mulish", sans-serif;
+/*    background-image:  radial-gradient(*/
+/*        circle at 92% 33%,*/
+/*        var(--red-color) 1%,*/
+/*        var(--black-color) 30%*/
+/*      );*/
+/*    background-attachment: fixed;*/
+}
+
+.practice_detail_container .practice_detail_header {
+    padding: 15vw 0 10vw 5vw;
+    margin: 0;
+/*    background-color: blue;*/
+    background-image: linear-gradient(270deg,var(--red-color) 11%, transparent 85%);
+    mask-image:  linear-gradient(180deg,red 60%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.practice_detail_container .practice_detail_header h1 {
+    font-size: clamp(2.7rem, 1.2857rem + 2.2857vw, 3rem);
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    font-weight: 300;
+    color: var(--whiteish);
+/*    background-color: red;*/
+}
+
+.practice_detail_container .practice_detail_header .practice_contents {
+/*    background-color: goldenrod;*/
+    margin: 3vw 5vw 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 5vw;
+    row-gap: 2vw;
+}
+
+.practice_detail_container .practice_detail_header .practice_contents p {
+    margin: 0;
+    padding: 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: clamp(0.8rem, -0.1429rem + 1.5238vw, 1rem);
+}
+
+.practice_detail_container .practice_detail_header .practice_contents p:nth-child(1) {
+    grid-area: 1 / 1 / 1 / 2;
+}
+
+.practice_detail_container .practice_detail_header .practice_contents p:nth-child(2) {
+    grid-area: 2 / 1 / 2 / 2;
+}
+
+.practice_detail_container .practice_detail_header .practice_contents p:nth-child(3) {
+    grid-area: 1 / 2 / 1 / 3;
+}
+
+.practice_detail_container .service_list {
+/*    background-color: royalblue;*/
+    width: 100%;
+    margin: 5vw 0 0 0;
+    padding: 0 0 0 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-image: url(../img/BackG_ZavrSpectr2_Dark.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+
+.practice_detail_container .service_list h1 {
+/*    background-color: hotpink;*/
+    font-size: clamp(2.2rem, 0.7857rem + 2.2857vw, 2.5rem);
+    margin: 0;
+    padding: 0;
+    width: 45%;
+    color: var(--whiteish);
+    font-weight: 300;
+}
+
+.practice_detail_container .service_list ul {
+/*    background-color: firebrick;*/
+    margin: 5vw 0 0 0;
+    padding: 0;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.practice_detail_container .service_list ul li {
+/*    background-color: deeppink;*/
+    margin: 0;
+    padding: 3% 1vw 3% 0;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+/*    border-bottom: 1px solid rgba(255, 255, 255, 0.4);*/
+    position: relative;
+    transition: 0.5s;
+    overflow-x: hidden;
+}
+
+/* first variant of hover от центра к краям*/
+
+/*.practice_detail_container .service_list ul li::before {*/
+/*    content: '';*/
+/*    width: 0;*/
+/*    height: 1px;*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*    left: 50%;*/
+/*    background-color: var(--red-color-v3);*/
+/*    transition: 0.5s;*/
+/*}*/
+
+/*.practice_detail_container .service_list ul li::after {*/
+/*    content: '';*/
+/*    width: 0;*/
+/*    height: 1px;*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*    right: 50%;*/
+/*    background-color: var(--red-color-v3);*/
+/*    transition: 0.5s;*/
+/*}*/
+
+/*.practice_detail_container .service_list ul li:hover::before {*/
+/*    width: 50%;*/
+/*}*/
+
+/*.practice_detail_container .service_list ul li:hover::after {*/
+/*    width: 50%;*/
+/*}*/
+
+/*.practice_detail_container .service_list ul li:hover {*/
+/*    border-bottom: 1px solid rgba(255, 255, 255, 0);*/
+/*}*/
 
 
+/* second variant of hover */
+.practice_detail_container .service_list ul li::before {
+    content: '';
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s;
+/*    background-color: rgba(255, 255, 255, 0.4);*/
+    background-image: linear-gradient(90deg,rgba(255, 255, 255, 0.4) 20%, transparent 80%);
+
+}
+
+.practice_detail_container .service_list ul li:hover::before {
+/*    left: 100%;*/
+/*    opacity: 0;*/
+}
+
+.practice_detail_container .service_list ul li::after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    right: 100%;
+    transition: 0.4s;
+/*    background-color: var(--red-color-v3);*/
+    background-image: linear-gradient(90deg, var(--red-color-v3) 20%, transparent 80%);
+}
+
+.practice_detail_container .service_list ul li:hover::after {
+    right: 0;
+    height: 1.5px;
+}
+
+.practice_detail_container .service_list ul:hover p{
+    opacity: 0.5;
+}
+
+.practice_detail_container .service_list ul li:hover p{
+    opacity: 1;
+}
+/*до сюда*/
+
+.practice_detail_container .service_list ul li p {
+/*    background-color: mistyrose;*/
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    color: var(--whiteish);
+    font-weight: 300;
+    font-size: clamp(0.8rem, -0.1429rem + 1.5238vw, 1rem);
+    transition: 0.4s;
+}
+
+/*.practice_detail_container .service_list ul li::marker {*/
+/*    font-size: 1.5rem;*/
+/*    color: var(--red-color);*/
+/*}*/
 
 
 

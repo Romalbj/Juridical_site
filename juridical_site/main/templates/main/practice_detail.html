@@ -1,0 +1,24 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block content %}
+<div class="practice_detail_container">
+    <div class="practice_detail_header">
+        <h1>{{practice.name}}</h1>
+        <div class="practice_contents">
+            {{practice.contents | safe}}
+        </div>
+    </div>
+    <div class="service_list">
+        <h1>Чем мы можем помочь</h1>
+        {{practice.service_list | safe}}
+    </div>
+</div>
+
+
+
+
+{% endblock %}

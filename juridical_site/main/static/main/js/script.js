@@ -29,6 +29,11 @@ navLinks.forEach (link => {
 //        console.log(link);
 })
 
+
+
+const vw = window.innerWidth / 100;
+const vh = window.innerHeight / 100;
+
 const html = document.documentElement
 
 const header = document.querySelector('.nav_container')
@@ -92,7 +97,7 @@ const cardSix = document.getElementById('card_6')
 const cardSeven = document.getElementById('card_7')
 const cardEight = document.getElementById('card_8')
 const cardNine = document.getElementById('card_9')
-//const header = document.querySelector('.nav_name')
+const headerSpans = document.querySelectorAll('.nav_name')
 
 const cons = document.querySelector('.cons')
 const iconsCards = document.querySelector('.icons_cards')
@@ -111,7 +116,7 @@ if (Path_category === 'home') {
 
         else if (pageYOffset < window.innerHeight) {
             statisticsBlock.style.backgroundAttachment = 'fixed';
-            header.style.backgroundColor = 'var(--background-grey)';
+            header.style.backgroundColor = 'transparent';
         }
 
         if (pageYOffset > window.innerHeight*0.5) {
@@ -414,7 +419,8 @@ if (Path_category === 'about') {
     const vw = window.innerWidth / 100;
     const vh = window.innerHeight / 100;
     const bigBlocksHeader = document.querySelector('.big_blocks_container h1')
-    let aboutContainer = document.querySelector('.about_container');
+    const aboutContainer = document.querySelector('.about_container');
+    const bigBlocksContainer = document.querySelector('.big_blocks_container');
     let carouselList = document.querySelector('.carousel_list');
     let carouselListItem = document.querySelector('.carousel_list .carousel_item');
     let arrow_backward = document.getElementById('arrow_backward');
@@ -428,6 +434,14 @@ if (Path_category === 'about') {
         } else {
             header.style.backgroundColor = 'var(--black-color)';
         }
+
+         if (pageYOffset > aboutContainer.offsetHeight - vw * 5 + bigBlocksContainer.offsetHeight) {
+            header.style.backgroundColor = 'var(--black-color)';
+        } else {
+            header.style.backgroundColor = 'var(background-grey)'
+
+        }
+
         if (innerWidth < 990) {
             bigBlocksHeader.style.animation = 'none';
             bigBlocksItem.forEach (item => {
@@ -579,6 +593,7 @@ if (Path_category === 'worker') {
     const workerContainer = document.querySelector('.worker_container')
     const mobilePractice = document.querySelector('.worker_practice_mobile')
     const mobilePracticeItems = document.querySelectorAll('.worker_practice_mobile p')
+    const workerBioProjects = document.querySelector('.worker_bio_projects')
 
     header.style.backgroundColor = 'var(--black-color)';
 
@@ -679,7 +694,8 @@ if (Path_category === 'worker') {
                   }
               });
 
-          } else {
+          }
+          else {
               // этот else относится к условию pageYOffset >= ...
               header.style.backgroundColor = 'var(--black-color)';
               header.style.borderBottom = '0.5px solid rgba(255, 255, 255, 0.4)';
@@ -746,5 +762,52 @@ if (Path_category === 'worker') {
 
 
 if (Path_category === 'practice') {
-    header.style.backgroundColor = 'var(--black-color)';
+    const practiceSecondParagraph = document.querySelector('.practice_contents :nth-child(2)')
+    const practiceContentsParagraph = document.querySelectorAll('.practice_contents p')
+    const practiceHeaderContainer = document.querySelector('.practice_container')
+    const practiceList = document.querySelectorAll('.practice_list_container .practice_list li')
+    console.log(practiceList)
+    const vw = window.innerWidth / 100;
+    const vh = window.innerHeight / 100;
+
+//    header.style.backgroundColor = 'var(--black-color)';
+
+    if (practiceContentsParagraph.length === 2) {
+        practiceSecondParagraph.style.gridArea = '1 / 2 / 1 / 3';
+    }
+
+    let counter = 0
+    practiceList.forEach(card => {
+        counter += 1
+        if (counter <= 2) {
+            setTimeout(() => {
+                card.style.transition = 'opacity 1s ease, transform 1s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)';
+            }, 275);
+        }
+    })
+
+
+    window.addEventListener('scroll', () => {
+        if(pageYOffset > practiceHeaderContainer.offsetHeight - 5 * vw) {
+            header.style.backgroundColor = 'var(--black-color)';
+        }
+        else {
+            header.style.backgroundColor = 'transparent';
+        }
+
+        let counter = 0
+        practiceList.forEach(card => {
+            counter += 1
+             if (counter > 2) {
+                 if (card.getBoundingClientRect().bottom <= window.innerHeight + 20 * vh) {
+                     card.style.transition = 'opacity .5s ease, transform .5s ease';
+                     card.style.opacity = '1';
+                     card.style.transform = 'scale(1)';
+                 }
+             }
+        })
+    })
+
 }

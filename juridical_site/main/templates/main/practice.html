@@ -21,7 +21,7 @@
     <ul class="practice_list">
         {% for pract in practice %}
         <li class="practice_item">
-            <a href="">
+            <a href="{% url 'practice_detail' practice_name=pract.name %}">
                 <div>
                     <h1>{{pract}}</h1>
                     <p>{{pract.contents | truncatechars:300 | safe}}</p>

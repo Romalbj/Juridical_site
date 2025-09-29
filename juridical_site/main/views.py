@@ -30,6 +30,13 @@ def practice(request):
     practice = Practice.objects.all()
 
     return render(request, 'main/practice.html', {'practice': practice})
+
+def practice_detail(request, practice_name):
+
+    practice = Practice.objects.get(name=practice_name)
+
+    return render(request, 'main/practice_detail.html', {'practice': practice})
+
 def work(request):
 
     return render(request, 'main/work.html',)
