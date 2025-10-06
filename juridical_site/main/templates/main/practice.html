@@ -24,7 +24,8 @@
             <a href="{% url 'practice_detail' practice_name=pract.name %}">
                 <div>
                     <h1>{{pract}}</h1>
-                    <p>{{pract.contents | truncatechars:300 | safe}}</p>
+<!--                    <p>{{pract.contents | truncatechars:300 | safe}}</p>-->
+                    <p>{{pract.contents | truncatechars:240 | safe}}</p>
                     <div class="link_icon">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </div>

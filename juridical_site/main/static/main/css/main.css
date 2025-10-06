@@ -21,7 +21,7 @@ html {
 /*    scroll-snap-type: y mandatory;*/
     scroll-behavior: smooth;
     scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch;
 }
 
 
@@ -37,6 +37,7 @@ body {
 main {
     min-height: 100vh;
     background: var(--black-color);
+/*    background-image: linear-gradient(90deg,var(--black-color) 11%, var(--background-grey) 85%);*/
 /*    background: linear-gradient(45deg, rgba(42, 43, 52, 1) 0%, rgba(129, 130, 147, 1) 100%);*/
     width: 100vw;
     margin: 0;
@@ -59,7 +60,7 @@ header {
     margin: 0;
     width: 100vw;
     height: 5vw;
-    z-index: 100;
+    z-index: 101;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -272,14 +273,19 @@ header {
     flex-direction: column;
     width: 34vw;
     color: white;
-
+    overflow-y: hidden;
+    mask-image:  linear-gradient(180deg,red 99%, transparent 100%);
 }
 
 .booking .booking_text {
     margin: 0 0 1vh 0;
 /*    background-color: red;*/
+    transform: translateY(100%);
+    transition: 0.8s ease-in-out;
+    filter: blur(2px);
     font-size: clamp(1.7rem, -0.0471rem + 2.8235vw, 2.7rem);
     line-height: 130%;
+    z-index: 98;
 
 }
 
@@ -301,6 +307,7 @@ header {
     color: rgba(255, 255, 255, 1);
     border-radius: 10px;
     corner-shape: squircle;
+    z-index: 99;
 
 }
 
@@ -1041,7 +1048,7 @@ footer .footer_container .contacts .contact .name_post {
 }
 
 footer .footer_container .contacts .contact .name_post  .name {
-    font-size: clamp(1.1rem, 0.7429rem + 1.1429vw, 1.6rem);
+    font-size: clamp(1rem, -0.8857rem + 3.0476vw, 1.4rem);
     color: var(--whiteish);
 /*    background-color: green;*/
     margin: 0;
@@ -1188,7 +1195,7 @@ footer .company_info .company_info_container .office_info {
 footer .company_info .company_info_container h3 {
     margin: 0;
     padding: 0;
-    font-size: clamp(1.1rem, 0.7429rem + 1.1429vw, 1.6rem);
+    font-size: clamp(1rem, -0.8857rem + 3.0476vw, 1.4rem);
     line-height: 1rem;
     color: var(--whiteish);
 }
@@ -1948,7 +1955,7 @@ footer .company_info .company_info_container .mail p:hover a {
 }
 
 .team_container .team_list_container .team_list .team_item .worker_info .name {
-    width: 70%;
+    width: 100%;
     font-size: clamp(1rem, -0.4143rem + 2.2857vw, 1.3rem);
     margin: 0;
     padding: 0;
@@ -2090,6 +2097,9 @@ footer .company_info .company_info_container .mail p:hover a {
     margin: 0;
     padding: 0;
     font-weight: 300;
+    transition: 1s;
+    opacity: 0;
+    transform: translateY(50px);
 }
 
 .worker_container .person_info .person_title h1 {
@@ -2130,7 +2140,17 @@ footer .company_info .company_info_container .mail p:hover a {
 .worker_container .person_info .person_contacts_practice .person_city {
     color: rgba(255, 255, 255, 0.6);
     line-height: 1rem;
+    transition: 1s;
+    opacity: 0;
+    transform: translateY(50px);
 }
+
+.worker_container .person_info .person_contacts_practice .person_number {
+    transition: 1s;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
 
 .worker_container .person_info .person_contacts_practice .person_number a {
     text-decoration: none;
@@ -2145,6 +2165,9 @@ footer .company_info .company_info_container .mail p:hover a {
 .worker_container .person_info .person_contacts_practice .person_mail {
     text-transform: uppercase;
     line-height: 1rem;
+    transition: 1s;
+    opacity: 0;
+    transform: translateY(50px);
 }
 
 .worker_container .person_info .person_contacts_practice .person_mail a::before {
@@ -2179,6 +2202,9 @@ footer .company_info .company_info_container .mail p:hover a {
     padding: 0;
     display: flex;
     flex-direction: column;
+    transition: 1s;
+    opacity: 0;
+    transform: translateY(50px);
 }
 
 .worker_container .person_info .person_contacts_practice  .worker_practice p {
@@ -2201,6 +2227,9 @@ footer .company_info .company_info_container .mail p:hover a {
     text-align: center;
     margin: 0;
     padding: 0;
+    transition: 1s;
+    opacity: 0;
+    transform: translateY(50px);
     font-size: clamp(2rem, 1.2308rem + 2.0513vw, 2.5rem);
 }
 
@@ -2227,6 +2256,9 @@ footer .company_info .company_info_container .mail p:hover a {
 /*    background-color: hotpink;*/
     margin: 0;
     padding: 0;
+    transition: 1s;
+    opacity: 0;
+    transform: translateY(50px);
     width: 100%;
     font-size: clamp(1rem, 0.4258rem + 1.0323vw, 1.2rem);
 }
@@ -2237,6 +2269,9 @@ footer .company_info .company_info_container .mail p:hover a {
     min-height: 100%;
     padding: 0;
     margin: 0;
+    transition: 1s;
+    opacity: 0;
+    transform: translateY(50px);
     display: flex;
     justify-content: flex-end;
     background-image: url(../img/bio_icon.png);
@@ -2252,8 +2287,15 @@ footer .company_info .company_info_container .mail p:hover a {
 
 .worker_bio_projects .worker_projects {
 /*    background-color: red;*/
-    margin: 5vw 0 0 0;
-    padding: 0;
+/*    background-image:  radial-gradient(*/
+/*            circle at 115% 90%,*/
+/*            var(--red-color) 1%,*/
+/*            var(--black-color) 40%*/
+/*        );*/
+
+    background-image: linear-gradient(90deg, var(--grey-blueish) 11%, var(--black-color) 85%);
+    margin: 5vw -5vw -5vw -5vw;
+    padding: 10vw 5vw 5vw 5vw;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -2270,6 +2312,10 @@ footer .company_info .company_info_container .mail p:hover a {
     padding: 0;
     font-size: clamp(2rem, 1.2308rem + 2.0513vw, 2.5rem);
     width: 100%;
+    transition: 1s;
+    color: var(--whiteish);
+    opacity: 0;
+    transform: translateY(50px);
 /*    background-color: tan;*/
 }
 
@@ -2280,12 +2326,16 @@ footer .company_info .company_info_container .mail p:hover a {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2vw;
+    transition: 1s;
+    opacity: 0;
+    transform: translateY(50px);
 /*    list-style: none;*/
 }
 
 .worker_bio_projects .worker_projects ul li {
 /*    background-color: #b28585;*/
     padding: 0;
+    color: var(--whiteish);
     margin: 0 0 0 1.1vw;
     width: 90%;
     font-size: clamp(1rem, 0.4258rem + 1.0323vw, 1.2rem);
@@ -2293,7 +2343,7 @@ footer .company_info .company_info_container .mail p:hover a {
 
 .worker_bio_projects .worker_projects ul li::marker {
     font-size: 1rem;
-    color: var(--red-color);
+    color: var(--whiteish);
 }
 
 .practice_container {
@@ -2304,7 +2354,7 @@ footer .company_info .company_info_container .mail p:hover a {
     background-image: url(../img/BackG_ZavrSpectr2_narrow.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center;
+    background-position: right 20% top 0;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -2322,7 +2372,6 @@ footer .company_info .company_info_container .mail p:hover a {
     margin: 0;
     background-image: linear-gradient(90deg,var(--black-color) 11%, transparent 85%),
         linear-gradient(0deg,rgba(15, 18, 28, 1) 8%, rgba(61, 61, 61, 0) 82%);
-
 }
 
 .practice_container .practice_heading h1 {
@@ -2348,8 +2397,8 @@ footer .company_info .company_info_container .mail p:hover a {
     background-color: var(--black-color);
 /*    box-shadow: 0px -20px 40px 60px var(--black-color);*/
 
-    margin: 2.5vw 0 5vw 0;
-    padding: 0.7vw 5vw 0 5vw;
+    margin: 0;
+    padding: 3.2vw 5vw 5vw 5vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2407,6 +2456,7 @@ footer .company_info .company_info_container .mail p:hover a {
     margin: 1vw 0 0 0;
     padding: 0;
     color: rgba(255, 255, 255, 0.7);
+    font-size: clamp(1.2rem, 0.7286rem + 0.7619vw, 1.3rem);
 }
 
 .practice_list_container .practice_list li .link_icon {
@@ -2437,8 +2487,8 @@ footer .company_info .company_info_container .mail p:hover a {
 }
 
 .practice_detail_container {
-/*    background-color: red;*/
-    margin: 0 0 5vw 0;
+/*    background-color: #003cff;*/
+    margin: 0 0 0vw 0;
     padding: 0;
     width: 100vw;
     min-height: 100vh;
@@ -2446,7 +2496,6 @@ footer .company_info .company_info_container .mail p:hover a {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    font-family: "Mulish", sans-serif;
 /*    background-image:  radial-gradient(*/
 /*        circle at 92% 33%,*/
 /*        var(--red-color) 1%,*/
@@ -2456,11 +2505,11 @@ footer .company_info .company_info_container .mail p:hover a {
 }
 
 .practice_detail_container .practice_detail_header {
-    padding: 15vw 0 10vw 5vw;
+    padding: 15vw 0 12vw 5vw;
     margin: 0;
 /*    background-color: blue;*/
     background-image: linear-gradient(270deg,var(--red-color) 11%, transparent 85%);
-    mask-image:  linear-gradient(180deg,red 60%, transparent 100%);
+    mask-image:  linear-gradient(180deg,red 70%, transparent 100%);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -2655,9 +2704,304 @@ footer .company_info .company_info_container .mail p:hover a {
 /*    color: var(--red-color);*/
 /*}*/
 
+.practice_detail_workers {
+/*    background-color: red;*/
+    margin: 5vw 0 5vw 0;
+    padding: 0 0 0 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.practice_detail_workers .wrapper {
+/*    background-color: greenyellow;*/
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+/*.practice_detail_workers .wrapper h1 {*/
+/*    background-color: hotpink;*/
+/*    font-size: clamp(2.2rem, 0.7857rem + 2.2857vw, 2.5rem);*/
+/*    margin: 0;*/
+/*    padding: 0 0 0 5vw;*/
+/*    color: var(--whiteish);*/
+/*    font-weight: 300;*/
+/*}*/
+
+.practice_detail_workers .wrapper ul {
+    margin: 0;
+    padding: 0;
+/*    display: grid;*/
+/*    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));*/
+/*    background-color: hotpink;*/
+    mask-image: linear-gradient(90deg, transparent 1%, red 10%, red 90%, transparent 99%);
+    width: 100%;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.practice_detail_workers .wrapper ul:hover li {
+    opacity: 0.5;
+}
+
+.practice_detail_workers .wrapper ul li:hover {
+    opacity: 1;
+}
+
+.practice_detail_workers .wrapper ul li:hover .worker_photo_link {
+    transform: translateY(-10px);
+}
+
+/*.practice_detail_workers .wrapper  .blur {*/
+/*    min-height: 5vw;*/
+/*    min-width: 100%;*/
+/*    background-color: #1c23464c;*/
+/*    -webkit-backdrop-filter: blur(20px);*/
+/*    backdrop-filter: blur(20px);*/
+/*    position: absolute;*/
+/*    top: 31vw;*/
+/*    z-index: 2;*/
+/*}*/
+
+.practice_detail_workers .wrapper ul li {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    position: relative;
+/*    background-color: royalblue;*/
+    min-width: 25vw;
+    transition: 0.3s;
+}
+
+.practice_detail_workers .wrapper ul li .worker_photo_link {
+    text-decoration: none;
+    height: 37vw;
+    min-width: 100%;
+    pointer-events: auto;
+    transition: 0.3s;
+/*    background-color: red;*/
+}
+
+.practice_detail_workers .wrapper ul li .worker_photo_link .photo {
+    min-width: 100%;
+    min-height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+
+}
+
+.practice_detail_workers .wrapper ul li .worker_info {
+/*    background-color: var(--grey-blueish);*/
+/*    -webkit-backdrop-filter: blur(20px);*/
+/*    backdrop-filter: blur(20px);*/
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 30;
+}
+
+.practice_detail_workers .wrapper ul li .worker_info a {
+    text-decoration: none;
+}
+
+.practice_detail_workers .wrapper ul li .worker_info .name {
+    width: 100%;
+    font-size: clamp(1rem, -0.4143rem + 2.2857vw, 1.3rem);
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    text-align: center;
+}
+
+.practice_detail_workers .wrapper ul li .worker_info .name a {
+    color: var(--whiteish);
+    margin: 0;
+    padding: 0;
+    transition: 0.2s;
+/*    background-color: royalblue;*/
+}
+
+.practice_detail_workers .wrapper ul li .worker_info .name a:hover {
+    color: var(--red-color-v3);
+}
+
+.practice_detail_workers .wrapper ul li .worker_info .post {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: clamp(0.6rem, -0.8143rem + 2.2857vw, 0.9rem);
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+/*    background-color: red;*/
+}
+
+
+/*arrows below carousel*/
+/*.practice_detail_workers .wrapper .arrows {*/
+/*    background: red;*/
+/*    margin: 0;*/
+/*    padding: 0 5vw 0 0;*/
+/*    width: 100%;*/
+/*    display: flex;*/
+/*    justify-content: flex-end;*/
+/*}*/
+
+
+/*.practice_detail_workers .wrapper .arrows i {*/
+/*    font-size: clamp(1.2rem, -0.2143rem + 2.2857vw, 1.5rem);*/
+/*    margin: 0 1vw;*/
+/*    padding: 1.4vw 1.7vw;*/
+/*    color: white;*/
+/*    border-radius: 30px;*/
+/*    corner-shape: squircle;*/
+/*    transition: 0.3s;*/
+/*    position: relative;*/
+/*}*/
+
+/*.practice_detail_workers .wrapper .arrows i:hover {*/
+/*    color: var(--red-color);*/
+/*    background-color: white;*/
+/*    transform: scale(1.1);*/
+/*}*/
+
+
+.arrow_left {
+    min-height: 37vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+/*    background-color: red;*/
+}
+
+.arrow_right {
+/*    background-color: goldenrod;*/
+    min-height: 37vw;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+.arrow_right i {
+    font-size: 2rem;
+    margin: 0;
+    padding: 0.8rem 1.2rem;
+    color: var(--whiteish);
+    transition: 0.3s;
+    background-color: var(--red-color);
+    border-radius: 300px;
+    border: 10px solid var(--black-color);
+}
+
+.arrow_left i {
+    font-size: 2rem;
+    margin: 0;
+    padding: 0.8rem 1.2rem;
+    color: var(--whiteish);
+    transition: 0.3s;
+    position: relative;
+    background-color: var(--red-color);
+    border-radius: 300px;
+    border: 10px solid var(--black-color);
+}
 
 
 
+.practice_detail_workers .wrapper .arrow_right .arrow-click,
+.practice_detail_workers .wrapper .arrow_left .arrow-click {
+    animation: clickEffect 0.4s ease;
+}
+
+
+@keyframes clickEffect {
+  0% {
+      color: var(--whiteish);
+      background-color: var(--red-color);
+      transform: scale(1);
+  }
+  50% {
+        color: var(--red-color);
+        background-color: var(--whiteish);
+        transform: scale(0.8);
+  }
+  100% {
+      color: var(--whiteish);
+      background-color: var(--red-color);
+      transform: scale(1);
+  }
+}
+
+
+/*.practice_detail_workers .wrapper ul li .worker_info .number {*/
+/*    margin: 2vw 0 0 0;*/
+/*    padding: 0;*/
+/*    font-size: 1rem;*/
+/*    width: 100%;*/
+/*    text-align: center;*/
+/*    background-color: #2f4f60;*/
+/*}*/
+
+/*.practice_detail_workers .wrapper ul li .worker_info .number a {*/
+/*    color: rgba(255, 255, 255, 0.5);*/
+/*    transition: 0.2s;*/
+/*}*/
+
+
+/*.practice_detail_workers .wrapper ul li .worker_info .number a:hover {*/
+/*    color: var(--red-color-v3);*/
+/*}*/
+
+/*.practice_detail_workers .wrapper ul li .worker_info .mail {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    font-size: 1rem;*/
+/*    width: 100%;*/
+/*    line-height: 1.3rem;*/
+/*    text-transform: uppercase;*/
+/*    text-align: center;*/
+/*    background-color: #31602f;*/
+/*}*/
+
+/*.practice_detail_workers .wrapper ul li .worker_info .mail a {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    text-decoration: none;*/
+/*    color: rgba(255, 255, 255, 0.5);*/
+/*    transition: 0.2s;*/
+/*}*/
+
+/*.practice_detail_workers .wrapper ul li .worker_info .mail a:hover {*/
+/*    color: var(--red-color-v3);*/
+/*}*/
 
 
 
@@ -3453,6 +3797,9 @@ footer .company_info .company_info_container .mail p:hover a {
         margin: 0;
         padding: 0;
         color: var(--whiteish);
+/*        transform: translateX(100%);*/
+/*        opacity: 0;*/
+/*        transition: 1s;*/
 /*        border-right: 0.5px solid rgba(255, 255, 255, 0.3);*/
         font-size: clamp(0.8rem, 0.55rem + 0.8889vw, 1.1rem);
         display: flex;
@@ -3519,6 +3866,155 @@ footer .company_info .company_info_container .mail p:hover a {
     .worker_bio_projects .worker_bio .bio_image {
         display: none;
     }
+
+    .practice_container {
+        height: 50vh;
+    }
+
+    .practice_container .practice_heading {
+        padding: 20vw 0 0 5vw;
+        background-image: linear-gradient(90deg,var(--black-color) 25%, transparent 100%),
+        linear-gradient(0deg,rgba(15, 18, 28, 1) 8%, rgba(61, 61, 61, 0) 82%);
+    }
+
+    .practice_container .practice_heading h1 {
+        font-size: clamp(2.3rem, 1.8918rem + 1.3061vw, 2.7rem);
+    }
+
+    .practice_container .practice_heading p {
+        width: 80%;
+        font-size: clamp(1rem, 0.7959rem + 0.6531vw, 1.2rem);
+        line-height: 1.3rem;
+    }
+
+    .practice_list_container .practice_list li div p {
+        font-size: clamp(1rem, 0.8469rem + 0.4898vw, 1.15rem);
+        line-height: 1.3rem;
+        margin: 2vw 0 2vw 0;
+    }
+
+    .practice_list_container .practice_list li div h1 {
+        font-size: clamp(1.65rem, 1.548rem + 0.3265vw, 1.75rem);
+        line-height: 1.6rem;
+    }
+
+    .practice_detail_container .service_list {
+        margin: 5vw 0 10vw 0;
+        position: relative;
+        background-image: none;
+    }
+
+    .practice_detail_container .service_list::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.2)),
+            url(../img/BackG_ZavrSpectr2_Dark.jpg);
+        mask-image: linear-gradient(0deg, transparent 5%, red 80%, transparent 100%);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right 20% top 0;
+        filter: blur(10px);
+        z-index: 99;
+    }
+
+    .practice_detail_container .practice_detail_header h1 {
+        font-size: clamp(2.3rem, 1.8918rem + 1.3061vw, 2.7rem);
+        line-height: 2rem;
+        width: 60%;
+    }
+
+    .practice_detail_container .practice_detail_header .practice_contents p {
+        font-size: clamp(1rem, 0.7959rem + 0.6531vw, 1.2rem);
+        line-height: 1.3rem;
+        margin: 2vw 0 0 0;
+
+    }
+
+    .practice_detail_container .service_list h1 {
+        font-size: 2rem;
+        width: fit-content;
+        z-index: 100;
+    }
+
+    .practice_detail_container .service_list ul {
+/*        background-color: firebrick;*/
+        margin: 5vw 10vw 0 0;
+        padding: 0;
+        width: 100%;
+        z-index: 100;
+    }
+
+    .practice_detail_container .service_list ul li {
+        width: calc(100% - 5vw);
+    }
+
+    .practice_detail_container .practice_detail_header {
+        padding: 20vw 0 12vw 5vw;
+    }
+
+    .practice_detail_container .service_list ul li p {
+        font-size: clamp(1rem, 0.7959rem + 0.6531vw, 1.2rem);
+        line-height: 1.3rem;
+    }
+
+    .practice_detail_workers .wrapper ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+/*    .practice_detail_workers .wrapper  .blur {*/
+/*        top: 42vw;*/
+/*        min-height: 10vw;*/
+/*    }*/
+
+    .practice_detail_workers .wrapper ul li {
+        min-width: 50%;
+    }
+
+    .practice_detail_workers .wrapper ul li .worker_photo_link {
+        height: 70vw;
+    }
+
+    .practice_detail_workers .wrapper ul li .worker_info .name {
+        font-size: clamp(1.1rem, 0.7939rem + 0.9796vw, 1.4rem);
+    }
+
+    .practice_detail_workers .wrapper ul li .worker_info .post {
+        font-size: clamp(0.8rem, 0.3918rem + 1.3061vw, 1.2rem);
+        padding: 1vw 0 0 0;
+        line-height: 1rem;
+    }
+
+    .practice_detail_workers .wrapper .arrows {
+/*        background-color: red;*/
+        margin: 5vw 0 0 0;
+        justify-content: space-between;
+
+    }
+
+    .practice_detail_workers .wrapper .arrows i:nth-child(1) {
+        margin: 0 0 0 5vw;
+    }
+
+    .practice_detail_workers .wrapper .arrows i:nth-child(2) {
+        margin: 0 5vw 0 0;
+    }
+
+    .practice_detail_workers .wrapper .arrows i {
+        padding: 1.4vw 2.7vw;
+        font-size: 2rem;
+        border-radius: 15px;
+    }
+
+    .arrow_left, .arrow_right {
+        min-height: 70vw;
+    }
+
+
 
 }
 
@@ -3601,8 +4097,11 @@ footer .company_info .company_info_container .mail p:hover a {
         left: calc(50% - 0.85vw);
     }
 
+    .booking .wrapper {
+        width: 70vw;
+    }
     .booking .booking_submit {
-        width: 45vw;
+        width: 70vw;
     }
 
     .directions .directions_wrapper .heading {
@@ -3653,6 +4152,71 @@ footer .company_info .company_info_container .mail p:hover a {
         text-transform: none;
     }
 
+    .practice_container {
+        height: 40vh;
+        background-position: right 20% top 10vw;
+    }
 
+    .practice_container .practice_heading {
+        padding: 35vw 0 0 5vw;
+    }
+
+    .practice_list_container .practice_list {
+        margin: 10vw 0 0 0;
+        grid-template-columns: 1fr;
+        gap: 5vw;
+    }
+
+    .practice_list_container .practice_list li {
+        padding: 7vw 5vw 5vw 7vw;
+        border-radius: 20px;
+    }
+
+    .practice_list_container .practice_list li .link_icon {
+        bottom: 4vw;
+        right: 4vw;
+    }
+
+    .practice_list_container i {
+        font-size: 0.5rem;
+        padding: 7px;
+    }
+
+    .practice_detail_container .practice_detail_header {
+        padding: 35vw 0 25vw 5vw;
+        mask-image:  linear-gradient(180deg,red 80%, transparent 100%);
+    }
+
+    .practice_detail_container .practice_detail_header h1 {
+        width: 100%;
+    }
+
+    .practice_detail_workers .wrapper ul li .worker_info {
+        height: 13vw;
+        justify-content: center;
+    }
+
+    .practice_detail_workers .wrapper ul li .worker_photo_link {
+        height: 80vw;
+    }
+
+    .practice_detail_workers .wrapper ul li .worker_info .name {
+        font-size: clamp(0.9rem, 0.1857rem + 2.2857vw, 1.1rem);
+    }
+
+/*    .practice_detail_workers .wrapper  .blur {*/
+/*        top: 42vw;*/
+/*        min-height: 14vw;*/
+/*    }*/
+
+    .arrow_left, .arrow_right {
+        top: 10vw;
+    }
+
+
+    .arrow_left i, .arrow_right i {
+        font-size: 1.5rem;
+        padding: 0.7rem 1rem;
+    }
 }
 

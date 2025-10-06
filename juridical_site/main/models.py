@@ -26,3 +26,16 @@ class Stuff(models.Model):
     def __str__(self):
         return self.name
 
+
+class Job(models.Model):
+
+    name = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    experience = models.CharField(max_length=255)
+    schedule = models.CharField(max_length=255)
+    requirements = models.TextField()
+    tasks = models.TextField()
+    conditions = models.TextField()
+
+    def __str__(self):
+        return self.name

@@ -18,6 +18,51 @@
     </div>
 </div>
 
+<div class="practice_detail_workers">
+    <div class="wrapper">
+<!--        <h1>Наши специалисты</h1>-->
+        <ul>
+            {% for worker in workers %}
+            <li>
+                 <a class="worker_photo_link" href="{% url 'worker' name=worker.name %}">
+                     <div class="photo" style="background-image: url('{{worker.photo.url}}')"></div>
+                 </a>
+                <div class="worker_info">
+                    <h3 class="name">
+                        <a href="{% url 'worker' name=worker.name %}">{{worker.name}}</a>
+                    </h3>
+                    <p class="post">{{worker.post}}</p>
+<!--                    <p class="number">-->
+<!--                        <a href="tel:{{worker.number}}">{{worker.number}}</a>-->
+<!--                    </p>-->
+<!--                    <p class="mail">-->
+<!--                        <a href="mailto:{{worker.mail}}">{{worker.mail}}</a>-->
+<!--                    </p>-->
+            </li>
+            {% endfor %}
+        </ul>
+<!--        <div class="blur"></div>-->
+<!--        <div class="arrows">-->
+<!--            <i class="fa-solid fa-angle-left" id="workers_arrow_backward"></i>-->
+<!--            <i class="fa-solid fa-angle-right" id="workers_arrow_forward"></i>-->
+<!--        </div>-->
+
+        <div class="arrow_left">
+            <i class="fa-solid fa-angle-left" id="workers_arrow_backward"></i>
+        </div>
+
+        <div class="arrow_right">
+            <i class="fa-solid fa-angle-right" id="workers_arrow_forward"></i>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+
+
 
 
 

@@ -2,7 +2,43 @@
 
 {% block title %}Home{% endblock %}
 
-
 {% block content %}
+
+<div class="jobs_container">
+    <h1 class="jobs_header">Начни юридическую карьеру в Zavr/Specter</h1>
+    <div class="jobs_list_wrapper">
+        <ul>
+            {% for job in jobs %}
+            <li>
+                <div class="short_view">
+                    <h3 class="job_name">
+                        {{job.name}}
+                    </h3>
+                    <div class="short_info">
+                        <div class="city">
+                            <p class="header">Город</p>
+                            <p class="header">{{job.city}}</p>
+                        </div>
+                        <div class="experience">
+                            <p class="header">Опыт</p>
+                            <p class="header">{{job.experience}}</p>
+                        </div>
+                    </div>
+                    <div class="schedule">
+                        <p><{{job.schedule}}</p>
+                    </div>
+                </div>
+
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
 
 {% endblock %}
