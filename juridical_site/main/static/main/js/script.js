@@ -2,13 +2,16 @@
 const activePage = window.location.pathname;
 const Path_list = activePage.split("/");
 if(Path_list.includes("home"))
-    {Path_category = "home"};
+    {Path_category = "home";
+    helpPathCategory = 'home'};
 
 if(Path_list.includes("team"))
-    {Path_category = "team"};
+    {Path_category = "team";
+    helpPathCategory = 'team'};
 
 if(Path_list.includes("about"))
-    {Path_category = "about"};
+    {Path_category = "about";
+    helpPathCategory = 'about'};
 
 if(Path_list.includes("practice"))
     {Path_category = "practice";
@@ -19,10 +22,12 @@ if(Path_list.includes("practice_detail"))
     helpPathCategory = 'practice_detail'};
 
 if(Path_list.includes("work"))
-    {Path_category = "work"};
+    {Path_category = "work";
+    helpPathCategory = 'work'};
 
 if(Path_list.includes("worker"))
-    {Path_category = "worker"};
+    {Path_category = "worker";
+    helpPathCategory = 'worker'};
 
 console.log(Path_category);
 console.log(activePage);
@@ -1154,6 +1159,37 @@ if (helpPathCategory === 'practice_detail') {
         })
     }
 
+}
 
+
+
+if (Path_category === 'work') {
+    const longView= document.querySelectorAll('.jobs_container .jobs_list_wrapper .long_view')
+    const dropDownButton= document.querySelectorAll('.show')
+    let count = 0
+
+//    document.querySelectorAll('.jobs_container .jobs_list_wrapper ul li').forEach(card => {
+//        const checkbox = card.querySelector('input[type="checkbox"]');
+//        const longView = card.querySelector('.long_view');
+//        const buttonLabel = card.querySelector('.button');
+//
+//        if (checkbox && longView && buttonLabel) {
+//            // Обработчик события изменения состояния checkbox
+//            checkbox.addEventListener('change', () => {
+//                if (checkbox.checked) {
+//                    // Ждем небольшую задержку, чтобы браузер обновил стили
+//                    setTimeout(() => {
+//                        const longViewHeight = longView.offsetHeight;
+//                        // Устанавливаем такую же высоту для .button
+//                        buttonLabel.style.height = `${longViewHeight}px`;
+//                        buttonLabel.style.color = 'red';
+//                    }, 0); // Можно увеличить задержку, если нужно
+//                } else {
+//                    // Можно сбросить высоту, если нужно
+//                    buttonLabel.style.height = '';
+//                }
+//            });
+//        }
+//    });
 
 }
