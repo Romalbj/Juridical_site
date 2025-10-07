@@ -5,28 +5,70 @@
 {% block content %}
 
 <div class="jobs_container">
-    <h1 class="jobs_header">Начни юридическую карьеру в Zavr/Specter</h1>
+    <div class="heading">
+        <h1 class="jobs_header">Вакансии</h1>
+        <p>Zavr/Specter постоянно находится в поиске самых
+            талантливых сотрудников, которые разделяют любовь
+            компании к инновациям. Присоединяйтесь к нашей команде.</p>
+    </div>
     <div class="jobs_list_wrapper">
-        <ul>
+        <ul class="cards">
             {% for job in jobs %}
-            <li>
+            <li class="job_card">
                 <div class="short_view">
-                    <h3 class="job_name">
-                        {{job.name}}
-                    </h3>
+                    <div class="name">
+                        <h3 class="job_name">
+                            {{job.name}}
+                        </h3>
+                    </div>
                     <div class="short_info">
+                        <div class="practice">
+                            <p class="header">Практика</p>
+                            <p class="practice_label">{{job.practice}}</p>
+                        </div>
                         <div class="city">
                             <p class="header">Город</p>
-                            <p class="header">{{job.city}}</p>
+                            <p class="city_label">{{job.city}}</p>
                         </div>
                         <div class="experience">
                             <p class="header">Опыт</p>
-                            <p class="header">{{job.experience}}</p>
+                            <p class="experience_label">{{job.experience}}</p>
                         </div>
                     </div>
                     <div class="schedule">
-                        <p><{{job.schedule}}</p>
+                        <p>{{job.schedule}}</p>
                     </div>
+                </div>
+                <input type="checkbox" id="drop_down_job_{{job.id}}">
+                <label class="show" for="drop_down_job_{{job.id}}">
+                    <span class="show-text">Показать еще</span>
+                    <span class="hide-text">Свернуть</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </label>
+<!--                <label class="hide" for="drop_down_job">Свернуть</label>-->
+
+                <div class="long_view">
+                    <div class="wrapper">
+                        <div class="requirements">
+                            <p class="header">Требования</p>
+                            {{job.requirements | safe}}
+                        </div>
+                        <div class="tasks">
+                            <p class="header">Задачи</p>
+                            {{job.tasks | safe}}
+                        </div>
+                        <div class="conditions">
+                            <p class="header">Условия</p>
+                            {{job.conditions | safe}}
+                        </div>
+                    </div>
+                    <div class="button">
+                        <input type="confirm" id="apply_job_{{job.id}}">
+                        <label for="apply_job_{{job.id}}">
+                            <span>Откликнуться на вакансию</span>
+                        </label>
+                    </div>
+
                 </div>
 
             </li>

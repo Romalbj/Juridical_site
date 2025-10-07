@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Stuff, Practice, Job
+from .models import Stuff, Practice, Jobs
 
 def home(request):
     return render(request, 'main/home.html',)
@@ -40,6 +40,6 @@ def practice_detail(request, practice_name):
 
 def work(request):
 
-    jobs = Job.objects.all()
+    jobs = Jobs.objects.all()
     return render(request, 'main/work.html', {'jobs': jobs})
 

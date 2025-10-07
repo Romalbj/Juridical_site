@@ -27,7 +27,7 @@ class Stuff(models.Model):
         return self.name
 
 
-class Job(models.Model):
+class Jobs(models.Model):
 
     name = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
@@ -36,6 +36,15 @@ class Job(models.Model):
     requirements = models.TextField()
     tasks = models.TextField()
     conditions = models.TextField()
+    # practice_job = models.CharField(max_length=255, default='не указано')
+    practice = models.ForeignKey(
+        Practice,
+        on_delete=models.SET_NULL,  # или CASCADE, в зависимости от логики
+        null=True,  # чтобы поле могло быть пустым
+        blank=True,
+        related_name='jobs'  # для доступа к вакансиям у практики: practice.jobs.all()
+    )
+
 
     def __str__(self):
         return self.name
