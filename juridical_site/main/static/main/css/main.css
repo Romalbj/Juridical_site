@@ -3029,33 +3029,38 @@ footer .company_info .company_info_container .mail p:hover a {
     min-height: 100vh;
     width: 100vw;
     margin: 0;
-    padding: 0 5vw 5vw 5vw;
+    padding: 0 0 5vw 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    flex: 1;
 
-    background-image: url(../img/BackG_ZavrSpectr_dark_narrow.jpg);
-/*        radial-gradient(*/
-/*            circle at 102% 103%,*/
-/*            var(--red-color) 1%,*/
-/*            var(--black-color) 30%*/
-/*        );*/
+    background-image:
+        radial-gradient(
+            circle at 102% 103%,
+            var(--red-color) 1%,
+            var(--black-color) 30%
+        );
     background-repeat: no-repeat;
     background-size: contain;
-/*    background-attachment: fixed;*/
-    background-position: right 20% top 0;
+    background-attachment: fixed;
+    background-position: right 20% top 10vw;
 }
 
 .jobs_container .heading {
 /*    background-color: red;*/
-    margin: 15vw 0 0 0;
-    padding: 0;
+    margin: 0vw 0 0 0;
+    padding: 15vw 5vw 5vw 5vw;
     width: 100%;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
+    background-image: url(../img/BackG_ZavrSpectr_dark_narrow.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right 20% top 2vw;
 }
 
 .jobs_container .jobs_header {
@@ -3081,6 +3086,7 @@ footer .company_info .company_info_container .mail p:hover a {
 .jobs_container .jobs_list_wrapper {
 /*    background-color: hotpink;*/
     margin: 5vw 0 0 0;
+    padding: 0 5vw;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -3154,6 +3160,7 @@ footer .company_info .company_info_container .mail p:hover a {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     min-width: 100%;
+/*    gap: 2px;*/
 }
 
 .jobs_container .jobs_list_wrapper .short_info .city,
@@ -3294,12 +3301,9 @@ footer .company_info .company_info_container .mail p:hover a {
     align-items: flex-start;
     justify-content: space-between;
     flex-direction: row;
-
     transform: translateY(-5%);
     filter: blur(2px);
-
-    transition: .5s ease;
-/*    z-index: 1;*/
+    transition: 0s;
     height: 0px;
     overflow: auto;
     opacity: 0;
@@ -3319,9 +3323,11 @@ footer .company_info .company_info_container .mail p:hover a {
 
 .jobs_container .jobs_list_wrapper input:checked ~ .long_view {
     height: auto;
+    overflow: visible;
     transform: translateY(0);
     opacity: 1;
     filter: blur(0px);
+    transition: 0.4s ease-in-out;
 }
 
 .jobs_container .jobs_list_wrapper .long_view .requirements,
@@ -3399,13 +3405,18 @@ footer .company_info .company_info_container .mail p:hover a {
     margin: 0;
     padding: 0;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     position: sticky;
     top: 0;
     right: 0;
     transition: 0.3s;
 /*    background-color: red;*/
+    height: 0vh;
+}
+
+.jobs_container .jobs_list_wrapper input:checked ~ .long_view .button {
+    height: 100vh;
 }
 
 .jobs_container .jobs_list_wrapper .long_view .button label {
@@ -3422,6 +3433,9 @@ footer .company_info .company_info_container .mail p:hover a {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: sticky;
+    top: 13vw;
+    right: 0;
 }
 
 .jobs_container .jobs_list_wrapper .long_view .button label:hover {

@@ -1164,32 +1164,10 @@ if (helpPathCategory === 'practice_detail') {
 
 
 if (Path_category === 'work') {
-    const longView= document.querySelectorAll('.jobs_container .jobs_list_wrapper .long_view')
+    const jobsContainer= document.querySelector('.jobs_container')
     const dropDownButton= document.querySelectorAll('.show')
-    let count = 0
+    const longView = document.querySelector('.long_view')
 
-//    document.querySelectorAll('.jobs_container .jobs_list_wrapper ul li').forEach(card => {
-//        const checkbox = card.querySelector('input[type="checkbox"]');
-//        const longView = card.querySelector('.long_view');
-//        const buttonLabel = card.querySelector('.button');
-//
-//        if (checkbox && longView && buttonLabel) {
-//            // Обработчик события изменения состояния checkbox
-//            checkbox.addEventListener('change', () => {
-//                if (checkbox.checked) {
-//                    // Ждем небольшую задержку, чтобы браузер обновил стили
-//                    setTimeout(() => {
-//                        const longViewHeight = longView.offsetHeight;
-//                        // Устанавливаем такую же высоту для .button
-//                        buttonLabel.style.height = `${longViewHeight}px`;
-//                        buttonLabel.style.color = 'red';
-//                    }, 0); // Можно увеличить задержку, если нужно
-//                } else {
-//                    // Можно сбросить высоту, если нужно
-//                    buttonLabel.style.height = '';
-//                }
-//            });
-//        }
-//    });
+
 
 }
