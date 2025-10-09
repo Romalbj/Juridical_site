@@ -26,22 +26,29 @@
                             <p class="header">Практика</p>
                             <p class="practice_label">{{job.practice}}</p>
                         </div>
-                        <div class="city">
-                            <p class="header">Город</p>
-                            <p class="city_label">{{job.city}}</p>
-                        </div>
                         <div class="experience">
                             <p class="header">Опыт</p>
                             <p class="experience_label">{{job.experience}}</p>
                         </div>
+                        <div class="city">
+                            <p class="header">Город</p>
+                            <p class="city_label">{{job.city}}</p>
+                        </div>
                     </div>
-                    <div class="schedule">
+                    <div class="schedule_button">
                         <p>{{job.schedule}}</p>
+                        <div class="button">
+                            <input type="confirm" id="apply_job_{{job.id}}">
+                            <label for="apply_job_{{job.id}}">
+                                <span>Откликнуться на вакансию</span>
+                            </label>
+                        </div>
                     </div>
+                    <div class="empty"><p>empty</p></div>
                 </div>
                 <input type="checkbox" class="show_button" id="drop_down_job_{{job.id}}">
                 <label class="show" for="drop_down_job_{{job.id}}">
-                    <span class="show-text">Показать еще</span>
+                    <span class="show-text">Подробнее</span>
                     <span class="hide-text">Свернуть</span>
                     <i class="fa-solid fa-chevron-down"></i>
                 </label>
@@ -62,12 +69,12 @@
                             {{job.conditions | safe}}
                         </div>
                     </div>
-                    <div class="button">
-                        <input type="confirm" id="apply_job_{{job.id}}">
-                        <label for="apply_job_{{job.id}}">
-                            <span>Откликнуться на вакансию</span>
-                        </label>
-                    </div>
+<!--                    <div class="button">-->
+<!--                        <input type="confirm" id="apply_job_{{job.id}}">-->
+<!--                        <label for="apply_job_{{job.id}}">-->
+<!--                            <span>Откликнуться на вакансию</span>-->
+<!--                        </label>-->
+<!--                    </div>-->
 
                 </div>
 

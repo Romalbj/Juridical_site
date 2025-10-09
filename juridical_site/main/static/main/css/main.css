@@ -20,6 +20,7 @@
 html {
 /*    scroll-snap-type: y mandatory;*/
     scroll-behavior: smooth;
+    scroll-behavior: auto !important;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
 }
@@ -30,8 +31,9 @@ body {
     padding: 0;
     font-family: var(--body-font);
     overflow-x: hidden;
-    scroll-behavior: smooth;
+/*    scroll-behavior: smooth;*/
     overscroll-behavior-y: none;
+    scroll-behavior: auto !important;
 }
 
 main {
@@ -3046,6 +3048,8 @@ footer .company_info .company_info_container .mail p:hover a {
     background-size: contain;
     background-attachment: fixed;
     background-position: right 20% top 10vw;
+
+    overflow: visible;
 }
 
 .jobs_container .heading {
@@ -3092,6 +3096,7 @@ footer .company_info .company_info_container .mail p:hover a {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    overflow: visible;
 }
 
 .jobs_container .jobs_list_wrapper .cards {
@@ -3107,17 +3112,17 @@ footer .company_info .company_info_container .mail p:hover a {
 }
 
 .jobs_container .jobs_list_wrapper .cards .job_card {
-    background-color: var(--background-grey);
     background-color: var(--grey-blueish);
 /*    border: 2px solid var(--red-color-v2);*/
     margin: 0;
-    padding: 3vw 5vw 3vw 5vw;
+    padding: 0vw 5vw 0vw 5vw;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
     border-radius: 30px;
     border-shape: squircle;
+    position: relative;
 
 }
 
@@ -3126,19 +3131,25 @@ footer .company_info .company_info_container .mail p:hover a {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
     margin: 0;
+    position: relative;
 /*    background-color: var(--background-grey);*/
-    padding: 0 0 2vw 0;
+    padding: 3vw 0 2vw 0;
     z-index: 100;
+/*    position: sticky;*/
+/*    top: 7vw;*/
 }
+
 
 .jobs_container .jobs_list_wrapper .short_view .name {
 /*    background-color: royalblue;*/
+    width: 80%;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
+    text-align: center;
     margin: 0;
     padding: 0;
 }
@@ -3158,7 +3169,7 @@ footer .company_info .company_info_container .mail p:hover a {
     margin: 3vw 0 0 0;
     padding: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 20% 30%;
     min-width: 100%;
 /*    gap: 2px;*/
 }
@@ -3199,22 +3210,83 @@ footer .company_info .company_info_container .mail p:hover a {
     width: 80%;
 }
 
-.jobs_container .jobs_list_wrapper .short_view .schedule {
+.jobs_container .jobs_list_wrapper .short_view .schedule_button {
 /*    background-color: royalblue;*/
     width: 100%;
     margin: 3vw 0 0 0;
     padding: 0;
     display: flex;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
-.jobs_container .jobs_list_wrapper .short_view .schedule p {
+.jobs_container .jobs_list_wrapper .short_view .schedule_button p {
     margin: 0;
     padding: 0;
     color: var(--whiteish);
     font-size: clamp(1rem, 0.0571rem + 1.5238vw, 1.2rem);
 }
+
+
+.jobs_container .jobs_list_wrapper .button {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 24vw;
+    transition: .3s ease-in;
+    opacity: 0;
+    pointer-events: none;
+/*    scale: 0.9;*/
+/*    background-color: red;*/
+
+}
+
+.jobs_container .jobs_list_wrapper .button label {
+    font-size: 1.1rem;
+    padding: 0.4rem;
+    margin: 0;
+    border-radius: 10px;
+    border-shape: squircle;
+    color: var(--black-color);
+    background-color: var(--whiteish);
+    transition: 0.3s;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.jobs_container .jobs_list_wrapper .button label span {
+    transition: 0.3s;
+}
+
+.jobs_container .jobs_list_wrapper .button label:hover {
+    background-color: var(--red-color);
+    color: var(--whiteish);
+}
+
+.jobs_container .jobs_list_wrapper .button label:hover span {
+    scale: 1.02;
+}
+
+.jobs_container .jobs_list_wrapper .long_view .button label span {
+    transition: 0.3s;
+}
+
+
+
+.jobs_container .jobs_list_wrapper .empty {
+/*    background-color: red;*/
+    margin: 2vw 0 0 0;
+    padding: 0;
+    min-width: 100%;
+    height: 2vh;
+    display: none;
+}
+
 
 .jobs_container .jobs_list_wrapper input {
     display: none;
@@ -3268,6 +3340,11 @@ footer .company_info .company_info_container .mail p:hover a {
     align-items: center;
     min-height: 100%;
     transition: 0.3s;
+}
+
+.jobs_container .jobs_list_wrapper input:checked ~ label {
+    position: absolute;
+    bottom: 3vw;
 }
 
 .jobs_container .jobs_list_wrapper input:checked ~ label .show-text  {
@@ -3342,6 +3419,10 @@ footer .company_info .company_info_container .mail p:hover a {
     flex-direction: column;
 }
 
+.jobs_container .jobs_list_wrapper .long_view .conditions {
+    padding: 0 0 2vw 0;
+}
+
 .jobs_container .jobs_list_wrapper .long_view .requirements .header,
 .jobs_container .jobs_list_wrapper .long_view .tasks .header,
 .jobs_container .jobs_list_wrapper .long_view .conditions .header {
@@ -3357,7 +3438,7 @@ footer .company_info .company_info_container .mail p:hover a {
 .jobs_container .jobs_list_wrapper .long_view .conditions ul {
 /*    background-color: hotpink;*/
     margin: 1vw 0 0 0;
-    padding: 0 0 0 1vw;
+    padding: 0 0 0 1.5vw;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -3399,56 +3480,6 @@ footer .company_info .company_info_container .mail p:hover a {
 
 .jobs_container .jobs_list_wrapper .long_view .conditions {
     margin: 3vw 0 0 0;
-}
-
-.jobs_container .jobs_list_wrapper .long_view .button {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    position: sticky;
-    top: 0;
-    right: 0;
-    transition: 0.3s;
-/*    background-color: red;*/
-    height: 0vh;
-}
-
-.jobs_container .jobs_list_wrapper input:checked ~ .long_view .button {
-    height: 100vh;
-}
-
-.jobs_container .jobs_list_wrapper .long_view .button label {
-    font-size: 1.1rem;
-    padding: 0.4rem;
-    margin: 0;
-    border-radius: 10px;
-    border-shape: squircle;
-    color: var(--black-color);
-    background-color: var(--whiteish);
-    transition: 0.3s;
-    width: 22vw;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: sticky;
-    top: 13vw;
-    right: 0;
-}
-
-.jobs_container .jobs_list_wrapper .long_view .button label:hover {
-    background-color: var(--red-color);
-    color: var(--whiteish);
-}
-
-.jobs_container .jobs_list_wrapper .long_view .button label:hover span {
-    scale: 1.02;
-}
-
-.jobs_container .jobs_list_wrapper .long_view .button label span {
-    transition: 0.3s;
 }
 
 

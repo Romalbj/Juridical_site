@@ -45,7 +45,7 @@ const vw = window.innerWidth / 100;
 const vh = window.innerHeight / 100;
 
 const html = document.documentElement
-
+const body = document.querySelector('body')
 const main = document.querySelector('main')
 
 const header = document.querySelector('.nav_container')
@@ -1167,6 +1167,59 @@ if (Path_category === 'work') {
     const jobsContainer= document.querySelector('.jobs_container')
     const dropDownButton= document.querySelectorAll('.show')
     const longView = document.querySelector('.long_view')
+    const jobCards= document.querySelectorAll('.job_card')
+
+
+    jobCards.forEach(card => {
+      // Ищем кнопку в пределах текущей карточки
+        const button = card.querySelector('.show_button'); // может быть <input type="checkbox"> или <button>
+        const shortView = card.querySelector('.short_view');
+        const emptySpace = card.querySelector('.empty');
+        const emptySpaceText = card.querySelector('.empty p');
+        const feedbackButton = card.querySelector('.button');
+        const feedbackButtonLabel = card.querySelector('.button label');
+
+        const offset = 5 * vw;
+        const rect = card.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const targetPosition = scrollTop + rect.top - offset;
+
+
+      if (!button || !shortView) return; // Защита на случай, если элемент не найден
+
+        button.addEventListener('change', () => {
+        if (button.checked) {
+            shortView.style.position = 'sticky';
+            shortView.style.top = '5vw';
+            shortView.style.backgroundColor = 'var(--grey-blueish)';
+            emptySpace.style.display = 'flex';
+            emptySpace.style.borderTop = '1px solid rgba(255, 255, 255, 0.3)';
+            card.style.padding = '0vw 5vw 7vw 5vw'
+            emptySpaceText.style.opacity = '0';
+            feedbackButton.style.opacity = '1';
+            feedbackButton.style.pointerEvents = 'auto';
+
+
+
+            header.style.backgroundColor = 'var(--black-color)';
+        } else {
+            shortView.style.position = 'relative';
+            shortView.style.top = '';
+            shortView.style.backgroundColor = '';
+            emptySpace.style.borderTop = '';
+            card.style.padding = '0vw 5vw 0vw 5vw';
+            html.style.scrollBehaviour = 'auto !important'
+            body.style.scrollBehaviour = 'auto !important'
+            window.scrollTo({ top: targetPosition, behavior: 'auto' });
+            emptySpace.style.display = 'none';
+            emptySpaceText.style.opacity = '0';
+            feedbackButton.style.opacity = '0';
+            feedbackButton.style.pointerEvents = 'none';
+
+            header.style.backgroundColor = 'transparent';
+        }
+      });
+    });
 
 
 
