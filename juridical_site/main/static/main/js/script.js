@@ -1031,7 +1031,7 @@ if (helpPathCategory === 'practice_detail') {
 
         if (window.innerWidth > 990) {
             const workersCarouselItemWidth = workersCarouselItem.offsetWidth
-            console.log(workersCarouselItemWidth)
+//            console.log(workersCarouselItemWidth)
             arrow_forward.addEventListener('click', () => {
                 animateArrow(arrow_forward);
                 workersCarouselList.style.scrollBehavior = 'smooth';
@@ -1044,7 +1044,7 @@ if (helpPathCategory === 'practice_detail') {
             });
         } else {
             const workersCarouselItemWidth = workersCarouselItem.offsetWidth
-            console.log(workersCarouselItemWidth)
+//            console.log(workersCarouselItemWidth)
             arrow_forward.addEventListener('click', () => {
                 animateArrow(arrow_forward);
                 workersCarouselList.style.scrollBehavior = 'smooth';
