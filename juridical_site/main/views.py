@@ -1,5 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Stuff, Practice, Jobs
+from .forms import ApplicationForm
+from django.contrib import messages
+import ast
+import datetime
+from .forms import get_month_rus, get_weekday_rus_short
+
 
 def home(request):
     return render(request, 'main/home.html',)
@@ -38,8 +44,70 @@ def practice_detail(request, practice_name):
 
     return render(request, 'main/practice_detail.html', {'practice': practice, 'workers': workers})
 
+
+
+def get_month_rus_full(month_num):
+    months = {
+        1: 'января',
+        2: 'феваля',
+        3: 'марта',
+        4: 'апреля',
+        5: 'мая',
+        6: 'июня',
+        7: 'июля',
+        8: 'августа',
+        9: 'сентября',
+        10: 'октября',
+        11: 'ноябября',
+        12: 'декабря',
+    }
+    return months[month_num]
+
+
 def work(request):
+    global error
+
+    error = False
 
     jobs = Jobs.objects.all()
-    return render(request, 'main/work.html', {'jobs': jobs})
 
+    if request.method == 'POST':
+        form = ApplicationForm(request.POST)
+        if form.is_valid():
+            application = form.save(commit=False)
+            application.preferred_date = form.cleaned_data['preferred_date']
+
+            phone = request.POST.get('phone')
+            application.phone = '+7' + phone
+            application.save()
+
+            preferred_date_str = request.POST.get('preferred_date')
+            preferred_date_obj = datetime.datetime.strptime(preferred_date_str, '%Y-%m-%d').date()
+            formatted_date = f"{preferred_date_obj.day} {get_month_rus_full(preferred_date_obj.month)} "
+
+            error = False
+
+            messages.success(request, f"Мы свяжемся с Вами {formatted_date} в интервале {request.POST.get('time_slot')} часов")
+            return redirect('work')
+        else:
+            errors = str(form.errors.as_data)
+            errors = ast.literal_eval('{' + errors.split('{')[1].rstrip('>'))
+
+            res_list = []
+            for k, v in errors.items():
+                res_list.append(str(v).strip('[').strip("]").strip("'"))
+
+            if res_list[0] == 'Enter a valid email address.':
+                res_list[0] = 'Введите верный почтовый адрес'
+
+            messages.error(request, res_list[0])
+
+            error = True
+            # return redirect('work')
+
+    else:
+        form = ApplicationForm()
+
+
+
+    return render(request, 'main/work.html', {'jobs': jobs, 'form': form, 'error': error})

@@ -1,6 +1,6 @@
 from django.db import models
-
-from django.db import models
+from django.utils import timezone
+from datetime import timedelta
 
 class Practice(models.Model):
     name = models.CharField(max_length=255)
@@ -48,3 +48,15 @@ class Jobs(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+
+class Application(models.Model):
+    email = models.EmailField("Email")
+    phone = models.CharField("Телефон", max_length=20)
+    preferred_date = models.DateField("Удобная дата для связи")
+    time_slot = models.CharField("Временной интервал", max_length=20)
+
+    def __str__(self):
+        return f'{self.email} - {self.preferred_date} {self.time_slot}'

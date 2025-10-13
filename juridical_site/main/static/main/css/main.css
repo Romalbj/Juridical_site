@@ -23,6 +23,7 @@ html {
     scroll-behavior: auto !important;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
+    z-index: 1;
 }
 
 
@@ -34,6 +35,7 @@ body {
 /*    scroll-behavior: smooth;*/
     overscroll-behavior-y: none;
     scroll-behavior: auto !important;
+    z-index: 1;
 }
 
 main {
@@ -989,6 +991,7 @@ footer {
     background-color: var(--black-color);
     display: flex;
     flex-direction: column;
+    z-index: 1;
     border-top: 2px solid;
     border-image: linear-gradient(to right, var(--red-color) 0%, var(--black-color) 60%) 1;
 }
@@ -3050,6 +3053,7 @@ footer .company_info .company_info_container .mail p:hover a {
     background-position: right 20% top 10vw;
 
     overflow: visible;
+    z-index: 0;
 }
 
 .jobs_container .heading {
@@ -3137,7 +3141,7 @@ footer .company_info .company_info_container .mail p:hover a {
     position: relative;
 /*    background-color: var(--background-grey);*/
     padding: 3vw 0 2vw 0;
-    z-index: 100;
+    z-index: 1;
 /*    position: sticky;*/
 /*    top: 7vw;*/
 }
@@ -3289,7 +3293,12 @@ footer .company_info .company_info_container .mail p:hover a {
 
 
 .jobs_container .jobs_list_wrapper input {
-    display: none;
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .jobs_container .jobs_list_wrapper label {
@@ -3342,22 +3351,22 @@ footer .company_info .company_info_container .mail p:hover a {
     transition: 0.3s;
 }
 
-.jobs_container .jobs_list_wrapper input:checked ~ label {
+.jobs_container .jobs_list_wrapper .show_button:checked ~ label {
     position: absolute;
     bottom: 3vw;
 }
 
-.jobs_container .jobs_list_wrapper input:checked ~ label .show-text  {
+.jobs_container .jobs_list_wrapper .show_button:checked ~ label .show-text  {
     opacity: 0;
     transform: translateY(20px);
 }
 
-.jobs_container .jobs_list_wrapper input:checked ~ label .hide-text {
+.jobs_container .jobs_list_wrapper .show_button:checked ~ label .hide-text {
     opacity: 1;
     top: 0;
 }
 
-.jobs_container .jobs_list_wrapper input:checked ~ label i  {
+.jobs_container .jobs_list_wrapper .show_button:checked ~ label i  {
     transform: rotate(-180deg);
 }
 
@@ -3481,6 +3490,414 @@ footer .company_info .company_info_container .mail p:hover a {
 .jobs_container .jobs_list_wrapper .long_view .conditions {
     margin: 3vw 0 0 0;
 }
+
+
+
+.form_container {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+/*    background-color: green;*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    backdrop-filter: blur(20px);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.2));
+    z-index: -1;
+    transition: 0.6s;
+}
+
+.form_container .hidden {
+
+}
+
+/*.form_container::before {*/
+/*    content: '';*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    -webkit-backdrop-filter: blur(10px);*/
+/*    backdrop-filter: blur(10px);*/
+/*    background-image: linear-gradient(rgba(255, 255, 255, 0.2));*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    z-index: 99;*/
+/*    transition: 0.6s;*/
+/*    background-color: green;*/
+/*}*/
+
+.form_container form {
+    background-color: var(--black-color);
+/*    border: 2px solid var(--red-color-v3);*/
+
+    margin: 5vw 0 0 0;
+    padding: 50px 40px;
+    width: 450px;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    corner-shape: squircle;
+    position: relative;
+    transition: 0.6s;
+    scale: 0.5;
+    z-index: -1;
+    opacity: 0;
+}
+
+/*.form_container form .active {*/
+/*    scale: 1;*/
+/*    opacity: 1;*/
+
+/*}*/
+
+.form_container form .form_wrapper {
+/*    background-color: red;*/
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.form_container form .form_wrapper .header {
+/*    background-color: green;*/
+    margin: 0;
+    padding: 0;
+    color: var(--whiteish);
+    font-weight: 400;
+/*    font-size: clamp(1.3rem, 1.0857rem + 0.6857vw, 1.6rem);*/
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.form_container form .form_wrapper .mail_input,
+.form_container form .form_wrapper .phone_input {
+/*    background-color: gold;*/
+    margin: 25px 0 0 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form_container form .form_wrapper .phone_input {
+    margin: 20px 0 0 0;
+}
+
+.form_container form .form_wrapper .mail_input label,
+.form_container form .form_wrapper .phone_input label {
+    display: none;
+}
+
+.form_container form .form_wrapper .mail_input .email,
+.form_container form .form_wrapper .phone_input .phone {
+/*    background-color: royalblue;*/
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.form_container form .form_wrapper .mail_input .email input,
+.form_container form .form_wrapper .phone_input .phone input {
+    margin: 0;
+    padding: 0 85px;
+    width: 90%;
+    border-radius: 20vw;
+    corner-shape: squircle;
+    height: 40px;
+    border: none;
+    background-color: var(--whiteish);
+    font-size: 1rem;
+}
+
+.form_container form .form_wrapper .mail_input .email input {
+    padding: 0 65px;
+}
+
+.form_container form .form_wrapper .mail_input .email input::placeholder,
+.form_container form .form_wrapper .phone_input .phone input::placeholder {
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    transition: 0.3s;
+/*    line-height: 45px;*/
+/*    background-color: red;*/
+    position: absolute;
+    display: flex;
+    top: 10px;
+    left: 65px;
+}
+
+.form_container form .form_wrapper .mail_input .email input:focus::placeholder,
+.form_container form .form_wrapper .phone_input .phone input:focus::placeholder{
+    transform: translateY(-30px);
+    opacity: 0;
+}
+input:focus {
+    outline: none;
+}
+
+
+.form_container form .form_wrapper .mail_input .email i,
+.form_container form .form_wrapper .phone_input .phone i {
+    position: absolute;
+    left: 40px;
+    font-size: 1.2rem;
+    color: var(--black-color);
+    transition: 0.3s;
+    transform: translateX(10px);
+/*    background-color: red;*/
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.form_container form .form_wrapper .phone_input .phone .code {
+    position: absolute;
+    left: 80px;
+    top: 0;
+/*    background-color: red;*/
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.form_container form .form_wrapper .phone_input .phone .code.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.form_container form .form_wrapper .mail_input .email input:focus ~ i,
+.form_container form .form_wrapper .phone_input .phone input:focus ~ i {
+    color: var(--red-color-v3);
+    transform: translateX(0px);
+}
+
+
+.form_container form .form_wrapper .date_options,
+.form_container form .form_wrapper .time_options {
+/*    background-color: red;*/
+    margin: 50px 0 0 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form_container form .form_wrapper .time_options {
+    margin: 10px 0 0 0;
+}
+
+.form_container form .form_wrapper .date_options h3 {
+/*    background-color: green;*/
+    margin: 0;
+    padding: 0;
+/*    font-size: clamp(1.3rem, 1.0857rem + 0.6857vw, 1.6rem);*/
+    font-size: 1.5rem;
+    text-align: center;
+    color: var(--whiteish);
+    width: 100%;
+}
+
+.form_container form .form_wrapper .date_options .preferred_date,
+.form_container form .form_wrapper .time_options .preferred_time {
+/*    background-color: chartreuse;*/
+    width: 100%;
+    margin: 25px 0 0 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form_container form .form_wrapper .time_options .preferred_time {
+    margin: 0;
+}
+
+.form_container form .form_wrapper .date_options .preferred_date #id_preferred_date,
+.form_container form .form_wrapper .time_options .preferred_time #id_time_slot {
+/*    background-color: #00d0ff;*/
+    width: 90%;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.form_container form .form_wrapper .date_options .preferred_date #id_preferred_date div,
+.form_container form .form_wrapper .time_options .preferred_time #id_time_slot div {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+/*    border-radius: 20px;*/
+/*    corner-shape: squircle;*/
+    background-color: var(--grey-blueish);
+    color: var(--whiteish);
+}
+
+.form_container form .form_wrapper .date_options .preferred_date #id_preferred_date div label,
+.form_container form .form_wrapper .time_options .preferred_time #id_time_slot div label {
+/*    background-color: red;*/
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.form_container form .form_wrapper .date_options .preferred_date #id_preferred_date div label:hover,
+.form_container form .form_wrapper .time_options .preferred_time #id_time_slot div label:hover {
+    border: 0.5px solid var(--whiteish);
+}
+
+.form_container form .form_wrapper .date_options .preferred_date #id_preferred_date div label input,
+.form_container form .form_wrapper .time_options .preferred_time #id_time_slot div label input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.form_container form .form_wrapper .date_options .preferred_date #id_preferred_date div label:has(input[type="radio"]:checked),
+.form_container form .form_wrapper .time_options .preferred_time #id_time_slot div label:has(input[type="radio"]:checked) {
+    background-color: var(--red-color);
+}
+
+.form_container form .form_wrapper button {
+    margin: 50px 0 0 0;
+    padding: 10px;
+    width: 90%;
+    border-radius: 20vw;
+    corner-shape: squircle;
+    font-size: 1rem;
+    transition: 0.3s;
+    border: none;
+}
+
+.form_container form .form_wrapper button:hover {
+    background-color: var(--red-color);
+    color: var(--whiteish);
+}
+
+.form_container form .close_button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    margin: 0;
+    border-radius: 50vw;
+    font-size: 1.2rem;
+    color: var(--whiteish);
+    transition: 0.3s;
+    pointer-events: auto;
+}
+
+.form_container form .close_button:hover {
+    color: var(--red-color);
+}
+
+.message_container {
+    margin: 0;
+    padding: 0;
+/*    background-color: red;*/
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transition: 0.6s;
+    backdrop-filter: blur(20px);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.2));
+}
+
+.message_container .message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    background-color: var(--black-color);
+    border-radius: 30px;
+    corner-shape: squircle;
+    width: 450px;
+    height: 220px;
+    transition: 0.6s;
+}
+
+.message_container .message h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.6rem;
+    width: 90%;
+    text-align: center;
+    color: var(--whiteish);
+}
+
+.message_container .message .text {
+    margin: 20px 0 0 0;
+    padding: 0;
+    color: var(--whiteish);
+    width: 90%;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.message_container .message button {
+    margin: 20px 0 0 0;
+    padding: 10px;
+    width: 90%;
+    border-radius: 20vw;
+    corner-shape: squircle;
+    font-size: 1rem;
+    transition: 0.6s;
+    border: none;
+    pointer-events: auto;
+}
+
+.message_container .message button:hover {
+    background-color: var(--red-color);
+    color: var(--whiteish);
+}
+
+.error_message {
+/*    background-color: red;*/
+    margin: 10px 0 0 0;
+    padding: 0;
+}
+
+
+
 
 
 
