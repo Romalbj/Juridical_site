@@ -1295,7 +1295,10 @@ if (Path_category === 'work') {
     const form = document.querySelector('form');
     const formCloseButton = document.querySelector('form .close_button');
 
+    const emailInput = document.querySelector('.form_container .email input');
     const phoneInput = document.querySelector('.form_container .phone input');
+    const preferredTimeInput = document.querySelectorAll('.form_container .preferred_time input');
+    const preferredDateInput = document.querySelectorAll('.form_container .preferred_date input');
     const codeElement = document.querySelector('.form_container .phone .code');
 
 
@@ -1304,6 +1307,7 @@ if (Path_category === 'work') {
     const messageCloseButton = document.querySelector('.message_container .message button');
 
     const errorMessage = document.querySelector('.error_message');
+    const errorMessage2 = document.querySelector('.error_message_2');
 
     const dateOptions = document.querySelector('.form_container form .form_wrapper .date_options');
 
@@ -1325,9 +1329,32 @@ if (Path_category === 'work') {
         })
     }
 
-    if (errorMessage) {
-        openForm()
-        dateOptions.style.margin = '30px 0 0 0';
+//    if (errorMessage) {
+//        openForm(false)
+//        dateOptions.style.margin = '30px 0 0 0';
+//        if (errorMessage.textContent.trim() === 'Введите верный почтовый адрес') {
+//            emailInput.value = '';
+//            emailInput.focus();
+//        }
+//
+//    }
+
+    if (errorMessage2) {
+//        body.style.position = 'relative'
+        openForm(false)
+        setTimeout(() => {
+            errorMessage2.style.bottom = '2vh'
+            errorMessage2.style.opacity = '1'
+        }, 300)
+        setTimeout(() => {
+            errorMessage2.style.bottom = '-6vh'
+            errorMessage2.style.opacity = '0'
+        }, 3000)
+        if (errorMessage2.textContent.trim() === 'Введите верный почтовый адрес') {
+            emailInput.value = '';
+            emailInput.focus();
+        }
+
     }
 
 
@@ -1342,7 +1369,16 @@ if (Path_category === 'work') {
         }
     }
 
-    function openForm() {
+    function openForm(withAnimation = true) {
+
+        if (withAnimation) {
+            formContainer.style.transition = ''; // восстановить переходы
+            form.style.transition = '';
+        } else {
+            formContainer.style.transition = 'none';
+            form.style.transition = 'none';
+        }
+
         formContainer.style.zIndex = '1';
         formContainer.style.opacity = '1';
 
@@ -1363,6 +1399,9 @@ if (Path_category === 'work') {
       }
 
       function closeForm() {
+          formContainer.style.transition = ''; // восстановить переходы
+          form.style.transition = '';
+
           formContainer.style.opacity = '0';
           form.style.opacity = '0';
           form.style.scale = '0.5';
@@ -1415,6 +1454,23 @@ if (Path_category === 'work') {
                 feedbackButton.style.pointerEvents = 'auto';
 
                 header.style.backgroundColor = 'var(--black-color)';
+
+
+                emailInput.value = ''
+                phoneInput.value = ''
+                preferredDateInput.forEach (date => {
+                    date.checked = false;
+                })
+
+                preferredTimeInput.forEach (time => {
+                    time.checked = false;
+                })
+//                if (errorMessage) {
+//                    errorMessage.style.display = 'none';
+//                }
+
+
+
             } else {
         // Закрываем детали карточки
                 shortView.style.position = 'relative';

@@ -3539,7 +3539,7 @@ footer .company_info .company_info_container .mail p:hover a {
     margin: 5vw 0 0 0;
     padding: 50px 40px;
     width: 450px;
-    height: 600px;
+    height: 580px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3896,7 +3896,25 @@ input:focus {
     padding: 0;
 }
 
+.error_message i {
+    display: none;
+}
 
+.error_message_2 {
+    background-color: var(--black-color);
+    color: var(--red-color);
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    bottom: -6vh;
+    transition: 0.4s ease-out;
+    z-index: 1;
+    opacity: 1;
+    border-radius: 20vw;
+    width:450px;
+    corner-shape: squircle;
+}
 
 
 

@@ -63,6 +63,14 @@ def get_month_rus_full(month_num):
     }
     return months[month_num]
 
+def get_timeslot_for_message(time_slot):
+    intervals = {
+        "9-12": "с 9 до 12",
+        "12-16": "с 12 до 16",
+        "16-20": "с 16 до 20",
+    }
+    return intervals[time_slot]
+
 
 def work(request):
     global error
@@ -87,7 +95,7 @@ def work(request):
 
             error = False
 
-            messages.success(request, f"Мы свяжемся с Вами {formatted_date} в интервале {request.POST.get('time_slot')} часов")
+            messages.success(request, f"Мы свяжемся с Вами {formatted_date} в интервале {get_timeslot_for_message(request.POST.get('time_slot'))} часов")
             return redirect('work')
         else:
             errors = str(form.errors.as_data)

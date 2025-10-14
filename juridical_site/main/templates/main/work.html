@@ -123,11 +123,11 @@
                         </div>
                     </div>
 
-                    {% if error %}
-                    {% for message in messages %}
-                    <p  style="color: var(--red-color);" class="error_message"><i class="fa-solid fa-ban"></i>&nbsp;&nbsp;{{message}}</p>
-                    {% endfor %}
-                    {% endif %}
+<!--                    {% if error %}-->
+<!--                    {% for message in messages %}-->
+<!--                    <p  style="color: var(&#45;&#45;red-color);" class="error_message"><i class="fa-solid fa-ban"></i>&nbsp;&nbsp;{{message}}</p>-->
+<!--                    {% endfor %}-->
+<!--                    {% endif %}-->
 
                     <div class="date_options">
 <!--                        <h3>{{ form.preferred_date.label }}</h3>-->
@@ -153,8 +153,11 @@
             </form>
 </div>
 
-
-
+{% if error %}
+{% for message in messages %}
+<p  class="error_message_2"><i class="fa-solid fa-ban"></i>&nbsp;&nbsp;{{message}}</p>
+{% endfor %}
+{% endif %}
 
 
 
