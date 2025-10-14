@@ -1351,8 +1351,35 @@ if (Path_category === 'work') {
             errorMessage2.style.opacity = '0'
         }, 3000)
         if (errorMessage2.textContent.trim() === 'Введите верный почтовый адрес') {
-            emailInput.value = '';
+//            emailInput.value = '';
             emailInput.focus();
+
+//            animation for wrong email input
+            setTimeout(() => {
+                emailInput.style.color = 'var(--red-color)';
+                emailInput.style.paddingLeft= '80px'
+            }, 200)
+
+            setTimeout(() => {
+                emailInput.style.paddingLeft = '50px'
+            }, 285)
+
+            setTimeout(() => {
+                emailInput.style.paddingLeft = '80px'
+            }, 355)
+
+            setTimeout(() => {
+                emailInput.style.paddingLeft = '50px'
+            }, 425)
+
+            setTimeout(() => {
+                emailInput.style.paddingLeft = '80px'
+            }, 495)
+
+            setTimeout(() => {
+                emailInput.style.paddingLeft = '65px'
+            }, 565)
+
         }
 
     }

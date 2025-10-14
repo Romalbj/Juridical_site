@@ -3622,6 +3622,7 @@ footer .company_info .company_info_container .mail p:hover a {
     border: none;
     background-color: var(--whiteish);
     font-size: 1rem;
+    transition: 0.3s;
 }
 
 .form_container form .form_wrapper .mail_input .email input {
