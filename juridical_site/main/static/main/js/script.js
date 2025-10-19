@@ -1632,7 +1632,11 @@ if (Path_category === 'work') {
                 html.style.scrollBehavior = 'auto';
                 body.style.scrollBehavior = 'auto';
 
-                window.scrollTo({ top: targetPosition, behavior: 'auto' });
+//                window.scrollTo({ top: targetPosition, behavior: 'auto' });
+
+                requestAnimationFrame(() => {
+                    window.scrollTo({ top: targetPosition, behavior: 'auto' });
+                });
 
                 emptySpace.style.display = 'none';
                 emptySpaceText.style.opacity = '0';
