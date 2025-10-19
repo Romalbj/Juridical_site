@@ -151,13 +151,16 @@
                 </div>
                 <i class="fa-solid fa-xmark close_button"></i>
             </form>
+
+    {% if error %}
+    {% for message in messages %}
+    <p  class="error_message_2"><i class="fa-solid fa-ban"></i>&nbsp;&nbsp;{{message}}</p>
+    {% endfor %}
+    {% endif %}
+
 </div>
 
-{% if error %}
-{% for message in messages %}
-<p  class="error_message_2"><i class="fa-solid fa-ban"></i>&nbsp;&nbsp;{{message}}</p>
-{% endfor %}
-{% endif %}
+
 
 
 

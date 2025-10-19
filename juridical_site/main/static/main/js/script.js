@@ -1393,9 +1393,9 @@ if (Path_category === 'work') {
         }, 565)
     }
 
+    let scrollPosition_2;
     if (errorMessage2) {
-//        body.style.position = 'relative'
-        openForm(false)
+        openForm(false, 0)
 
         if (errorMessage2.textContent.trim() === 'Введите корректный  адрес электронной почты') {
             const length = emailInput.value.length;
@@ -1479,9 +1479,10 @@ if (Path_category === 'work') {
         }
     }
 
-    let scrollPosition = 0;
-    function openForm(withAnimation = true) {
-        scrollPosition = window.scrollY;
+
+    function openForm(withAnimation = true, scrollPosition = window.scrollY) {
+        scrollPosition = window.scrollY
+        scrollPosition_2 = window.scrollY;
 
         if (withAnimation) {
             formContainer.style.transition = ''; // восстановить переходы
@@ -1528,7 +1529,7 @@ if (Path_category === 'work') {
           body.style.position = ''
           body.style.top = '';
           body.style.width = '';
-          window.scrollTo(0, scrollPosition);
+          window.scrollTo(0, scrollPosition_2);
 
 
 //          body.style.overflow = '';
@@ -1634,6 +1635,7 @@ if (Path_category === 'work') {
 
 //                window.scrollTo({ top: targetPosition, behavior: 'auto' });
 
+//                чтобы при заркытии карточки происходил скрлл до ее верха без дерганий
                 requestAnimationFrame(() => {
                     window.scrollTo({ top: targetPosition, behavior: 'auto' });
                 });
@@ -1665,20 +1667,30 @@ if (Path_category === 'work') {
         counter += 1
         if (window.innerWidth < 1300) {
             if (counter <= 2) {
-                setTimeout(() => {
-                    card.style.transition = 'opacity 1s ease, transform 1s ease';
+                if (errorMessage2) {
                     card.style.opacity = '1';
                     card.style.transform = 'scale(1)';
-                }, 275);
+                } else {
+                    setTimeout(() => {
+                        card.style.transition = 'opacity 1s ease, transform 1s ease';
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 275);
+                }
             }
         }
         else {
             if (counter === 1) {
-                setTimeout(() => {
-                    card.style.transition = 'opacity 1s ease, transform 1s ease';
+                if (errorMessage2) {
                     card.style.opacity = '1';
                     card.style.transform = 'scale(1)';
-                }, 275);
+                } else {
+                    setTimeout(() => {
+                        card.style.transition = 'opacity 1s ease, transform 1s ease';
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 275);
+                }
             }
         }
     })
