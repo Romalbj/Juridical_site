@@ -1339,48 +1339,131 @@ if (Path_category === 'work') {
 //
 //    }
 
+    function tremleMail() {
+        setTimeout(() => {
+            emailInput.style.color = 'var(--red-color)';
+            emailInput.style.paddingLeft= '80px'
+        }, 200)
+
+        setTimeout(() => {
+            emailInput.style.paddingLeft = '50px'
+        }, 285)
+
+        setTimeout(() => {
+            emailInput.style.paddingLeft = '80px'
+        }, 355)
+
+        setTimeout(() => {
+            emailInput.style.paddingLeft = '50px'
+        }, 425)
+
+        setTimeout(() => {
+            emailInput.style.paddingLeft = '80px'
+        }, 495)
+
+        setTimeout(() => {
+            emailInput.style.paddingLeft = '65px'
+        }, 565)
+    }
+
+    function tremlePhone() {
+        setTimeout(() => {
+            phoneInput.style.color = 'var(--red-color)';
+            phoneInput.style.paddingLeft= '100px'
+        }, 200)
+
+        setTimeout(() => {
+            phoneInput.style.paddingLeft = '70px'
+        }, 285)
+
+        setTimeout(() => {
+            phoneInput.style.paddingLeft = '100px'
+        }, 355)
+
+        setTimeout(() => {
+            phoneInput.style.paddingLeft = '70px'
+        }, 425)
+
+        setTimeout(() => {
+            phoneInput.style.paddingLeft = '100px'
+        }, 495)
+
+        setTimeout(() => {
+            phoneInput.style.paddingLeft = '85px'
+        }, 565)
+    }
+
     if (errorMessage2) {
 //        body.style.position = 'relative'
         openForm(false)
-        setTimeout(() => {
-            errorMessage2.style.bottom = '2vh'
-            errorMessage2.style.opacity = '1'
-        }, 300)
-        setTimeout(() => {
-            errorMessage2.style.bottom = '-6vh'
-            errorMessage2.style.opacity = '0'
-        }, 3000)
-        if (errorMessage2.textContent.trim() === 'Введите верный почтовый адрес') {
-//            emailInput.value = '';
+
+        if (errorMessage2.textContent.trim() === 'Введите корректный  адрес электронной почты') {
+            const length = emailInput.value.length;
+            emailInput.setSelectionRange(length, length);
+            setTimeout(() => {
+                if (window.innerWidth > 640) {
+                    errorMessage2.style.bottom = '1vh'
+                }
+                else {
+                    errorMessage2.style.bottom = '5vh'
+                }
+
+                errorMessage2.style.opacity = '1'
+            }, 300)
+
+            setTimeout(() => {
+                errorMessage2.style.bottom = '-9vh'
+                errorMessage2.style.opacity = '0'
+            }, 3000)
+
             emailInput.focus();
-
-//            animation for wrong email input
-            setTimeout(() => {
-                emailInput.style.color = 'var(--red-color)';
-                emailInput.style.paddingLeft= '80px'
-            }, 200)
-
-            setTimeout(() => {
-                emailInput.style.paddingLeft = '50px'
-            }, 285)
-
-            setTimeout(() => {
-                emailInput.style.paddingLeft = '80px'
-            }, 355)
-
-            setTimeout(() => {
-                emailInput.style.paddingLeft = '50px'
-            }, 425)
-
-            setTimeout(() => {
-                emailInput.style.paddingLeft = '80px'
-            }, 495)
-
-            setTimeout(() => {
-                emailInput.style.paddingLeft = '65px'
-            }, 565)
-
+            tremleMail();
         }
+
+         if (errorMessage2.textContent.trim() === 'Введите корректный номер телефона') {
+
+             const length = phoneInput.value.length;
+             phoneInput.setSelectionRange(length, length);
+
+             setTimeout(() => {
+                if (window.innerWidth > 640) {
+                    errorMessage2.style.bottom = '1vh'
+                }
+                else {
+                    errorMessage2.style.bottom = '5vh'
+                }
+
+                errorMessage2.style.opacity = '1'
+            }, 300)
+
+            setTimeout(() => {
+                errorMessage2.style.bottom = '-9vh'
+                errorMessage2.style.opacity = '0'
+            }, 3000)
+
+             phoneInput.focus();
+             tremlePhone();
+         }
+
+        if (errorMessage2.textContent.trim() === 'Введите корректный адрес электронной почты и номер телефона') {
+            setTimeout(() => {
+                if (window.innerWidth > 640) {
+                    errorMessage2.style.bottom = '0.5vh'
+                }
+                else {
+                    errorMessage2.style.bottom = '5vh'
+                }
+                errorMessage2.style.opacity = '1'
+            }, 300)
+
+            setTimeout(() => {
+                errorMessage2.style.bottom = '-9vh'
+                errorMessage2.style.opacity = '0'
+            }, 3000)
+
+            tremleMail();
+            tremlePhone();
+         }
 
     }
 
@@ -1396,7 +1479,9 @@ if (Path_category === 'work') {
         }
     }
 
+    let scrollPosition = 0;
     function openForm(withAnimation = true) {
+        scrollPosition = window.scrollY;
 
         if (withAnimation) {
             formContainer.style.transition = ''; // восстановить переходы
@@ -1415,7 +1500,11 @@ if (Path_category === 'work') {
         form.style.opacity = '1';
         form.style.scale = '1';
 
-        body.style.overflow = 'hidden';
+//        body.style.overflow = 'hidden';
+        body.style.position = 'fixed'
+        body.style.top = `-${scrollPosition}px`;
+        body.style.width = '100%';
+
 
         phoneInput.addEventListener('focus', updateCodeState);
         phoneInput.addEventListener('blur', updateCodeState);
@@ -1434,7 +1523,15 @@ if (Path_category === 'work') {
           form.style.scale = '0.5';
           form.style.zIndex = '-1';
 
-          body.style.overflow = '';
+
+//        body.style.overflow = 'hidden';
+          body.style.position = ''
+          body.style.top = '';
+          body.style.width = '';
+          window.scrollTo(0, scrollPosition);
+
+
+//          body.style.overflow = '';
 
           setTimeout(() => {
               formContainer.style.zIndex = '-1';
@@ -1458,7 +1555,17 @@ if (Path_category === 'work') {
         if (!button || !shortView) return;
 
     // Расчёт скролла
-        const offset = 5 * vw;
+        let offset = 0
+        if (window.innerWidth < 640) {
+            offset = 17 * vw;
+        }
+        else if (window.innerWidth < 990) {
+            offset = 10 * vw;
+        }
+        else {
+            offset = 5 * vw;
+        }
+
 
         button.addEventListener('change', () => {
             const rect = card.getBoundingClientRect();
@@ -1468,11 +1575,27 @@ if (Path_category === 'work') {
             if (button.checked) {
         // Открываем детали карточки
                 shortView.style.position = 'sticky';
-                shortView.style.top = '5vw';
+
+                if (window.innerWidth < 640) {
+                    shortView.style.top = '16.9vw';
+                    feedbackButtonLabel.textContent = 'Откликнуться'
+                    card.style.padding = '0vw 5vw 15vw 5vw';
+                }
+                else if (window.innerWidth < 990) {
+                    shortView.style.top = '9.9vw';
+//                    shortView.style.padding = '3vw 0 2vw 0';
+                    card.style.padding = '0vw 5vw 12vw 5vw';
+                }
+                else {
+                    shortView.style.top = '5vw';
+                    card.style.padding = '0vw 5vw 7vw 5vw';
+                }
+
                 shortView.style.backgroundColor = 'var(--grey-blueish)';
+//                shortView.style.backgroundColor = 'red';
+//                shortView.style.backgroundImage = 'linear-gradient(90deg, var(--grey-blueish) 30%, var(--black-color) 100%)';
                 emptySpace.style.display = 'flex';
                 emptySpace.style.borderTop = '1px solid rgba(255, 255, 255, 0.3)';
-                card.style.padding = '0vw 5vw 7vw 5vw';
 
                 window.scrollTo({ top: targetPosition, behavior: 'smooth' });
 
@@ -1531,5 +1654,46 @@ if (Path_category === 'work') {
                 }
             });
         }
+    });
+
+    let counter = 0
+    jobCards.forEach(card => {
+        counter += 1
+        if (window.innerWidth < 1300) {
+            if (counter <= 2) {
+                setTimeout(() => {
+                    card.style.transition = 'opacity 1s ease, transform 1s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                }, 275);
+            }
+        }
+        else {
+            if (counter === 1) {
+                setTimeout(() => {
+                    card.style.transition = 'opacity 1s ease, transform 1s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                }, 275);
+            }
+        }
+    })
+
+
+
+    window.addEventListener('scroll', () => {
+        let counter = 0
+        jobCards.forEach(card => {
+            counter += 1
+            if (counter > 1) {
+                 if (window.innerWidth > 1300) {
+                     if (card.getBoundingClientRect().bottom <= window.innerHeight + 30 * vh) {
+                         card.style.transition = 'opacity .5s ease, transform .5s ease';
+                         card.style.opacity = '1';
+                         card.style.transform = 'scale(1)';
+                     }
+                 }
+            }
+        });
     });
 }

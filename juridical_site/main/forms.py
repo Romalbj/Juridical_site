@@ -89,6 +89,13 @@ class ApplicationForm(forms.ModelForm):
                                     'inputmode': 'numeric'})
                             )
 
+    def clean_phone(self):
+        phone = self.cleaned_data.get('phone', '')
+        digits_only = ''.join(filter(str.isdigit, phone))
+        if len(digits_only) != 10:
+            raise forms.ValidationError('Введите корректный номер телефона')
+        return phone
+
     class Meta:
         model = Application
         fields = ['email', 'phone', 'preferred_date', 'time_slot']

@@ -4,6 +4,7 @@ from .forms import ApplicationForm
 from django.contrib import messages
 import ast
 import datetime
+from django import forms
 from .forms import get_month_rus, get_weekday_rus_short
 
 
@@ -97,6 +98,7 @@ def work(request):
 
             messages.success(request, f"Мы свяжемся с Вами {formatted_date} в интервале {get_timeslot_for_message(request.POST.get('time_slot'))} часов")
             return redirect('work')
+
         else:
             errors = str(form.errors.as_data)
             errors = ast.literal_eval('{' + errors.split('{')[1].rstrip('>'))
@@ -106,16 +108,23 @@ def work(request):
                 res_list.append(str(v).strip('[').strip("]").strip("'"))
 
             if res_list[0] == 'Enter a valid email address.':
-                res_list[0] = 'Введите верный почтовый адрес'
+                res_list[0] = 'Введите корректный  адрес электронной почты'
 
-            messages.error(request, res_list[0])
+            if len(res_list) > 1:
+                messages.error(request, 'Введите корректный адрес электронной почты и номер телефона')
+            else:
+                messages.error(request, res_list[0])
 
             error = True
-            # return redirect('work')
+
+        # if len(request.POST.get('phone', '')) < 10:
+        #         messages.error(request, 'Укажите полный номер телефона')
+        #         error = True
+        #         return render(request, 'main/work.html', {'jobs': jobs, 'form': form, 'error': error})
 
     else:
         form = ApplicationForm()
 
 
 
-    return render(request, 'main/work.html', {'jobs': jobs, 'form': form, 'error': error})
+    return render(request, 'main/work.html', {'jobs': jobs, 'form': form, 'error': error,})
