@@ -3674,10 +3674,35 @@ footer .company_info .company_info_container .mail p:hover a {
 /*    display: flex;*/
     top: 10px;
     left: 65px;
+
+    opacity: 0;
 }
 
 .form_container form .form_wrapper .mail_input .email input:focus::placeholder,
 .form_container form .form_wrapper .phone_input .phone input:focus::placeholder{
+    transform: translateY(-30px);
+    opacity: 0;
+}
+
+.form_container form .form_wrapper .mail_input .email .placeholder,
+.form_container form .form_wrapper .phone_input .phone .placeholder {
+    position: absolute;
+    left: 85px;
+    top: 0;
+    height: 100%;
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    transition: 0.4s;
+    pointer-events: none;
+}
+
+.form_container form .form_wrapper .mail_input .email input:focus ~ .placeholder,
+.form_container form .form_wrapper .phone_input .phone input:focus ~ .placeholder {
     transform: translateY(-30px);
     opacity: 0;
 }
@@ -3693,7 +3718,7 @@ input:focus {
     left: 40px;
     font-size: 1.2rem;
     color: var(--black-color);
-    transition: 0.3s;
+    transition: 0.4s;
     transform: translateX(10px);
 /*    background-color: red;*/
     height: 100%;
