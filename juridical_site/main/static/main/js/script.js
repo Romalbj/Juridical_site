@@ -1310,7 +1310,7 @@ if (Path_category === 'work') {
     const errorMessage2 = document.querySelector('.error_message_2');
 
     const dateOptions = document.querySelector('.form_container form .form_wrapper .date_options');
-
+    
 
     if (messageContainer) {
         body.style.overflow = 'hidden';
@@ -1395,76 +1395,82 @@ if (Path_category === 'work') {
 
     let scrollPosition_2;
     if (errorMessage2) {
-        openForm(false, 0)
 
-        if (errorMessage2.textContent.trim() === 'Введите корректный  адрес электронной почты') {
-            const length = emailInput.value.length;
-            emailInput.setSelectionRange(length, length);
-            setTimeout(() => {
-                if (window.innerWidth > 640) {
-                    errorMessage2.style.bottom = '1vh'
-                }
-                else {
-                    errorMessage2.style.bottom = '5vh'
-                }
-
-                errorMessage2.style.opacity = '1'
-            }, 300)
-
-            setTimeout(() => {
-                errorMessage2.style.bottom = '-9vh'
-                errorMessage2.style.opacity = '0'
-            }, 3000)
-
-            emailInput.focus();
-            tremleMail();
+        if (localStorage.getItem('formClosed') === 'true') {
+            errorMessage2.innerHTML = ''
+            localStorage.removeItem('errorMessage2');
         }
+        else {
+             openForm(false, 0)
 
-         if (errorMessage2.textContent.trim() === 'Введите корректный номер телефона') {
+            if (errorMessage2.textContent.trim() === 'Введите корректный  адрес электронной почты') {
+                const length = emailInput.value.length;
+                emailInput.setSelectionRange(length, length);
+                setTimeout(() => {
+                    if (window.innerWidth > 640) {
+                        errorMessage2.style.bottom = '1vh'
+                    }
+                    else {
+                        errorMessage2.style.bottom = '5vh'
+                    }
 
-             const length = phoneInput.value.length;
-             phoneInput.setSelectionRange(length, length);
+                    errorMessage2.style.opacity = '1'
+                }, 300)
 
-             setTimeout(() => {
-                if (window.innerWidth > 640) {
-                    errorMessage2.style.bottom = '1vh'
-                }
-                else {
-                    errorMessage2.style.bottom = '5vh'
-                }
+                setTimeout(() => {
+                    errorMessage2.style.bottom = '-9vh'
+                    errorMessage2.style.opacity = '0'
+                }, 3000)
 
-                errorMessage2.style.opacity = '1'
-            }, 300)
+                emailInput.focus();
+                tremleMail();
+            }
 
-            setTimeout(() => {
-                errorMessage2.style.bottom = '-9vh'
-                errorMessage2.style.opacity = '0'
-            }, 3000)
+             if (errorMessage2.textContent.trim() === 'Введите корректный номер телефона') {
 
-             phoneInput.focus();
-             tremlePhone();
-         }
+                 const length = phoneInput.value.length;
+                 phoneInput.setSelectionRange(length, length);
 
-        if (errorMessage2.textContent.trim() === 'Введите корректный адрес электронной почты и номер телефона') {
-            setTimeout(() => {
-                if (window.innerWidth > 640) {
-                    errorMessage2.style.bottom = '0.5vh'
-                }
-                else {
-                    errorMessage2.style.bottom = '5vh'
-                }
-                errorMessage2.style.opacity = '1'
-            }, 300)
+                 setTimeout(() => {
+                    if (window.innerWidth > 640) {
+                        errorMessage2.style.bottom = '1vh'
+                    }
+                    else {
+                        errorMessage2.style.bottom = '5vh'
+                    }
 
-            setTimeout(() => {
-                errorMessage2.style.bottom = '-9vh'
-                errorMessage2.style.opacity = '0'
-            }, 3000)
+                    errorMessage2.style.opacity = '1'
+                }, 300)
 
-            tremleMail();
-            tremlePhone();
-         }
+                setTimeout(() => {
+                    errorMessage2.style.bottom = '-9vh'
+                    errorMessage2.style.opacity = '0'
+                }, 3000)
 
+                 phoneInput.focus();
+                 tremlePhone();
+             }
+
+            if (errorMessage2.textContent.trim() === 'Введите корректный адрес электронной почты и номер телефона') {
+                setTimeout(() => {
+                    if (window.innerWidth > 640) {
+                        errorMessage2.style.bottom = '0.5vh'
+                    }
+                    else {
+                        errorMessage2.style.bottom = '5vh'
+                    }
+                    errorMessage2.style.opacity = '1'
+                }, 300)
+
+                setTimeout(() => {
+                    errorMessage2.style.bottom = '-9vh'
+                    errorMessage2.style.opacity = '0'
+                }, 3000)
+
+                tremleMail();
+                tremlePhone();
+             }
+        }
     }
 
 
@@ -1502,6 +1508,7 @@ if (Path_category === 'work') {
         form.style.scale = '1';
 
 //        body.style.overflow = 'hidden';
+//        чтобы при вызове формы задний фон не уходил
         body.style.position = 'fixed'
         body.style.top = `-${scrollPosition}px`;
         body.style.width = '100%';
@@ -1511,6 +1518,8 @@ if (Path_category === 'work') {
         phoneInput.addEventListener('blur', updateCodeState);
         phoneInput.addEventListener('input', updateCodeState);
         updateCodeState();
+
+        localStorage.setItem('formClosed', 'false');
 
         formCloseButton.addEventListener('click', closeForm);
       }
@@ -1531,12 +1540,17 @@ if (Path_category === 'work') {
           body.style.width = '';
           window.scrollTo(0, scrollPosition_2);
 
+//          записываем, что форма закрыта
+          localStorage.setItem('formClosed', 'true');
+
 
 //          body.style.overflow = '';
 
           setTimeout(() => {
               formContainer.style.zIndex = '-1';
           }, 275);
+
+
 
           header.style.backgroundColor = 'var(--black-color)';
           formCloseButton.removeEventListener('click', closeForm);
@@ -1667,7 +1681,7 @@ if (Path_category === 'work') {
         counter += 1
         if (window.innerWidth < 1300) {
             if (counter <= 2) {
-                if (errorMessage2) {
+                if (errorMessage2 || messageContainer) {
                     card.style.opacity = '1';
                     card.style.transform = 'scale(1)';
                 } else {
@@ -1681,7 +1695,7 @@ if (Path_category === 'work') {
         }
         else {
             if (counter === 1) {
-                if (errorMessage2) {
+                if (errorMessage2 || messageContainer) {
                     card.style.opacity = '1';
                     card.style.transform = 'scale(1)';
                 } else {
