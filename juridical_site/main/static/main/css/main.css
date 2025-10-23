@@ -1482,16 +1482,21 @@ footer .company_info .company_info_container .mail p:hover a {
     margin: 0;
     padding: 0;
     font-size: clamp(1rem, 0.8rem + 0.5333vw, 1.2rem);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+    display: grid;
+    grid-template-columns: 10% 90%;
 }
 
 .mission .mission_wrapper .mission_list .mission_item p i {
     font-size: clamp(1.6rem, 0.4516rem + 2.0645vw, 2rem);
-    margin: 0 2vw 0 0;
+    margin: 0;
     padding: 0;
     color: var(--red-color);
+    justify-self: flex-start;
+    align-self: center;
+    /*    background-color: green;*/
 }
 
 .about_container .about_section .head_carousel {
@@ -1573,7 +1578,6 @@ footer .company_info .company_info_container .mail p:hover a {
 /*}*/
 
 .about_container .about_section .head_carousel .carousel_wrapper .carousel_list li {
-    background-color: var(--grey-blueish);
     height: 100%;
     min-width: 25vw;
     border-radius: 30px;
@@ -1596,7 +1600,11 @@ footer .company_info .company_info_container .mail p:hover a {
 
 .about_container .about_section .head_carousel .carousel_wrapper .carousel_list li:nth-child(odd) {
     min-width: 45vw;
-    background-color: var(--red-color-v2);
+/*    background-color: var(--red-color-v2);*/
+}
+
+.about_container .about_section .head_carousel .carousel_wrapper .carousel_list li:nth-child(even) {
+    background-color: var(--grey-blueish);
 }
 
 .about_container .about_section .head_carousel .carousel_wrapper .carousel_list #distant {
@@ -3198,7 +3206,7 @@ footer .company_info .company_info_container .mail p:hover a {
     display: grid;
     grid-template-columns: 1fr 20% 30%;
     min-width: 100%;
-/*    gap: 2px;*/
+    gap: 10px;
 }
 
 .jobs_container .jobs_list_wrapper .short_info .city,
@@ -3213,12 +3221,26 @@ footer .company_info .company_info_container .mail p:hover a {
     padding: 0;
 }
 
+/*.jobs_container .jobs_list_wrapper .short_info .city {*/
+/*    background-color: red;*/
+/*}*/
+
+/*.jobs_container .jobs_list_wrapper .short_info .experience {*/
+/*    background-color: green;*/
+/*}*/
+
+/*.jobs_container .jobs_list_wrapper .short_info .practice {*/
+/*    background-color: blueviolet;*/
+/*}*/
+
+
 .jobs_container .jobs_list_wrapper .short_info .city .header,
 .jobs_container .jobs_list_wrapper .short_info .experience .header,
 .jobs_container .jobs_list_wrapper .short_info .practice .header {
 /*    background-color: #ff000044;*/
     border: none;
     height: auto;
+    width: 100%;
     margin: 0;
     padding: 0;
     color: rgba(255, 255, 255, 0.6);
@@ -4026,13 +4048,13 @@ input:focus {
         justify-content: center;
         flex-direction: column;
         background-color: var(--whiteish);
-        transform: translateY(-90vw);
+        transform: translateX(90vw);
         transition: 0.3s;
         opacity: 0;
     }
 
    .nav_active .nav_container .nav_menu .nav_list  {
-        transform: translateY(0);
+        transform: translateX(0);
         opacity: 1;
     }
 
@@ -4355,6 +4377,10 @@ input:focus {
         padding: 0vh 5vw;
     }
 
+    footer .footer_container .heading {
+        margin: 0 0 4vw 0;
+    }
+
     footer .footer_container .contacts {
         grid-template-columns: repeat(2, 1fr);
         gap: vw;
@@ -4536,12 +4562,22 @@ input:focus {
         min-height: auto;
     }
 
+    .about_container .about_section .head_top .head_top_right,
+    .about_container .about_section .head_top .head_top_left {
+        border-radius: 10px
+    }
+
     .mission .mission_wrapper .mission_list .mission_item p i {
-        margin: 0 5vw 0 0;
+        margin: 0;
+/*        background-color: red;*/
+    }
+
+    .mission .mission_wrapper .mission_list .mission_item p {
+        grid-template-columns: 15% 85%;
     }
 
     .about_container .about_section .head_carousel {
-        height: 400px;
+        height: 40vw;
     }
 
     .about_container .about_section .head_carousel .carousel_wrapper .carousel_list {
@@ -4553,12 +4589,26 @@ input:focus {
         display: none;
     }
 
-    .about_container .about_section .head_carousel .carousel_wrapper .carousel_list li {
-        min-width: 500px;
+    .about_container .about_section .head_carousel .carousel_wrapper .carousel_list li:nth-child(even) {
+        min-width: 45vw;
+        border-radius: 10px;
     }
 
-    .about_container .about_section .head_carousel .carousel_wrapper .carousel_list li .carousel_item h3 {
-        font-size: clamp(1.3rem, 0.9939rem + 0.9796vw, 1.6rem);
+    .about_container .about_section .head_carousel .carousel_wrapper .carousel_list li:nth-child(odd) {
+        min-width: 80vw;
+    }
+
+    .about_container .about_section .head_carousel .carousel_wrapper .carousel_list #distant, #IT, #innovation {
+        border-radius: 10px;
+    }
+
+    .about_container .about_section .head_carousel .carousel_wrapper .carousel_list li:nth-child(even) .carousel_item h3 {
+        font-size: clamp(1.3rem, 0.425rem + 2.8vw, 2rem);
+        padding: 4vw 4vw 0 4vw;
+    }
+
+    .about_container .about_section .head_carousel .carousel_wrapper .carousel_list li:nth-child(odd) .carousel_item h3 {
+        font-size: clamp(1.3rem, 0.425rem + 2.8vw, 2rem);
         padding: 4vw 4vw 0 4vw;
     }
 
@@ -4582,6 +4632,12 @@ input:focus {
         font-size: 3rem;
     }
 
+    .big_blocks_container {
+        margin: 4vw 0 5vw 0;
+        padding: 2vw 5vw 20vw 5vw;
+        mask-image: linear-gradient(#fff 80%, transparent 100%);
+    }
+
     .big_blocks_container .wrapper .big_blocks {
         margin: 5vw 0 0 0;
     }
@@ -4589,12 +4645,14 @@ input:focus {
     .big_blocks_container .wrapper h1 {
         font-size: clamp(2rem, 1.898rem + 0.3265vw, 2.1rem);
         animation-range-end: entry +200px;
+        line-height: 2rem;
     }
 
     .big_blocks_container .wrapper .big_blocks .big_blocks_list {
         margin: 2vw 0 0 0;
         grid-template-columns: repeat(4, 1fr);
         gap: 4vw;
+
     }
 
     .big_blocks_container .wrapper .big_blocks .big_blocks_list #first_big_block {
@@ -4643,17 +4701,22 @@ input:focus {
 
     .big_blocks_container .wrapper .big_blocks .big_blocks_list .big_blocks_item .big_block_div {
         padding: 4vw;
+        border-radius: 10px;
+    }
+
+    .big_blocks_container .wrapper .big_blocks .big_blocks_list .big_blocks_item .big_block_div p {
+        line-height: 1rem;
     }
 
 
     .big_blocks_container .wrapper .big_blocks .big_blocks_list .big_blocks_item:nth-child(2) i {
         padding: 10px 15px;
-        border-radius: 10px;
+        border-radius: 8px;
     }
 
     .big_blocks_container .wrapper .big_blocks .big_blocks_list .big_blocks_item:nth-child(3) i {
         padding: 10px;
-        border-radius: 10px;
+        border-radius: 8px;
     }
 
     .team_container {
@@ -5037,6 +5100,15 @@ input:focus {
         font-size: clamp(1rem, 0.75rem + 0.8vw, 1.2rem);
     }
 
+    .jobs_container .jobs_list_wrapper .short_info .experience {
+        align-items: flex-end;
+        padding: 0 0 0 5px;
+    }
+
+    .jobs_container .jobs_list_wrapper .short_info .experience .experience_label {
+        padding: 0 0 0 5px;
+    }
+
     .jobs_container .jobs_list_wrapper .short_info .city .city_label,
     .jobs_container .jobs_list_wrapper .short_info .experience .experience_label,
     .jobs_container .jobs_list_wrapper .short_info .practice .practice_label {
@@ -5221,16 +5293,20 @@ input:focus {
         top: 15vw;
     }
 
-    .about_container .about_section .head_carousel {
-        height: 60vw;
-    }
-
     .about_container .about_section .head_carousel .carousel_wrapper .carousel_list {
         gap: 6vw;
     }
 
-    .about_container .about_section .head_carousel .carousel_wrapper .carousel_list li {
-        min-width: 70vw;
+    .about_container .about_section .head_carousel .carousel_wrapper .carousel_list li:nth-child(even) .carousel_item h3 {
+        line-height: 1.5rem;
+        font-weight: 600;
+        padding: 4vw 4vw 0 4vw;
+    }
+
+    .about_container .about_section .head_carousel .carousel_wrapper .carousel_list li:nth-child(odd) .carousel_item h3 {
+        font-size: clamp(1.3rem, 0.425rem + 2.8vw, 2rem);
+        line-height: 1.5rem;
+        font-weight: 600;
     }
 
     .team_container {
