@@ -60,3 +60,13 @@ class Application(models.Model):
 
     def __str__(self):
         return f'{self.email} - {self.preferred_date} {self.time_slot}'
+
+
+class Consultation(models.Model):
+    email = models.EmailField("Email")
+    phone = models.CharField("Телефон", max_length=20)
+    preferred_date = models.DateField("Удобная дата для связи")
+    time_slot = models.CharField("Временной интервал", max_length=20)
+
+    def __str__(self):
+        return f'{self.email} - {self.preferred_date} {self.time_slot}'

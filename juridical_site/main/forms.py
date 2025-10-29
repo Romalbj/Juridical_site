@@ -2,7 +2,7 @@ import datetime
 
 from django import forms
 from datetime import date, timedelta
-from .models import Application
+from .models import Application, Consultation
 
 # Генерация доступных дат
 def get_available_dates():
@@ -98,4 +98,48 @@ class ApplicationForm(forms.ModelForm):
 
     class Meta:
         model = Application
+        fields = ['email', 'phone', 'preferred_date', 'time_slot']
+
+
+
+class ConsultationForm(forms.ModelForm):
+
+    preferred_date = forms.ChoiceField(
+        choices=[
+            (
+                d.strftime('%Y-%m-%d'),
+                f"{d.day} {get_month_rus(d.month)} {get_weekday_rus_short(d)}"
+            )
+            for d in get_available_dates()
+        ],
+        widget=forms.RadioSelect,
+        label='Выберите дату'
+    )
+
+    time_slot = forms.ChoiceField(
+        choices=TIME_SLOTS,
+        widget=forms.RadioSelect,
+        label='Выберите время'
+    )
+
+    email = forms.EmailField(label="Эл. почта",
+                             widget=forms.TextInput
+                             (attrs={'placeholder': 'Почта'}))
+
+    phone = forms.CharField(label="Номер телефона", max_length=20,
+                            widget=forms.TextInput
+                            (attrs={'placeholder': 'Номер телефона',
+                                    'oninput': 'this.value=this.value.replace(/[^0-9]/g, "")',
+                                    'inputmode': 'numeric'})
+                            )
+
+    def clean_phone(self):
+        phone = self.cleaned_data.get('phone', '')
+        digits_only = ''.join(filter(str.isdigit, phone))
+        if len(digits_only) != 10:
+            raise forms.ValidationError('Введите корректный номер телефона')
+        return phone
+
+    class Meta:
+        model = Consultation
         fields = ['email', 'phone', 'preferred_date', 'time_slot']

@@ -5,6 +5,18 @@
 
 {% block content %}
 
+{% if not error %}
+{% for message in messages %}
+<div class="message_container">
+    <div class="message">
+        <h3>Ваша заявка принята</h3>
+        <p class="text">{{message}}</p>
+        <button type="submit">ОК</button>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
+
 <div class="booking">
     <div class="gradient">
          <div class="wrapper">
@@ -220,6 +232,56 @@
 
         </div>
     </div>
+</div>
+
+
+<div class="form_container">
+    <form class="site_form" action="{% url 'home' %}"  method="post">
+        {% csrf_token %}
+        <div class="form_wrapper">
+            <h3 class="header">Заполните форму для связи</h3>
+            <div class="mail_input">
+                <div class="email">
+                    {{ form.email }}
+                    <i class="fa-solid fa-envelope"></i>
+                    <p class="placeholder placeholder_mail">Почта</p>
+                </div>
+            </div>
+            <div class="phone_input">
+                <div class="phone">
+                    {{ form.phone }}
+                    <i class="fa-solid fa-phone"></i>
+                    <p class="code">+7</p>
+                    <p class="placeholder placeholder_phone">Номер телефона</p>
+                </div>
+            </div>
+
+            <div class="date_options">
+<!--                       <h3>{{ form.preferred_date.label }}</h3>-->
+                <h3>Выберите дату и время</h3>
+                <div class="preferred_date">
+                    {{ form.preferred_date }}
+                </div>
+            </div>
+            <div class="time_options">
+<!--                        <h3>{{ form.time_slot.label }}</h3>-->
+                <div class="preferred_time">
+                    {{ form.time_slot }}
+                </div>
+            </div>
+            <button type="submit">Отправить заявку</button>
+
+
+
+        </div>
+        <i class="fa-solid fa-xmark close_button"></i>
+    </form>
+
+    {% if error %}
+    {% for message in messages %}
+    <p  class="error_message_2"><i class="fa-solid fa-ban"></i>&nbsp;&nbsp;{{message}}</p>
+    {% endfor %}
+    {% endif %}
 </div>
 
 {% endblock %}

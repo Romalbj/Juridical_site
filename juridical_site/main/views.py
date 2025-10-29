@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Stuff, Practice, Jobs
-from .forms import ApplicationForm
+from .forms import ApplicationForm, ConsultationForm
 from django.contrib import messages
 import ast
 import datetime
@@ -9,7 +9,54 @@ from .forms import get_month_rus, get_weekday_rus_short
 
 
 def home(request):
-    return render(request, 'main/home.html',)
+    global error
+
+    error = False
+
+    if request.method == 'POST':
+        form = ConsultationForm(request.POST)
+        if form.is_valid():
+            application = form.save(commit=False)
+            application.preferred_date = form.cleaned_data['preferred_date']
+
+            phone = request.POST.get('phone')
+            application.phone = '+7' + phone
+            application.save()
+
+            preferred_date_str = request.POST.get('preferred_date')
+            preferred_date_obj = datetime.datetime.strptime(preferred_date_str, '%Y-%m-%d').date()
+            formatted_date = f"{preferred_date_obj.day} {get_month_rus_full(preferred_date_obj.month)} "
+
+            error = False
+
+            messages.success(request,
+                             f"Мы свяжемся с Вами {formatted_date} в интервале {get_timeslot_for_message(request.POST.get('time_slot'))} часов")
+            return redirect('home')
+
+        else:
+            errors = str(form.errors.as_data)
+            errors = ast.literal_eval('{' + errors.split('{')[1].rstrip('>'))
+
+            res_list = []
+            for k, v in errors.items():
+                res_list.append(str(v).strip('[').strip("]").strip("'"))
+
+            if res_list[0] == 'Enter a valid email address.':
+                res_list[0] = 'Введите корректный  адрес электронной почты'
+
+            if len(res_list) > 1:
+                messages.error(request, 'Введите корректный адрес электронной почты и номер телефона')
+            else:
+                messages.error(request, res_list[0])
+
+            error = True
+
+    else:
+        form = ConsultationForm()
+
+    return render(request, 'main/home.html', {'form': form, 'error': error, })
+
+
 
 def team(request):
     # stuff_practice = {}
@@ -117,10 +164,6 @@ def work(request):
 
             error = True
 
-        # if len(request.POST.get('phone', '')) < 10:
-        #         messages.error(request, 'Укажите полный номер телефона')
-        #         error = True
-        #         return render(request, 'main/work.html', {'jobs': jobs, 'form': form, 'error': error})
 
     else:
         form = ApplicationForm()

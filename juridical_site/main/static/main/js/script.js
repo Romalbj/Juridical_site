@@ -122,10 +122,331 @@ const consMoreInfoBlocks = document.querySelectorAll('.cons .wrapper .more_info 
 const footer = document.querySelector('footer')
 
 if (Path_category === 'home') {
-    setTimeout(() => {
+    const formContainer = document.querySelector('.form_container');
+    const form = document.querySelector('form');
+    const formCloseButton = document.querySelector('form .close_button');
+
+    const buttonForm = document.querySelector('.booking_submit');
+
+    const emailInput = document.querySelector('.form_container .email input');
+    const phoneInput = document.querySelector('.form_container .phone input');
+    const preferredTimeInput = document.querySelectorAll('.form_container .preferred_time input');
+    const preferredDateInput = document.querySelectorAll('.form_container .preferred_date input');
+    const codeElement = document.querySelector('.form_container .phone .code');
+
+
+    const messageContainer = document.querySelector('.message_container');
+    const message = document.querySelector('.message_container .message');
+    const messageCloseButton = document.querySelector('.message_container .message button');
+
+    const errorMessage = document.querySelector('.error_message');
+    const errorMessage2 = document.querySelector('.error_message_2');
+
+
+    if (errorMessage2 || messageContainer) {
         bookingText.style.transform = 'translateY(0)'
         bookingText.style.filter = 'blur(0)'
-    }, 275)
+        bookingText.style.transition = '0s'
+    } else {
+        setTimeout(() => {
+            bookingText.style.transform = 'translateY(0)'
+            bookingText.style.filter = 'blur(0)'
+        }, 275)
+    }
+
+
+
+
+    if (messageContainer) {
+        body.style.overflow = 'hidden';
+
+        messageCloseButton.addEventListener('click', () => {
+            messageContainer.style.opacity = '0';
+            message.style.scale = '0.5';
+            message.style.opacity = '0';
+
+            body.style.overflow = '';
+
+            setTimeout(() => {
+                messageContainer.style.zIndex = '-1';
+            }, 275);
+
+        })
+    }
+
+
+     function tremleMail() {
+         setTimeout(() => {
+            emailInput.style.color = 'var(--red-color)';
+            emailInput.style.paddingLeft= '80px'
+        }, 200)
+
+        setTimeout(() => {
+            emailInput.style.paddingLeft = '50px'
+        }, 285)
+
+        setTimeout(() => {
+            emailInput.style.paddingLeft = '80px'
+        }, 355)
+
+        setTimeout(() => {
+            emailInput.style.paddingLeft = '50px'
+        }, 425)
+
+        setTimeout(() => {
+            emailInput.style.paddingLeft = '80px'
+        }, 495)
+
+        setTimeout(() => {
+            emailInput.style.paddingLeft = '65px'
+        }, 565)
+    }
+
+    function tremlePhone() {
+        setTimeout(() => {
+            phoneInput.style.color = 'var(--red-color)';
+            phoneInput.style.paddingLeft= '100px'
+        }, 200)
+
+        setTimeout(() => {
+            phoneInput.style.paddingLeft = '70px'
+        }, 285)
+
+        setTimeout(() => {
+            phoneInput.style.paddingLeft = '100px'
+        }, 355)
+
+        setTimeout(() => {
+            phoneInput.style.paddingLeft = '70px'
+        }, 425)
+
+        setTimeout(() => {
+            phoneInput.style.paddingLeft = '100px'
+        }, 495)
+
+        setTimeout(() => {
+            phoneInput.style.paddingLeft = '85px'
+        }, 565)
+    }
+
+    let scrollPosition_2;
+    if (errorMessage2) {
+
+        if (localStorage.getItem('formClosed') === 'true') {
+            errorMessage2.innerHTML = ''
+            localStorage.removeItem('errorMessage2');
+        }
+        else {
+             openForm(false, 0)
+
+            if (errorMessage2.textContent.trim() === 'Введите корректный  адрес электронной почты') {
+                const length = emailInput.value.length;
+                emailInput.setSelectionRange(length, length);
+                setTimeout(() => {
+                    if (window.innerWidth > 640) {
+                        errorMessage2.style.bottom = '1vh'
+                    }
+                    else {
+                        errorMessage2.style.bottom = '5vh'
+                    }
+
+                    errorMessage2.style.opacity = '1'
+                }, 300)
+
+                setTimeout(() => {
+                    errorMessage2.style.bottom = '-9vh'
+                    errorMessage2.style.opacity = '0'
+                }, 3000)
+
+                emailInput.focus();
+                tremleMail();
+            }
+
+             if (errorMessage2.textContent.trim() === 'Введите корректный номер телефона') {
+
+                 const length = phoneInput.value.length;
+                 phoneInput.setSelectionRange(length, length);
+
+                 setTimeout(() => {
+                    if (window.innerWidth > 640) {
+                        errorMessage2.style.bottom = '1vh'
+                    }
+                    else {
+                        errorMessage2.style.bottom = '5vh'
+                    }
+
+                    errorMessage2.style.opacity = '1'
+                }, 300)
+
+                setTimeout(() => {
+                    errorMessage2.style.bottom = '-9vh'
+                    errorMessage2.style.opacity = '0'
+                }, 3000)
+
+                 phoneInput.focus();
+                 tremlePhone();
+             }
+
+            if (errorMessage2.textContent.trim() === 'Введите корректный адрес электронной почты и номер телефона') {
+                setTimeout(() => {
+                    if (window.innerWidth > 640) {
+                        errorMessage2.style.bottom = '0.5vh'
+                    }
+                    else {
+                        errorMessage2.style.bottom = '5vh'
+                    }
+                    errorMessage2.style.opacity = '1'
+                }, 300)
+
+                setTimeout(() => {
+                    errorMessage2.style.bottom = '-9vh'
+                    errorMessage2.style.opacity = '0'
+                }, 3000)
+
+                tremleMail();
+                tremlePhone();
+             }
+        }
+    }
+
+    function updateCodeState(withAnimation = true) {
+        const placeholderPhone = document.querySelector('.placeholder_phone');
+
+        if (withAnimation) {
+            placeholderPhone.style.transition = '';
+        } else {
+            placeholderPhone.style.transition = '0s';
+        }
+
+
+        if (document.activeElement === phoneInput || phoneInput.value.trim() !== '') {
+            placeholderPhone.classList.add('active');
+            codeElement.classList.add('active');
+        }
+        else {
+            placeholderPhone.classList.remove('active');
+            codeElement.classList.remove('active');
+        }
+    }
+
+
+    function emailPlacoholder(withAnimation = true) {
+        const placeholderMail = document.querySelector('.placeholder_mail');
+
+        if (withAnimation) {
+            placeholderMail.style.transition = '';
+        } else {
+            placeholderMail.style.transition = '0s';
+        }
+
+        if (document.activeElement === emailInput || emailInput.value.trim() !== '') {
+            placeholderMail.classList.add('active');
+        }
+        else {
+            placeholderMail.classList.remove('active');
+        }
+    }
+
+
+    function openForm(withAnimation = true, scrollPosition = window.scrollY) {
+        const placeholders = document.querySelectorAll('.placeholder');
+
+        scrollPosition = window.scrollY
+        scrollPosition_2 = window.scrollY;
+
+        if (withAnimation) {
+            formContainer.style.transition = '';
+            form.style.transition = '';
+
+            phoneInput.addEventListener('focus', updateCodeState);
+            phoneInput.addEventListener('blur', updateCodeState);
+            phoneInput.addEventListener('input', updateCodeState);
+            updateCodeState(true);
+
+            emailInput.addEventListener('focus', emailPlacoholder);
+            emailInput.addEventListener('blur', emailPlacoholder);
+            emailInput.addEventListener('input', emailPlacoholder);
+            emailPlacoholder(true);
+
+        } else {
+            formContainer.style.transition = 'none';
+            form.style.transition = 'none';
+
+            phoneInput.addEventListener('focus', updateCodeState);
+            phoneInput.addEventListener('blur', updateCodeState);
+            phoneInput.addEventListener('input', updateCodeState);
+            updateCodeState(false);
+
+            emailInput.addEventListener('focus', emailPlacoholder);
+            emailInput.addEventListener('blur', emailPlacoholder);
+            emailInput.addEventListener('input', emailPlacoholder);
+            emailPlacoholder(false);
+        }
+
+        formContainer.style.zIndex = '1';
+        formContainer.style.opacity = '1';
+
+
+        form.style.zIndex = '1';
+        form.style.opacity = '1';
+        form.style.scale = '1';
+
+//        чтобы при вызове формы задний фон не уходил
+        body.style.position = 'fixed'
+        body.style.top = `-${scrollPosition}px`;
+        body.style.width = '100%';
+
+
+
+        localStorage.setItem('formClosed', 'false');
+
+        formCloseButton.addEventListener('click', closeForm);
+      }
+
+      function closeForm() {
+          formContainer.style.transition = '';
+          form.style.transition = '';
+
+          formContainer.style.opacity = '0';
+          form.style.opacity = '0';
+          form.style.scale = '0.5';
+          form.style.zIndex = '-1';
+
+
+          body.style.position = ''
+          body.style.top = '';
+          body.style.width = '';
+          window.scrollTo(0, scrollPosition_2);
+
+//          записываем, что форма закрыта
+          localStorage.setItem('formClosed', 'true');
+
+
+          setTimeout(() => {
+              formContainer.style.zIndex = '-1';
+          }, 275);
+
+
+          formCloseButton.removeEventListener('click', closeForm);
+      }
+
+
+        buttonForm.addEventListener('click', () => {
+//            очищаем форму перед открытием
+            emailInput.value = ''
+            phoneInput.value = ''
+            preferredDateInput.forEach (date => {
+                date.checked = false;
+            })
+
+            preferredTimeInput.forEach (time => {
+                time.checked = false;
+            })
+            openForm();
+        });
+
+
+
 
 
     html.style.scrollSnapType = 'y mandatory'
@@ -1309,7 +1630,7 @@ if (Path_category === 'work') {
     const errorMessage = document.querySelector('.error_message');
     const errorMessage2 = document.querySelector('.error_message_2');
 
-    const dateOptions = document.querySelector('.form_container form .form_wrapper .date_options');
+//    const dateOptions = document.querySelector('.form_container form .form_wrapper .date_options');
     
 
     if (messageContainer) {
@@ -1477,11 +1798,41 @@ if (Path_category === 'work') {
 
 
 
-    function updateCodeState() {
-        if (document.activeElement === phoneInput || phoneInput.value.trim() !== '') {
-            codeElement.classList.add('active');
+    function updateCodeState(withAnimation = true) {
+        const placeholderPhone = document.querySelector('.placeholder_phone');
+
+        if (withAnimation) {
+            placeholderPhone.style.transition = '';
         } else {
+            placeholderPhone.style.transition = '0s';
+        }
+
+
+        if (document.activeElement === phoneInput || phoneInput.value.trim() !== '') {
+            placeholderPhone.classList.add('active');
+            codeElement.classList.add('active');
+        }
+        else {
+            placeholderPhone.classList.remove('active');
             codeElement.classList.remove('active');
+        }
+    }
+
+
+    function emailPlacoholder(withAnimation = true) {
+        const placeholderMail = document.querySelector('.placeholder_mail');
+
+        if (withAnimation) {
+            placeholderMail.style.transition = '';
+        } else {
+            placeholderMail.style.transition = '0s';
+        }
+
+        if (document.activeElement === emailInput || emailInput.value.trim() !== '') {
+            placeholderMail.classList.add('active');
+        }
+        else {
+            placeholderMail.classList.remove('active');
         }
     }
 
@@ -1493,9 +1844,29 @@ if (Path_category === 'work') {
         if (withAnimation) {
             formContainer.style.transition = ''; // восстановить переходы
             form.style.transition = '';
+
+            phoneInput.addEventListener('focus', updateCodeState);
+            phoneInput.addEventListener('blur', updateCodeState);
+            phoneInput.addEventListener('input', updateCodeState);
+            updateCodeState(true);
+
+            emailInput.addEventListener('focus', emailPlacoholder);
+            emailInput.addEventListener('blur', emailPlacoholder);
+            emailInput.addEventListener('input', emailPlacoholder);
+            emailPlacoholder(true);
         } else {
             formContainer.style.transition = 'none';
             form.style.transition = 'none';
+
+            phoneInput.addEventListener('focus', updateCodeState);
+            phoneInput.addEventListener('blur', updateCodeState);
+            phoneInput.addEventListener('input', updateCodeState);
+            updateCodeState(false);
+
+            emailInput.addEventListener('focus', emailPlacoholder);
+            emailInput.addEventListener('blur', emailPlacoholder);
+            emailInput.addEventListener('input', emailPlacoholder);
+            emailPlacoholder(false);
         }
 
         formContainer.style.zIndex = '1';
@@ -1513,11 +1884,6 @@ if (Path_category === 'work') {
         body.style.top = `-${scrollPosition}px`;
         body.style.width = '100%';
 
-
-        phoneInput.addEventListener('focus', updateCodeState);
-        phoneInput.addEventListener('blur', updateCodeState);
-        phoneInput.addEventListener('input', updateCodeState);
-        updateCodeState();
 
         localStorage.setItem('formClosed', 'false');
 
@@ -1621,6 +1987,7 @@ if (Path_category === 'work') {
                 header.style.backgroundColor = 'var(--black-color)';
 
 
+//                очищаем поля перед открытием формы
                 emailInput.value = ''
                 phoneInput.value = ''
                 preferredDateInput.forEach (date => {
